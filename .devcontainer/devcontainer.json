@@ -1,14 +1,21 @@
 {
-  "name": "E-commerce Logistics (JDK 21)",
+  "name": "E-commerce Logistics (JDK 21 + Docker)",
   "image": "mcr.microsoft.com/devcontainers/java:21",
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {
+      "version": "latest",
+      "moby": true
+    }
+  },
   "customizations": {
     "vscode": {
       "extensions": [
         "vscjava.vscode-java-pack",
-        "pivotal.vscode-spring-boot"
+        "pivotal.vscode-spring-boot",
+        "ms-azuretools.vscode-docker"  
       ]
     }
   },
-  "forwardPorts": [8080],
-  "postCreateCommand": "java -version && javac -version"
+  "forwardPorts": [8080, 3306],  // 3306 是 MySQL 默认端口
+  "postCreateCommand": "echo '✅ Environment ready!' && java -version && docker --version"
 }
