@@ -1,0 +1,14 @@
+{
+  "name": "E-commerce Logistics (JDK 21)",
+  "image": "mcr.microsoft.com/devcontainers/java:21",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "vscjava.vscode-java-pack",
+        "pivotal.vscode-spring-boot"
+      ]
+    }
+  },
+  "forwardPorts": [8080],
+  "postCreateCommand": "java -version && javac -version"
+}

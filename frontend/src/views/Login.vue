@@ -16,7 +16,8 @@
                     <option value="">请选择身份</option>
                     <option value="merchant">商家</option>
                     <option value="customer">顾客</option> 
-                    <option value="driver">司机</option>   
+                    <option value="driver">司机</option>
+                    <option value="admin">管理员</option>      
                 </select>       
             </div>
 
@@ -67,7 +68,7 @@ const loginForm = reactive({
 })
 
 //登录处理函数
-const handleLogin = () => {
+const handleLogin = async () => {
     //验证是否选择身份
     if (!loginForm.role) {
         alert('请选择身份')
@@ -84,15 +85,35 @@ const handleLogin = () => {
     const roleText = {
         merchant: '商家',
         customer: '顾客',
-        driver: '司机'
+        driver: '司机',
+        admin: '管理员'
     }
 
     // 登录加载
     loading.value = true
-    setTimeout(async () => {
-        loading.value = false
-        await router.push('/home')
-    }, 1000)
+    try {
+      const res = await fetch('/api/auth/login', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            username: loginForm.username,
+            password: loginForm.password,
+            role: loginForm.role
+          })
+      })
+      const data = await res.json()
+      if(!data.success) {
+          alert(data.message || '登录失败，请检查用户名和密码')
+          return
+      }
+      await router.push('/home')
+    } catch (e) {
+      alert('登录请求失败，请稍后重试')
+    } finally {
+      loading.value = false
+    }
 }
 </script>
 
