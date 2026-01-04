@@ -7,7 +7,7 @@ services:
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: root123
-      MYSQL_DATABASE: logistics_db
+      MYSQL_DATABASE: ecommerce_logistics
       TZ: Asia/Shanghai
     ports:
       - "3306:3306"
