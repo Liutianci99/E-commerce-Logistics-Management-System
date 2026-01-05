@@ -19,7 +19,8 @@ services:
       - --collation-server=utf8mb4_unicode_ci
       - --default-authentication-plugin=mysql_native_password
     networks:
-      - logistics-network
+      logistics-network:
+        ipv4_address: 172.18.0.2
 
 volumes:
   mysql-data:
@@ -28,3 +29,6 @@ volumes:
 networks:
   logistics-network:
     driver: bridge
+    ipam:
+      config:
+        - subnet: 172.18.0.0/16
