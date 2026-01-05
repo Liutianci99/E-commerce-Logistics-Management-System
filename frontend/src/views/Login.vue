@@ -15,7 +15,7 @@
                 >
                     <option value="">请选择身份</option>
                     <option value="merchant">商家</option>
-                    <option value="customer">顾客</option> 
+                    <option value="consumer">顾客</option> 
                     <option value="driver">司机</option>
                     <option value="admin">管理员</option>      
                 </select>       
@@ -84,7 +84,7 @@ const handleLogin = async () => {
     //显示登录信息
     const roleText = {
         merchant: '商家',
-        customer: '顾客',
+        consumer: '顾客',
         driver: '司机',
         admin: '管理员'
     }

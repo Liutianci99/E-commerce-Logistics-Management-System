@@ -16,6 +16,12 @@ public class AuthController {
 
     @PostMapping("/login")
     public LoginResponse login(@RequestBody LoginRequest req) {
+        System.out.println("收到登录请求: username=" + req.getUsername() + ", role=" + req.getRole());
         return userService.login(req);
+    }
+    
+    @GetMapping("/test")
+    public String test() {
+        return "Backend is running!";
     }
 }

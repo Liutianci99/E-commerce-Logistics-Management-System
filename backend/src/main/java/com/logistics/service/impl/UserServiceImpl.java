@@ -17,9 +17,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public LoginResponse login(LoginRequest req) {
+        System.out.println("开始查询用户: username=" + req.getUsername() + ", role=" + req.getRole());
         User user = userMapper.selectOne(new LambdaQueryWrapper<User>()
             .eq(User::getUsername, req.getUsername())
             .eq(User::getRole, req.getRole()));
+        System.out.println("查询结果: " + (user == null ? "null" : user.toString()));
         if (user == null) {
             return new LoginResponse(false, "用户或角色不存在", null);
         }
