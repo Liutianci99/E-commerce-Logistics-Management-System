@@ -108,7 +108,9 @@ const handleLogin = async () => {
           alert(data.message || '登录失败，请检查用户名和密码')
           return
       }
-      await router.push('/home')
+      // 保存登录状态
+      localStorage.setItem('isLoggedIn', 'true')
+      await router.push('/demo')
     } catch (e) {
       alert('登录请求失败，请稍后重试')
     } finally {
