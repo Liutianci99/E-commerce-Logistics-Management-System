@@ -1,17 +1,17 @@
 <template>
     <div class="home-container">
         <!-- 侧边栏 -->
-        <aside class="sidebar">
+        <aside class="sidebar" :class="{ collapsed: isCollapsed }">
             <div class="logo">
-                <h2>电商物流管理系统</h2>
-                
+                <h2 v-if="!isCollapsed">电商物流管理系统</h2>
+                <Package v-else :size="24" :stroke-width="2" class="logo-icon" />
             </div>
             <nav class="nav-menu">
                 <ul>
                     <li v-for="item in visibleMenu" :key="item.path">
                         <a href="#" @click.prevent="selectMenu(item)" :class="{ active: activeMenu === item.path }">
-                            <span class="icon">{{ item.icon }}</span>
-                            <span class="title">{{ item.title }}</span>
+                            <component :is="item.icon" :size="20" :stroke-width="2" class="icon" />
+                            <span class="title" v-if="!isCollapsed">{{ item.title }}</span>
                         </a>
                     </li>
                 </ul>
@@ -22,21 +22,40 @@
         <div class="main-container">
             <!-- 顶部导航栏 -->
             <header class="top-header">
-                <div class="user-info">
-                    <span>用户：{{ getUserName() }}（{{ getRoleLabel(currentUser.role) }}）</span>
+                <div class="header-left">
+                    <button class="toggle-btn" @click="toggleSidebar">
+                        <PanelLeft v-if="!isCollapsed" :size="20" :stroke-width="2" />
+                        <PanelLeftClose v-else :size="20" :stroke-width="2" />
+                    </button>
+                    <div class="breadcrumb">
+                        <span class="breadcrumb-item">{{ getBreadcrumb() }}</span>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <div class="user-info">
+                        <span>用户：{{ getUserName() }}（{{ getRoleLabel(currentUser.role) }}）</span>
+                    </div>
+                    <button class="logout-btn" @click="logout">退出登录</button>
                 </div>
             </header>
 
             <!-- 页面内容 -->
             <section class="content-area">
-                <!-- 内容容器 -->
+                <router-view />
             </section>
         </div>
     </div>
 </template>
 
 <script setup>
-import { computed, ref } from 'vue'
+import { computed, ref, onMounted } from 'vue'
+import { useRouter } from 'vue-router'
+import { Home, Store, Truck, ShoppingBag, Shield, Settings, PanelLeft, PanelLeftClose, Package } from 'lucide-vue-next'
+
+const router = useRouter()
+
+// 侧边栏折叠状态
+const isCollapsed = ref(false)
 
 // 当前用户信息 - 登录时从后端获取
 const currentUser = ref({
@@ -46,45 +65,105 @@ const currentUser = ref({
 })
 
 // 当前选中的菜单项
-const activeMenu = ref('/dashboard')
+const activeMenu = ref('')
+
+// 页面加载时从localStorage读取用户信息
+onMounted(() => {
+    const userInfoStr = localStorage.getItem('userInfo')
+    if (!userInfoStr) {
+        // 未登录，跳转到登录页
+        router.push('/')
+        return
+    }
+    
+    const userInfo = JSON.parse(userInfoStr)
+    currentUser.value = userInfo
+    
+    // 设置默认菜单项为该角色的第一个菜单
+    const firstMenu = visibleMenu.value[0]
+    if (firstMenu) {
+        activeMenu.value = firstMenu.path
+        router.push(firstMenu.path)
+    }
+})
 
 // 菜单配置 - 每项指定可见的角色
 const menuConfig = [
+    // 管理员菜单
     {
-        title: '首页',
-        path: '/dashboard',
-        icon: '📊',
-        roles: ['merchant', 'driver', 'consumer', 'admin']
-    },
-    {
-        title: '商户面板',
-        path: '/merchant',
-        icon: '🏪',
-        roles: ['merchant']
-    },
-    {
-        title: '司机面板',
-        path: '/driver',
-        icon: '🚚',
-        roles: ['driver']
-    },
-    {
-        title: '消费者面板',
-        path: '/consumer',
-        icon: '🛍️',
-        roles: ['consumer']
-    },
-    {
-        title: '管理员面板',
-        path: '/admin',
-        icon: '👨‍💼',
+        title: '用户管理',
+        path: '/admin/user-management',
+        icon: Shield,
         roles: ['admin']
     },
     {
-        title: '账户设置',
-        path: '/settings',
-        icon: '🔧',
-        roles: ['merchant', 'driver', 'consumer', 'admin']
+        title: '订单管理',
+        path: '/admin/order-management',
+        icon: ShoppingBag,
+        roles: ['admin']
+    },
+    {
+        title: '数据分析',
+        path: '/admin/data-analysis',
+        icon: Home,
+        roles: ['admin']
+    },
+    // 商家菜单
+    {
+        title: '商品管理',
+        path: '/merchant/product-management',
+        icon: Store,
+        roles: ['merchant']
+    },
+    {
+        title: '订单管理',
+        path: '/merchant/order-management',
+        icon: ShoppingBag,
+        roles: ['merchant']
+    },
+    {
+        title: '物流查询',
+        path: '/merchant/logistics-query',
+        icon: Truck,
+        roles: ['merchant']
+    },
+    // 顾客菜单
+    {
+        title: '商城',
+        path: '/consumer/mall',
+        icon: Store,
+        roles: ['consumer']
+    },
+    {
+        title: '我的订单',
+        path: '/consumer/my-orders',
+        icon: ShoppingBag,
+        roles: ['consumer']
+    },
+    {
+        title: '物流查询',
+        path: '/consumer/logistics-query',
+        icon: Truck,
+        roles: ['consumer']
+    },
+    // 配送员菜单
+    {
+        title: '待揽收',
+        path: '/driver/pending-pickup',
+        icon: Home,
+        roles: ['driver']
+    },
+    {
+        title: '待送货',
+        path: '/driver/pending-delivery',
+        icon: Truck,
+        roles: ['driver']
+    },
+    {
+        title: '历史任务',
+        path: '/driver/history-tasks',
+        icon: Settings,
+        roles: ['driver']
     }
 ]
 
@@ -112,6 +191,7 @@ const getUserName = () => {
 // 选择菜单项
 const selectMenu = (item) => {
     activeMenu.value = item.path
+    router.push(item.path)
 }
 
 // 设置用户信息 - 登录成功后调用
@@ -141,6 +221,24 @@ const setMenuByRole = (role) => {
     currentUser.value.role = role
     activeMenu.value = '/dashboard'
 }
+
+// 退出登录
+const logout = () => {
+    localStorage.removeItem('userInfo')
+    localStorage.removeItem('isLoggedIn')
+    router.push('/')
+}
+
+// 获取面包屑导航
+const getBreadcrumb = () => {
+    const currentMenu = menuConfig.find(item => item.path === activeMenu.value)
+    return currentMenu ? currentMenu.title : '首页'
+}
+
+// 切换侧边栏折叠状态
+const toggleSidebar = () => {
+    isCollapsed.value = !isCollapsed.value
+}
 </script>
 
 <style scoped>
@@ -159,17 +257,28 @@ const setMenuByRole = (role) => {
     display: flex;
     flex-direction: column;
     box-shadow: 1px 0 3px rgba(0, 0, 0, 0.05);
+    transition: width 0.3s ease;
+}
+
+.sidebar.collapsed {
+    width: 80px;
 }
 
 .logo {
     padding: 24px 16px;
-    border-bottom: 1px solid #e5e7eb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .logo h2 {
     margin: 0;
     font-size: 18px;
     font-weight: 600;
+    color: #1f2937;
+}
+
+.logo-icon {
     color: #1f2937;
 }
 
@@ -200,6 +309,12 @@ const setMenuByRole = (role) => {
     border-radius: 6px;
     transition: all 0.2s ease;
     cursor: pointer;
+    justify-content: flex-start;
+}
+
+.sidebar.collapsed .nav-menu a {
+    justify-content: center;
+    padding: 12px;
 }
 
 .nav-menu a:hover {
@@ -208,18 +323,19 @@ const setMenuByRole = (role) => {
 }
 
 .nav-menu a.active {
-    background-color: #2563eb;
-    color: #ffffff;
-    font-weight: 600;
+    background-color: #e5e7eb;
+    color: #1f2937;
+    font-weight: 500;
 }
 
 .icon {
-    font-size: 18px;
-    min-width: 24px;
+    min-width: 20px;
+    flex-shrink: 0;
 }
 
 .title {
     font-size: 14px;
+    white-space: nowrap;
 }
 
 .nav-menu {
@@ -243,13 +359,72 @@ const setMenuByRole = (role) => {
     border-bottom: 1px solid #e5e7eb;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     padding: 0 24px;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.toggle-btn {
+    padding: 8px;
+    background-color: transparent;
+    border: none;
+    color: #6b7280;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.toggle-btn:hover {
+    background-color: #f3f4f6;
+    color: #1f2937;
+}
+
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.breadcrumb-item {
+    font-size: 16px;
+    color: #1f2937;
+    font-weight: 500;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
 }
 
 .user-info {
     font-size: 14px;
     color: #6b7280;
+}
+
+.logout-btn {
+    padding: 8px 16px;
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb;
+    color: #374151;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s;
+}
+
+.logout-btn:hover {
+    background-color: #f9fafb;
+    border-color: #d1d5db;
 }
 
 /* 内容区域 */

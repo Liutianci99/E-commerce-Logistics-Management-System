@@ -104,15 +104,38 @@ const handleLogin = async () => {
           })
       })
       const data = await res.json()
+      console.log('登录响应数据:', data)
+      console.log('data.success:', data.success)
+      console.log('data.data:', data.data)
+      console.log('完整响应:', JSON.stringify(data, null, 2))
+      
       if(!data.success) {
           alert(data.message || '登录失败，请检查用户名和密码')
+          loading.value = false
           return
       }
-      // 保存登录状态
-      localStorage.setItem('isLoggedIn', 'true')
-      await router.push('/demo')
+      // 保存用户信息和登录状态
+      if (data.data) {
+          const userInfo = {
+              id: data.data.id,
+              username: data.data.username,
+              role: data.data.role
+          }
+          console.log('保存用户信息:', userInfo)
+          localStorage.setItem('userInfo', JSON.stringify(userInfo))
+          localStorage.setItem('isLoggedIn', 'true')
+          console.log('准备跳转到 /demo')
+          await router.push('/demo')
+          console.log('跳转完成')
+      } else {
+          console.error('data.data 不存在，完整数据:', data)
+          alert('登录失败：未获取到用户信息，请检查控制台')
+          loading.value = false
+      }
     } catch (e) {
+      console.error('登录错误:', e)
       alert('登录请求失败，请稍后重试')
+      loading.value = false
     } finally {
       loading.value = false
     }

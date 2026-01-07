@@ -28,6 +28,11 @@ public class UserServiceImpl implements UserService {
         if (!user.getPassword().equals(req.getPassword())) {
             return new LoginResponse(false, "密码错误", null);
         }
-        return new LoginResponse(true, "登录成功", user.getRole());
+        LoginResponse.UserInfo userInfo = new LoginResponse.UserInfo(
+            user.getId(), 
+            user.getUsername(), 
+            user.getRole()
+        );
+        return new LoginResponse(true, "登录成功", userInfo);
     }
 }
