@@ -110,8 +110,14 @@ const menuConfig = [
     },
     // 商家菜单
     {
-        title: '商品管理',
-        path: '/merchant/product-management',
+        title: '商城',
+        path: '/general/mall',
+        icon: Store,
+        roles: ['merchant']
+    },
+    {
+        title: '库存管理',
+        path: '/merchant/inventory-management',
         icon: Store,
         roles: ['merchant']
     },
@@ -130,7 +136,7 @@ const menuConfig = [
     // 顾客菜单
     {
         title: '商城',
-        path: '/consumer/mall',
+        path: '/general/mall',
         icon: Store,
         roles: ['consumer']
     },

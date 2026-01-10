@@ -8,12 +8,12 @@ import AdminOrderManagement from '../views/admin/OrderManagement.vue'
 import DataAnalysis from '../views/admin/DataAnalysis.vue'
 
 // Merchant
-import ProductManagement from '../views/merchant/ProductManagement.vue'
+import InventoryManagement from '../views/merchant/InventoryManagement.vue'
 import MerchantOrderManagement from '../views/merchant/OrderManagement.vue'
 import MerchantLogisticsQuery from '../views/merchant/LogisticsQuery.vue'
 
 // Consumer
-import Mall from '../views/consumer/Mall.vue'
+import Mall from '../views/general/Mall.vue'
 import MyOrders from '../views/consumer/MyOrders.vue'
 import ConsumerLogisticsQuery from '../views/consumer/LogisticsQuery.vue'
 
@@ -50,8 +50,8 @@ const router = createRouter({
         },
         // Merchant routes
         {
-          path: '/merchant/product-management',
-          component: ProductManagement
+          path: '/merchant/inventory-management',
+          component: InventoryManagement
         },
         {
           path: '/merchant/order-management',
@@ -61,11 +61,12 @@ const router = createRouter({
           path: '/merchant/logistics-query',
           component: MerchantLogisticsQuery
         },
-        // Consumer routes
+        // General routes
         {
-          path: '/consumer/mall',
+          path: '/general/mall',
           component: Mall
         },
+        // Consumer routes
         {
           path: '/consumer/my-orders',
           component: MyOrders

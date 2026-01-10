@@ -60,11 +60,12 @@ E-commerce-Logistics-Management-System/
 │        │  ├─ OrderManagement.vue       # 订单管理
 │        │  └─ DataAnalysis.vue          # 数据分析
 │        ├─ merchant/            # 商户页面目录
-│        │  ├─ ProductManagement.vue     # 商品管理
+│        │  ├─ InventoryManagement.vue   # 库存管理
 │        │  ├─ OrderManagement.vue       # 订单管理
 │        │  └─ LogisticsQuery.vue        # 物流查询
+│        ├─ general/             # 通用页面目录
+│        │  └─ Mall.vue                  # 商城
 │        ├─ consumer/            # 消费者页面目录
-│        │  ├─ Mall.vue                  # 商城
 │        │  ├─ MyOrders.vue              # 我的订单
 │        │  └─ LogisticsQuery.vue        # 物流查询
 │        └─ delivery/            # 配送员页面目录
@@ -72,7 +73,8 @@ E-commerce-Logistics-Management-System/
 │           ├─ PendingDelivery.vue       # 待送货
 │           └─ HistoryTasks.vue          # 历史任务
 │
-├─ docker-compose.yml            # Docker Compose 配置（MySQL）
+├─ start.sh                      # 启动脚本（后端 + 前端）
+├─ stop.sh                       # 停止脚本
 ├─ CODESPACES_GUIDE.md           # GitHub Codespaces 使用指南
 ├─ execute.md                    # 执行说明文档
 ├─ procedure.md                  # 开发流程文档

@@ -16,8 +16,4 @@ pkill -f "vite" && echo "✓ 前端已停止" || echo "前端未运行"
 echo "⏹️ 停止后端服务..."
 pkill -f "spring-boot:run" && echo "✓ 后端已停止" || echo "后端未运行"
 
-# 3. 停止数据库容器
-echo "⏹️ 停止数据库容器..."
-docker-compose down && echo "✓ 数据库已停止" || echo "数据库未运行"
-
 echo "✅ 系统已停止"

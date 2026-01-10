@@ -1,13 +1,13 @@
 <template>
     <div class="page-container">
-        <h1>商品管理</h1>
+        <h1>库存管理</h1>
         <div class="content-card">
-            <p>管理店铺商品信息</p>
+            <p>管理店铺库存信息</p>
             <ul>
-                <li>商品列表管理</li>
-                <li>添加/编辑商品</li>
-                <li>商品库存管理</li>
-                <li>商品上下架</li>
+                <li>库存列表管理</li>
+                <li>库存调整</li>
+                <li>库存预警</li>
+                <li>库存盘点</li>
             </ul>
         </div>
     </div>
