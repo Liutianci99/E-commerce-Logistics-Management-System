@@ -1,7 +1,7 @@
 -- 创建数据库
 CREATE DATABASE IF NOT EXISTS `ecommerce_logistics` DEFAULT CHARSET utf8mb4;
 
--- 创建表
+-- 创建user表
 CREATE TABLE IF NOT EXISTS `users` (
   `id` INT PRIMARY KEY AUTO_INCREMENT,
   `username` VARCHAR(20) NOT NULL,
@@ -16,3 +16,4 @@ INSERT INTO `users` (`username`,`password`,`role`) VALUES
 ('刘天赐','123','driver'),
 ('刘天赐','123','consumer'),
 ('刘天赐','123','admin');
+

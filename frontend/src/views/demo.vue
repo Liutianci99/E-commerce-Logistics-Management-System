@@ -28,7 +28,17 @@
                         <PanelLeftClose v-else :size="20" :stroke-width="2" />
                     </button>
                     <div class="breadcrumb">
-                        <span class="breadcrumb-item">{{ getBreadcrumb() }}</span>
+                        <span v-for="(crumb, index) in getBreadcrumb()" :key="index" class="breadcrumb-item-wrapper">
+                            <span 
+                                v-if="crumb.path" 
+                                @click="router.push(crumb.path)" 
+                                class="breadcrumb-link"
+                            >
+                                {{ crumb.title }}
+                            </span>
+                            <span v-else class="breadcrumb-current">{{ crumb.title }}</span>
+                            <span v-if="index < getBreadcrumb().length - 1" class="breadcrumb-separator">/</span>
+                        </span>
                     </div>
                 </div>
                 <div class="header-right">
@@ -237,8 +247,35 @@ const logout = () => {
 
 // 获取面包屑导航
 const getBreadcrumb = () => {
-    const currentMenu = menuConfig.find(item => item.path === activeMenu.value)
-    return currentMenu ? currentMenu.title : '首页'
+    const currentPath = router.currentRoute.value.path
+    
+    // 商品下架页面特殊处理
+    if (currentPath === '/merchant/product-delisting') {
+        return [
+            { title: '商城', path: '/general/mall' },
+            { title: '商品下架', path: null }
+        ]
+    }
+    
+    // 商品上架页面
+    if (currentPath === '/merchant/product-listing') {
+        return [
+            { title: '库存管理', path: '/merchant/inventory-management' },
+            { title: '商品上架', path: null }
+        ]
+    }
+    
+    // 商品入库页面
+    if (currentPath === '/merchant/stock-in') {
+        return [
+            { title: '库存管理', path: '/merchant/inventory-management' },
+            { title: '商品入库', path: null }
+        ]
+    }
+    
+    // 其他页面显示单层导航
+    const currentMenu = menuConfig.find(item => item.path === currentPath)
+    return currentMenu ? [{ title: currentMenu.title, path: null }] : [{ title: '首页', path: null }]
 }
 
 // 切换侧边栏折叠状态
@@ -398,6 +435,30 @@ const toggleSidebar = () => {
     display: flex;
     align-items: center;
     gap: 8px;
+}
+
+.breadcrumb-link {
+    font-size: 16px;
+    color: #1f2937;
+    font-weight: 500;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.breadcrumb-link:hover {
+    color: #3b82f6;
+}
+
+.breadcrumb-current {
+    font-size: 16px;
+    color: #1f2937;
+    font-weight: 500;
+}
+
+.breadcrumb-separator {
+    font-size: 16px;
+    color: #9ca3af;
+    margin: 0 4px;
 }
 
 .breadcrumb-item {

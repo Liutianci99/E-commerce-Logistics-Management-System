@@ -34,38 +34,38 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::                (v3.2.0)
 
-2026-01-10T10:32:17.580Z  INFO 36572 --- [ecommerce-logistics] [           main] com.logistics.LogisticsApplication       : Starting LogisticsApplication using Java 21.0.9 with PID 36572 (/workspaces/E-commerce-Logistics-Management-System/backend/target/classes started by vscode in /workspaces/E-commerce-Logistics-Management-System/backend)
-2026-01-10T10:32:17.582Z DEBUG 36572 --- [ecommerce-logistics] [           main] com.logistics.LogisticsApplication       : Running with Spring Boot v3.2.0, Spring v6.1.1
-2026-01-10T10:32:17.582Z  INFO 36572 --- [ecommerce-logistics] [           main] com.logistics.LogisticsApplication       : No active profile set, falling back to 1 default profile: "default"
-2026-01-10T10:32:18.349Z  INFO 36572 --- [ecommerce-logistics] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2026-01-10T10:32:18.355Z  INFO 36572 --- [ecommerce-logistics] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2026-01-10T10:32:18.355Z  INFO 36572 --- [ecommerce-logistics] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.16]
-2026-01-10T10:32:18.385Z  INFO 36572 --- [ecommerce-logistics] [           main] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring embedded WebApplicationContext
-2026-01-10T10:32:18.386Z  INFO 36572 --- [ecommerce-logistics] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 769 ms
+2026-01-10T14:26:37.615Z  INFO 35101 --- [ecommerce-logistics] [           main] com.logistics.LogisticsApplication       : Starting LogisticsApplication using Java 21.0.9 with PID 35101 (/workspaces/E-commerce-Logistics-Management-System/backend/target/classes started by vscode in /workspaces/E-commerce-Logistics-Management-System/backend)
+2026-01-10T14:26:37.616Z DEBUG 35101 --- [ecommerce-logistics] [           main] com.logistics.LogisticsApplication       : Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-01-10T14:26:37.617Z  INFO 35101 --- [ecommerce-logistics] [           main] com.logistics.LogisticsApplication       : No active profile set, falling back to 1 default profile: "default"
+2026-01-10T14:26:38.343Z  INFO 35101 --- [ecommerce-logistics] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-01-10T14:26:38.350Z  INFO 35101 --- [ecommerce-logistics] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-01-10T14:26:38.350Z  INFO 35101 --- [ecommerce-logistics] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.16]
+2026-01-10T14:26:38.380Z  INFO 35101 --- [ecommerce-logistics] [           main] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring embedded WebApplicationContext
+2026-01-10T14:26:38.380Z  INFO 35101 --- [ecommerce-logistics] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 727 ms
 Logging initialized using 'class org.apache.ibatis.logging.stdout.StdOutImpl' adapter.
-Initialization Sequence datacenterId:0 workerId:29
+Initialization Sequence datacenterId:0 workerId:0
  _ _   |_  _ _|_. ___ _ |    _ 
 | | |\/|_)(_| | |_\  |_)||_|_\ 
      /               |         
                         3.5.5 
-2026-01-10T10:32:18.825Z  INFO 36572 --- [ecommerce-logistics] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/api'
-2026-01-10T10:32:18.831Z  INFO 36572 --- [ecommerce-logistics] [           main] com.logistics.LogisticsApplication       : Started LogisticsApplication in 1.548 seconds (process running for 1.789)
+2026-01-10T14:26:38.839Z  INFO 35101 --- [ecommerce-logistics] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/api'
+2026-01-10T14:26:38.847Z  INFO 35101 --- [ecommerce-logistics] [           main] com.logistics.LogisticsApplication       : Started LogisticsApplication in 1.536 seconds (process running for 1.763)
 === E-commerce Logistics Management System Started Successfully ===
-2026-01-10T10:32:52.739Z  INFO 36572 --- [ecommerce-logistics] [nio-8080-exec-3] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2026-01-10T10:32:52.739Z  INFO 36572 --- [ecommerce-logistics] [nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2026-01-10T10:32:52.740Z  INFO 36572 --- [ecommerce-logistics] [nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-01-10T14:26:49.713Z  INFO 35101 --- [ecommerce-logistics] [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-01-10T14:26:49.713Z  INFO 35101 --- [ecommerce-logistics] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-01-10T14:26:49.714Z  INFO 35101 --- [ecommerce-logistics] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
 收到登录请求: username=刘天赐, role=merchant
 开始查询用户: username=刘天赐, role=merchant
 Creating a new SqlSession
-SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@440d3ad5] was not registered for synchronization because synchronization is not active
-2026-01-10T10:32:52.852Z  INFO 36572 --- [ecommerce-logistics] [nio-8080-exec-3] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2026-01-10T10:32:54.497Z  INFO 36572 --- [ecommerce-logistics] [nio-8080-exec-3] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7150773d
-2026-01-10T10:32:54.499Z  INFO 36572 --- [ecommerce-logistics] [nio-8080-exec-3] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-JDBC Connection [HikariProxyConnection@848153607 wrapping com.mysql.cj.jdbc.ConnectionImpl@7150773d] will not be managed by Spring
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@33b08b03] was not registered for synchronization because synchronization is not active
+2026-01-10T14:26:49.833Z  INFO 35101 --- [ecommerce-logistics] [nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-01-10T14:26:51.576Z  INFO 35101 --- [ecommerce-logistics] [nio-8080-exec-1] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@436ceead
+2026-01-10T14:26:51.577Z  INFO 35101 --- [ecommerce-logistics] [nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+JDBC Connection [HikariProxyConnection@1253834795 wrapping com.mysql.cj.jdbc.ConnectionImpl@436ceead] will not be managed by Spring
 ==>  Preparing: SELECT id,username,password,role FROM users WHERE (username = ? AND role = ?)
 ==> Parameters: 刘天赐(String), merchant(String)
 <==    Columns: id, username, password, role
 <==        Row: 1, 刘天赐, 123, merchant
 <==      Total: 1
-Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@440d3ad5]
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@33b08b03]
 查询结果: User(id=1, username=刘天赐, password=123, role=merchant)

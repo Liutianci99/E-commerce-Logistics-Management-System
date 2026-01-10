@@ -9,6 +9,9 @@ import DataAnalysis from '../views/admin/DataAnalysis.vue'
 
 // Merchant
 import InventoryManagement from '../views/merchant/InventoryManagement.vue'
+import ProductListing from '../views/merchant/ProductListing.vue'
+import ProductDelisting from '../views/merchant/ProductDelisting.vue'
+import StockIn from '../views/merchant/StockIn.vue'
 import MerchantOrderManagement from '../views/merchant/OrderManagement.vue'
 import MerchantLogisticsQuery from '../views/merchant/LogisticsQuery.vue'
 
@@ -52,6 +55,18 @@ const router = createRouter({
         {
           path: '/merchant/inventory-management',
           component: InventoryManagement
+        },
+        {
+          path: '/merchant/product-listing',
+          component: ProductListing
+        },
+        {
+          path: '/merchant/product-delisting',
+          component: ProductDelisting
+        },
+        {
+          path: '/merchant/stock-in',
+          component: StockIn
         },
         {
           path: '/merchant/order-management',
