@@ -36,6 +36,8 @@ E-commerce-Logistics-Management-System/
 │  │     └─ application.yml              # Spring Boot 配置文件
 │  └─ target/                            # 编译输出目录
 │
+├─ backend.log                   # 后端日志文件
+│
 ├─ database/
 │  └─ init.sql                   # 数据库初始化脚本（users 表及初始数据）
 │
@@ -60,11 +62,14 @@ E-commerce-Logistics-Management-System/
 │        │  ├─ OrderManagement.vue       # 订单管理
 │        │  └─ DataAnalysis.vue          # 数据分析
 │        ├─ merchant/            # 商户页面目录
-│        │  ├─ InventoryManagement.vue   # 库存管理
+│        │  ├─ InventoryManagement.vue   # 库存管理（含状态筛选）
+│        │  ├─ ProductListing.vue        # 商品上架（未上架商品）
+│        │  ├─ ProductDelisting.vue      # 商品下架（已上架商品）
+│        │  ├─ StockIn.vue               # 商品入库（含图片上传）
 │        │  ├─ OrderManagement.vue       # 订单管理
 │        │  └─ LogisticsQuery.vue        # 物流查询
 │        ├─ general/             # 通用页面目录
-│        │  └─ Mall.vue                  # 商城
+│        │  └─ Mall.vue                  # 商城（含商品下架入口）
 │        ├─ consumer/            # 消费者页面目录
 │        │  ├─ MyOrders.vue              # 我的订单
 │        │  └─ LogisticsQuery.vue        # 物流查询
@@ -75,9 +80,6 @@ E-commerce-Logistics-Management-System/
 │
 ├─ start.sh                      # 启动脚本（后端 + 前端）
 ├─ stop.sh                       # 停止脚本
-├─ CODESPACES_GUIDE.md           # GitHub Codespaces 使用指南
-├─ execute.md                    # 执行说明文档
-├─ procedure.md                  # 开发流程文档
 ├─ README.md                     # 项目说明文档
 ├─ LICENSE                       # 开源许可证
 ├─ package-lock.json             # 根目录 npm 锁定文件
