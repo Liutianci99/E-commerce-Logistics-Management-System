@@ -183,8 +183,37 @@ const validateQuantity = (product) => {
 }
 
 // 下单
-const placeOrder = (product) => {
-    alert(`下单成功！\n商品：${product.name}\n数量：${product.quantity}\n总价：¥${product.price * product.quantity}`)
+const placeOrder = async (product) => {
+    try {
+        // 获取当前用户信息
+        const userInfo = localStorage.getItem('userInfo')
+        if (!userInfo) {
+            alert('请先登录')
+            router.push('/login')
+            return
+        }
+        
+        const user = JSON.parse(userInfo)
+        
+        // 调用后端API
+        const response = await request.post('/orders/create', {
+            customerId: user.id,
+            productId: product.id,
+            quantity: product.quantity,
+            price: product.price
+        })
+        
+        if (response.code === 200) {
+            alert(`下单成功！\n商品：${product.name}\n数量：${product.quantity}\n总价：¥${product.price * product.quantity}`)
+            // 刷新商品列表以更新库存
+            await fetchMallProducts()
+        } else {
+            alert('下单失败：' + (response.message || '未知错误'))
+        }
+    } catch (error) {
+        console.error('下单失败:', error)
+        alert('下单失败：' + (error.response?.data?.message || error.message || '网络错误'))
+    }
 }
 
 // 跳转到商品下架页面

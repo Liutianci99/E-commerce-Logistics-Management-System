@@ -70,7 +70,7 @@ E-commerce-Logistics-Management-System/
 │        │  └─ LogisticsQuery.vue        # 物流查询
 │        ├─ general/             # 通用页面目录
 │        │  └─ Mall.vue                  # 商城（含商品下架入口）
-│        ├─ consumer/            # 消费者页面目录
+│        ├─ consumer/            # 顾客页面目录
 │        │  ├─ MyOrders.vue              # 我的订单
 │        │  └─ LogisticsQuery.vue        # 物流查询
 │        └─ delivery/            # 配送员页面目录

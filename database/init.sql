@@ -42,3 +42,25 @@ CREATE TABLE IF NOT EXISTS `mall` (
   FOREIGN KEY (`product_id`) REFERENCES `inventory`(`product_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- 创建订单表
+CREATE TABLE `orders` (
+  `order_id` INT PRIMARY KEY AUTO_INCREMENT COMMENT '订单ID',
+  `product_id` INT NOT NULL COMMENT '商品ID',
+  `customer_id` INT NOT NULL COMMENT '顾客ID',
+  `merchant_id` INT NOT NULL COMMENT '商户ID',
+  `product_name` VARCHAR(100) NOT NULL COMMENT '商品名称',
+  `quantity` INT NOT NULL COMMENT '商品数量',
+  `unit_price` DECIMAL(10, 2) NOT NULL COMMENT '商品单价',
+  `total_amount` DECIMAL(10, 2) NOT NULL COMMENT '总金额',
+  `image_url` VARCHAR(255) COMMENT '商品图片URL',
+  `status` INT NOT NULL DEFAULT 0 COMMENT '订单状态：-1=取消订单，0=未发货，1=已发货，2=已揽收，3=运输中，4=已到达，5=已收货，6=待评价，7=已评价',
+  `order_time` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '下单时间',
+  `ship_time` DATETIME COMMENT '发货时间',
+  `pickup_time` DATETIME COMMENT '揽收时间',
+  `delivery_time` DATETIME COMMENT '送达时间',
+  `receive_time` DATETIME COMMENT '收货时间',
+  `review_time` DATETIME COMMENT '评价时间',
+  FOREIGN KEY (`product_id`) REFERENCES `mall`(`product_id`),
+  FOREIGN KEY (`customer_id`) REFERENCES `users`(`id`),
+  FOREIGN KEY (`merchant_id`) REFERENCES `users`(`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='订单表';

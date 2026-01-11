@@ -193,7 +193,7 @@ const getRoleLabel = (role) => {
     const roleLabels = {
         merchant: '商户',
         driver: '司机',
-        consumer: '消费者',
+        consumer: '顾客',
         admin: '管理员'
     }
     return roleLabels[role] || role
