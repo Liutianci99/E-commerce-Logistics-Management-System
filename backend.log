@@ -25,6 +25,7 @@
 [[1;34mINFO[m] 
 [[1;34mINFO[m] [1m--- [0;32mspring-boot:3.2.0:run[m [1m(default-cli)[m @ [36mecommerce-logistics[0;1m ---[m
 [[1;34mINFO[m] Attaching agents: []
+Standard Commons Logging discovery in action with spring-jcl: please remove commons-logging.jar from classpath in order to avoid potential conflicts
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -34,38 +35,334 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::                (v3.2.0)
 
-2026-01-10T14:26:37.615Z  INFO 35101 --- [ecommerce-logistics] [           main] com.logistics.LogisticsApplication       : Starting LogisticsApplication using Java 21.0.9 with PID 35101 (/workspaces/E-commerce-Logistics-Management-System/backend/target/classes started by vscode in /workspaces/E-commerce-Logistics-Management-System/backend)
-2026-01-10T14:26:37.616Z DEBUG 35101 --- [ecommerce-logistics] [           main] com.logistics.LogisticsApplication       : Running with Spring Boot v3.2.0, Spring v6.1.1
-2026-01-10T14:26:37.617Z  INFO 35101 --- [ecommerce-logistics] [           main] com.logistics.LogisticsApplication       : No active profile set, falling back to 1 default profile: "default"
-2026-01-10T14:26:38.343Z  INFO 35101 --- [ecommerce-logistics] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2026-01-10T14:26:38.350Z  INFO 35101 --- [ecommerce-logistics] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2026-01-10T14:26:38.350Z  INFO 35101 --- [ecommerce-logistics] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.16]
-2026-01-10T14:26:38.380Z  INFO 35101 --- [ecommerce-logistics] [           main] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring embedded WebApplicationContext
-2026-01-10T14:26:38.380Z  INFO 35101 --- [ecommerce-logistics] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 727 ms
+2026-01-11T07:35:11.894Z  INFO 68343 --- [ecommerce-logistics] [           main] com.logistics.LogisticsApplication       : Starting LogisticsApplication using Java 21.0.9 with PID 68343 (/workspaces/E-commerce-Logistics-Management-System/backend/target/classes started by vscode in /workspaces/E-commerce-Logistics-Management-System/backend)
+2026-01-11T07:35:11.895Z DEBUG 68343 --- [ecommerce-logistics] [           main] com.logistics.LogisticsApplication       : Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-01-11T07:35:11.896Z  INFO 68343 --- [ecommerce-logistics] [           main] com.logistics.LogisticsApplication       : No active profile set, falling back to 1 default profile: "default"
+2026-01-11T07:35:12.659Z  INFO 68343 --- [ecommerce-logistics] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-01-11T07:35:12.676Z  INFO 68343 --- [ecommerce-logistics] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-01-11T07:35:12.677Z  INFO 68343 --- [ecommerce-logistics] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.16]
+2026-01-11T07:35:12.712Z  INFO 68343 --- [ecommerce-logistics] [           main] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring embedded WebApplicationContext
+2026-01-11T07:35:12.712Z  INFO 68343 --- [ecommerce-logistics] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 777 ms
+Standard Commons Logging discovery in action with spring-jcl: please remove commons-logging.jar from classpath in order to avoid potential conflicts
 Logging initialized using 'class org.apache.ibatis.logging.stdout.StdOutImpl' adapter.
 Initialization Sequence datacenterId:0 workerId:0
  _ _   |_  _ _|_. ___ _ |    _ 
 | | |\/|_)(_| | |_\  |_)||_|_\ 
      /               |         
                         3.5.5 
-2026-01-10T14:26:38.839Z  INFO 35101 --- [ecommerce-logistics] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/api'
-2026-01-10T14:26:38.847Z  INFO 35101 --- [ecommerce-logistics] [           main] com.logistics.LogisticsApplication       : Started LogisticsApplication in 1.536 seconds (process running for 1.763)
+2026-01-11T07:35:13.231Z  INFO 68343 --- [ecommerce-logistics] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/api'
+2026-01-11T07:35:13.236Z  INFO 68343 --- [ecommerce-logistics] [           main] com.logistics.LogisticsApplication       : Started LogisticsApplication in 1.636 seconds (process running for 1.875)
 === E-commerce Logistics Management System Started Successfully ===
-2026-01-10T14:26:49.713Z  INFO 35101 --- [ecommerce-logistics] [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2026-01-10T14:26:49.713Z  INFO 35101 --- [ecommerce-logistics] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2026-01-10T14:26:49.714Z  INFO 35101 --- [ecommerce-logistics] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-01-11T07:35:25.795Z  INFO 68343 --- [ecommerce-logistics] [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-01-11T07:35:25.795Z  INFO 68343 --- [ecommerce-logistics] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-01-11T07:35:25.796Z  INFO 68343 --- [ecommerce-logistics] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
 收到登录请求: username=刘天赐, role=merchant
 开始查询用户: username=刘天赐, role=merchant
 Creating a new SqlSession
-SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@33b08b03] was not registered for synchronization because synchronization is not active
-2026-01-10T14:26:49.833Z  INFO 35101 --- [ecommerce-logistics] [nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2026-01-10T14:26:51.576Z  INFO 35101 --- [ecommerce-logistics] [nio-8080-exec-1] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@436ceead
-2026-01-10T14:26:51.577Z  INFO 35101 --- [ecommerce-logistics] [nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-JDBC Connection [HikariProxyConnection@1253834795 wrapping com.mysql.cj.jdbc.ConnectionImpl@436ceead] will not be managed by Spring
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2c1f8aae] was not registered for synchronization because synchronization is not active
+2026-01-11T07:35:25.914Z  INFO 68343 --- [ecommerce-logistics] [nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-01-11T07:35:27.540Z  INFO 68343 --- [ecommerce-logistics] [nio-8080-exec-1] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6f874d59
+2026-01-11T07:35:27.541Z  INFO 68343 --- [ecommerce-logistics] [nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+JDBC Connection [HikariProxyConnection@2084211665 wrapping com.mysql.cj.jdbc.ConnectionImpl@6f874d59] will not be managed by Spring
 ==>  Preparing: SELECT id,username,password,role FROM users WHERE (username = ? AND role = ?)
 ==> Parameters: 刘天赐(String), merchant(String)
 <==    Columns: id, username, password, role
 <==        Row: 1, 刘天赐, 123, merchant
 <==      Total: 1
-Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@33b08b03]
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2c1f8aae]
 查询结果: User(id=1, username=刘天赐, password=123, role=merchant)
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@45149277] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@851742763 wrapping com.mysql.cj.jdbc.ConnectionImpl@6f874d59] will not be managed by Spring
+==>  Preparing: SELECT product_id,user_id,product_name,quantity,stock_in_date,image_url,is_published FROM inventory WHERE (user_id = ?) ORDER BY stock_in_date DESC
+==> Parameters: 1(Integer)
+<==    Columns: product_id, user_id, product_name, quantity, stock_in_date, image_url, is_published
+<==        Row: 1, 1, PS5游戏手柄, 200, 2026-01-11 00:00:00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/4f797f73-6b3b-4a8d-956b-d592d00a7086.jpg, 0
+<==      Total: 1
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@45149277]
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@e015f1e] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@13021358 wrapping com.mysql.cj.jdbc.ConnectionImpl@6f874d59] will not be managed by Spring
+==>  Preparing: SELECT product_id,user_id,product_name,quantity,stock_in_date,image_url,is_published FROM inventory WHERE (user_id = ?) ORDER BY stock_in_date DESC
+==> Parameters: 1(Integer)
+<==    Columns: product_id, user_id, product_name, quantity, stock_in_date, image_url, is_published
+<==        Row: 1, 1, PS5游戏手柄, 200, 2026-01-11 00:00:00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/4f797f73-6b3b-4a8d-956b-d592d00a7086.jpg, 0
+<==      Total: 1
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@e015f1e]
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@44e52f38] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@1243797972 wrapping com.mysql.cj.jdbc.ConnectionImpl@6f874d59] will not be managed by Spring
+==>  Preparing: SELECT product_id,user_id,product_name,quantity,stock_in_date,image_url,is_published FROM inventory WHERE (user_id = ?) ORDER BY stock_in_date DESC
+==> Parameters: 1(Integer)
+<==    Columns: product_id, user_id, product_name, quantity, stock_in_date, image_url, is_published
+<==        Row: 1, 1, PS5游戏手柄, 200, 2026-01-11 00:00:00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/4f797f73-6b3b-4a8d-956b-d592d00a7086.jpg, 0
+<==      Total: 1
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@44e52f38]
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7f99e37d] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@1901986558 wrapping com.mysql.cj.jdbc.ConnectionImpl@6f874d59] will not be managed by Spring
+==>  Preparing: SELECT product_id,user_id,product_name,quantity,stock_in_date,image_url,is_published FROM inventory WHERE (user_id = ? AND is_published = ?) ORDER BY stock_in_date DESC
+==> Parameters: 1(Integer), 1(Integer)
+<==      Total: 0
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7f99e37d]
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@18683886] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@380618235 wrapping com.mysql.cj.jdbc.ConnectionImpl@6f874d59] will not be managed by Spring
+==>  Preparing: SELECT product_id,user_id,product_name,quantity,stock_in_date,image_url,is_published FROM inventory WHERE (user_id = ?) ORDER BY stock_in_date DESC
+==> Parameters: 1(Integer)
+<==    Columns: product_id, user_id, product_name, quantity, stock_in_date, image_url, is_published
+<==        Row: 1, 1, PS5游戏手柄, 200, 2026-01-11 00:00:00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/4f797f73-6b3b-4a8d-956b-d592d00a7086.jpg, 0
+<==      Total: 1
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@18683886]
+2026-01-11T07:37:29.193Z  INFO 68343 --- [ecommerce-logistics] [nio-8080-exec-7] c.l.service.impl.R2StorageServiceImpl    : 文件上传成功: https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/93a58a09-4d46-4acc-bf06-a9ea19f5b057.webp
+Creating a new SqlSession
+Registering transaction synchronization for SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4e2b04db]
+JDBC Connection [HikariProxyConnection@2006983760 wrapping com.mysql.cj.jdbc.ConnectionImpl@6f874d59] will be managed by Spring
+==>  Preparing: INSERT INTO inventory ( user_id, product_name, quantity, stock_in_date, image_url, is_published ) VALUES ( ?, ?, ?, ?, ?, ? )
+==> Parameters: 1(Integer), Switch游戏机(String), 1500(Integer), 2026-01-11T00:00(LocalDateTime), https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/93a58a09-4d46-4acc-bf06-a9ea19f5b057.webp(String), 0(Integer)
+<==    Updates: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4e2b04db]
+Transaction synchronization committing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4e2b04db]
+Transaction synchronization deregistering SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4e2b04db]
+Transaction synchronization closing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4e2b04db]
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@d6e55ba] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@61450855 wrapping com.mysql.cj.jdbc.ConnectionImpl@6f874d59] will not be managed by Spring
+==>  Preparing: SELECT product_id,user_id,product_name,quantity,stock_in_date,image_url,is_published FROM inventory WHERE (user_id = ?) ORDER BY stock_in_date DESC
+==> Parameters: 1(Integer)
+<==    Columns: product_id, user_id, product_name, quantity, stock_in_date, image_url, is_published
+<==        Row: 1, 1, PS5游戏手柄, 200, 2026-01-11 00:00:00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/4f797f73-6b3b-4a8d-956b-d592d00a7086.jpg, 0
+<==        Row: 2, 1, Switch游戏机, 1500, 2026-01-11 00:00:00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/93a58a09-4d46-4acc-bf06-a9ea19f5b057.webp, 0
+<==      Total: 2
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@d6e55ba]
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@50f5ec74] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@1580337178 wrapping com.mysql.cj.jdbc.ConnectionImpl@6f874d59] will not be managed by Spring
+==>  Preparing: SELECT product_id,user_id,product_name,quantity,stock_in_date,image_url,is_published FROM inventory WHERE (user_id = ?) ORDER BY stock_in_date DESC
+==> Parameters: 1(Integer)
+<==    Columns: product_id, user_id, product_name, quantity, stock_in_date, image_url, is_published
+<==        Row: 1, 1, PS5游戏手柄, 200, 2026-01-11 00:00:00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/4f797f73-6b3b-4a8d-956b-d592d00a7086.jpg, 0
+<==        Row: 2, 1, Switch游戏机, 1500, 2026-01-11 00:00:00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/93a58a09-4d46-4acc-bf06-a9ea19f5b057.webp, 0
+<==      Total: 2
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@50f5ec74]
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1d28cd9] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@253059731 wrapping com.mysql.cj.jdbc.ConnectionImpl@6f874d59] will not be managed by Spring
+==>  Preparing: SELECT product_id,user_id,product_name,quantity,stock_in_date,image_url,is_published FROM inventory WHERE (user_id = ?) ORDER BY stock_in_date DESC
+==> Parameters: 1(Integer)
+<==    Columns: product_id, user_id, product_name, quantity, stock_in_date, image_url, is_published
+<==        Row: 1, 1, PS5游戏手柄, 200, 2026-01-11 00:00:00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/4f797f73-6b3b-4a8d-956b-d592d00a7086.jpg, 0
+<==        Row: 2, 1, Switch游戏机, 1500, 2026-01-11 00:00:00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/93a58a09-4d46-4acc-bf06-a9ea19f5b057.webp, 0
+<==      Total: 2
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1d28cd9]
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@545d01a9] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@540223440 wrapping com.mysql.cj.jdbc.ConnectionImpl@6f874d59] will not be managed by Spring
+==>  Preparing: SELECT product_id,user_id,product_name,quantity,stock_in_date,image_url,is_published FROM inventory WHERE (user_id = ?) ORDER BY stock_in_date DESC
+==> Parameters: 1(Integer)
+<==    Columns: product_id, user_id, product_name, quantity, stock_in_date, image_url, is_published
+<==        Row: 1, 1, PS5游戏手柄, 200, 2026-01-11 00:00:00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/4f797f73-6b3b-4a8d-956b-d592d00a7086.jpg, 0
+<==        Row: 2, 1, Switch游戏机, 1500, 2026-01-11 00:00:00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/93a58a09-4d46-4acc-bf06-a9ea19f5b057.webp, 0
+<==      Total: 2
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@545d01a9]
+2026-01-11T07:50:33.064Z  INFO 68343 --- [ecommerce-logistics] [nio-8080-exec-2] c.l.service.impl.R2StorageServiceImpl    : 文件上传成功: https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/521ca6d7-a350-4751-a9a8-95cf55e9024a.jfif
+Creating a new SqlSession
+Registering transaction synchronization for SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@65afa2ad]
+JDBC Connection [HikariProxyConnection@523205426 wrapping com.mysql.cj.jdbc.ConnectionImpl@6f874d59] will be managed by Spring
+==>  Preparing: INSERT INTO inventory ( user_id, product_name, quantity, stock_in_date, image_url, is_published ) VALUES ( ?, ?, ?, ?, ?, ? )
+==> Parameters: 1(Integer), 黑人牙膏(String), 400(Integer), 2026-01-11T00:00(LocalDateTime), https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/521ca6d7-a350-4751-a9a8-95cf55e9024a.jfif(String), 0(Integer)
+<==    Updates: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@65afa2ad]
+Transaction synchronization committing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@65afa2ad]
+Transaction synchronization deregistering SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@65afa2ad]
+Transaction synchronization closing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@65afa2ad]
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@41fbba95] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@1166468123 wrapping com.mysql.cj.jdbc.ConnectionImpl@6f874d59] will not be managed by Spring
+==>  Preparing: SELECT product_id,user_id,product_name,quantity,stock_in_date,image_url,is_published FROM inventory WHERE (user_id = ?) ORDER BY stock_in_date DESC
+==> Parameters: 1(Integer)
+<==    Columns: product_id, user_id, product_name, quantity, stock_in_date, image_url, is_published
+<==        Row: 1, 1, PS5游戏手柄, 200, 2026-01-11 00:00:00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/4f797f73-6b3b-4a8d-956b-d592d00a7086.jpg, 0
+<==        Row: 2, 1, Switch游戏机, 1500, 2026-01-11 00:00:00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/93a58a09-4d46-4acc-bf06-a9ea19f5b057.webp, 0
+<==        Row: 3, 1, 黑人牙膏, 400, 2026-01-11 00:00:00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/521ca6d7-a350-4751-a9a8-95cf55e9024a.jfif, 0
+<==      Total: 3
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@41fbba95]
+2026-01-11T07:51:38.642Z  INFO 68343 --- [ecommerce-logistics] [nio-8080-exec-5] c.l.service.impl.R2StorageServiceImpl    : 文件上传成功: https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/3abb89f4-2831-45a8-bce1-d4a371e8eead.jfif
+Creating a new SqlSession
+Registering transaction synchronization for SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@66eeb15b]
+JDBC Connection [HikariProxyConnection@516228156 wrapping com.mysql.cj.jdbc.ConnectionImpl@6f874d59] will be managed by Spring
+==>  Preparing: INSERT INTO inventory ( user_id, product_name, quantity, stock_in_date, image_url, is_published ) VALUES ( ?, ?, ?, ?, ?, ? )
+==> Parameters: 1(Integer), 苹果17pro(String), 100(Integer), 2026-01-11T00:00(LocalDateTime), https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/3abb89f4-2831-45a8-bce1-d4a371e8eead.jfif(String), 0(Integer)
+<==    Updates: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@66eeb15b]
+Transaction synchronization committing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@66eeb15b]
+Transaction synchronization deregistering SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@66eeb15b]
+Transaction synchronization closing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@66eeb15b]
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@306308c5] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@13731775 wrapping com.mysql.cj.jdbc.ConnectionImpl@6f874d59] will not be managed by Spring
+==>  Preparing: SELECT product_id,user_id,product_name,quantity,stock_in_date,image_url,is_published FROM inventory WHERE (user_id = ?) ORDER BY stock_in_date DESC
+==> Parameters: 1(Integer)
+<==    Columns: product_id, user_id, product_name, quantity, stock_in_date, image_url, is_published
+<==        Row: 1, 1, PS5游戏手柄, 200, 2026-01-11 00:00:00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/4f797f73-6b3b-4a8d-956b-d592d00a7086.jpg, 0
+<==        Row: 2, 1, Switch游戏机, 1500, 2026-01-11 00:00:00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/93a58a09-4d46-4acc-bf06-a9ea19f5b057.webp, 0
+<==        Row: 3, 1, 黑人牙膏, 400, 2026-01-11 00:00:00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/521ca6d7-a350-4751-a9a8-95cf55e9024a.jfif, 0
+<==        Row: 4, 1, 苹果17pro, 100, 2026-01-11 00:00:00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/3abb89f4-2831-45a8-bce1-d4a371e8eead.jfif, 0
+<==      Total: 4
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@306308c5]
+2026-01-11T07:52:46.119Z  INFO 68343 --- [ecommerce-logistics] [nio-8080-exec-6] c.l.service.impl.R2StorageServiceImpl    : 文件上传成功: https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/9179a5f8-580c-4c75-a6ef-e0983c42c254.jfif
+Creating a new SqlSession
+Registering transaction synchronization for SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@e6771bc]
+JDBC Connection [HikariProxyConnection@1980767554 wrapping com.mysql.cj.jdbc.ConnectionImpl@6f874d59] will be managed by Spring
+==>  Preparing: INSERT INTO inventory ( user_id, product_name, quantity, stock_in_date, image_url, is_published ) VALUES ( ?, ?, ?, ?, ?, ? )
+==> Parameters: 1(Integer), 乐事薯片(String), 3600(Integer), 2026-01-11T00:00(LocalDateTime), https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/9179a5f8-580c-4c75-a6ef-e0983c42c254.jfif(String), 0(Integer)
+<==    Updates: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@e6771bc]
+Transaction synchronization committing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@e6771bc]
+Transaction synchronization deregistering SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@e6771bc]
+Transaction synchronization closing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@e6771bc]
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4569ef4d] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@410753909 wrapping com.mysql.cj.jdbc.ConnectionImpl@6f874d59] will not be managed by Spring
+==>  Preparing: SELECT product_id,user_id,product_name,quantity,stock_in_date,image_url,is_published FROM inventory WHERE (user_id = ?) ORDER BY stock_in_date DESC
+==> Parameters: 1(Integer)
+<==    Columns: product_id, user_id, product_name, quantity, stock_in_date, image_url, is_published
+<==        Row: 1, 1, PS5游戏手柄, 200, 2026-01-11 00:00:00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/4f797f73-6b3b-4a8d-956b-d592d00a7086.jpg, 0
+<==        Row: 2, 1, Switch游戏机, 1500, 2026-01-11 00:00:00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/93a58a09-4d46-4acc-bf06-a9ea19f5b057.webp, 0
+<==        Row: 3, 1, 黑人牙膏, 400, 2026-01-11 00:00:00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/521ca6d7-a350-4751-a9a8-95cf55e9024a.jfif, 0
+<==        Row: 4, 1, 苹果17pro, 100, 2026-01-11 00:00:00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/3abb89f4-2831-45a8-bce1-d4a371e8eead.jfif, 0
+<==        Row: 5, 1, 乐事薯片, 3600, 2026-01-11 00:00:00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/9179a5f8-580c-4c75-a6ef-e0983c42c254.jfif, 0
+<==      Total: 5
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4569ef4d]
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4294a05c] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@1026096689 wrapping com.mysql.cj.jdbc.ConnectionImpl@6f874d59] will not be managed by Spring
+==>  Preparing: SELECT product_id,user_id,product_name,quantity,stock_in_date,image_url,is_published FROM inventory WHERE (user_id = ?) ORDER BY stock_in_date DESC
+==> Parameters: 1(Integer)
+<==    Columns: product_id, user_id, product_name, quantity, stock_in_date, image_url, is_published
+<==        Row: 1, 1, PS5游戏手柄, 200, 2026-01-11 00:00:00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/4f797f73-6b3b-4a8d-956b-d592d00a7086.jpg, 0
+<==        Row: 2, 1, Switch游戏机, 1500, 2026-01-11 00:00:00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/93a58a09-4d46-4acc-bf06-a9ea19f5b057.webp, 0
+<==        Row: 3, 1, 黑人牙膏, 400, 2026-01-11 00:00:00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/521ca6d7-a350-4751-a9a8-95cf55e9024a.jfif, 0
+<==        Row: 4, 1, 苹果17pro, 100, 2026-01-11 00:00:00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/3abb89f4-2831-45a8-bce1-d4a371e8eead.jfif, 0
+<==        Row: 5, 1, 乐事薯片, 3600, 2026-01-11 00:00:00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/9179a5f8-580c-4c75-a6ef-e0983c42c254.jfif, 0
+<==      Total: 5
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4294a05c]
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1f0f0221] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@1625742328 wrapping com.mysql.cj.jdbc.ConnectionImpl@6f874d59] will not be managed by Spring
+==>  Preparing: SELECT product_id,user_id,product_name,quantity,stock_in_date,image_url,is_published FROM inventory WHERE (user_id = ?) ORDER BY stock_in_date DESC
+==> Parameters: 1(Integer)
+<==    Columns: product_id, user_id, product_name, quantity, stock_in_date, image_url, is_published
+<==        Row: 1, 1, PS5游戏手柄, 200, 2026-01-11 00:00:00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/4f797f73-6b3b-4a8d-956b-d592d00a7086.jpg, 0
+<==        Row: 2, 1, Switch游戏机, 1500, 2026-01-11 00:00:00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/93a58a09-4d46-4acc-bf06-a9ea19f5b057.webp, 0
+<==        Row: 3, 1, 黑人牙膏, 400, 2026-01-11 00:00:00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/521ca6d7-a350-4751-a9a8-95cf55e9024a.jfif, 0
+<==        Row: 4, 1, 苹果17pro, 100, 2026-01-11 00:00:00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/3abb89f4-2831-45a8-bce1-d4a371e8eead.jfif, 0
+<==        Row: 5, 1, 乐事薯片, 3600, 2026-01-11 00:00:00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/9179a5f8-580c-4c75-a6ef-e0983c42c254.jfif, 0
+<==      Total: 5
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1f0f0221]
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4e2868a8] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@1535742448 wrapping com.mysql.cj.jdbc.ConnectionImpl@6f874d59] will not be managed by Spring
+==>  Preparing: SELECT product_id,user_id,product_name,quantity,stock_in_date,image_url,is_published FROM inventory WHERE (user_id = ?) ORDER BY stock_in_date DESC
+==> Parameters: 1(Integer)
+<==    Columns: product_id, user_id, product_name, quantity, stock_in_date, image_url, is_published
+<==        Row: 1, 1, PS5游戏手柄, 200, 2026-01-11 00:00:00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/4f797f73-6b3b-4a8d-956b-d592d00a7086.jpg, 0
+<==        Row: 2, 1, Switch游戏机, 1500, 2026-01-11 00:00:00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/93a58a09-4d46-4acc-bf06-a9ea19f5b057.webp, 0
+<==        Row: 3, 1, 黑人牙膏, 400, 2026-01-11 00:00:00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/521ca6d7-a350-4751-a9a8-95cf55e9024a.jfif, 0
+<==        Row: 4, 1, 苹果17pro, 100, 2026-01-11 00:00:00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/3abb89f4-2831-45a8-bce1-d4a371e8eead.jfif, 0
+<==        Row: 5, 1, 乐事薯片, 3600, 2026-01-11 00:00:00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/9179a5f8-580c-4c75-a6ef-e0983c42c254.jfif, 0
+<==      Total: 5
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4e2868a8]
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1f48bcf1] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@589604600 wrapping com.mysql.cj.jdbc.ConnectionImpl@6f874d59] will not be managed by Spring
+==>  Preparing: SELECT product_id,user_id,product_name,quantity,stock_in_date,image_url,is_published FROM inventory WHERE (user_id = ?) ORDER BY stock_in_date DESC
+==> Parameters: 1(Integer)
+<==    Columns: product_id, user_id, product_name, quantity, stock_in_date, image_url, is_published
+<==        Row: 1, 1, PS5游戏手柄, 200, 2026-01-11 00:00:00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/4f797f73-6b3b-4a8d-956b-d592d00a7086.jpg, 0
+<==        Row: 2, 1, Switch游戏机, 1500, 2026-01-11 00:00:00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/93a58a09-4d46-4acc-bf06-a9ea19f5b057.webp, 0
+<==        Row: 3, 1, 黑人牙膏, 400, 2026-01-11 00:00:00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/521ca6d7-a350-4751-a9a8-95cf55e9024a.jfif, 0
+<==        Row: 4, 1, 苹果17pro, 100, 2026-01-11 00:00:00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/3abb89f4-2831-45a8-bce1-d4a371e8eead.jfif, 0
+<==        Row: 5, 1, 乐事薯片, 3600, 2026-01-11 00:00:00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/9179a5f8-580c-4c75-a6ef-e0983c42c254.jfif, 0
+<==      Total: 5
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1f48bcf1]
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@74c9cf4e] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@282844174 wrapping com.mysql.cj.jdbc.ConnectionImpl@6f874d59] will not be managed by Spring
+==>  Preparing: SELECT product_id,user_id,product_name,quantity,stock_in_date,image_url,is_published FROM inventory WHERE (user_id = ?) ORDER BY stock_in_date DESC
+==> Parameters: 1(Integer)
+<==    Columns: product_id, user_id, product_name, quantity, stock_in_date, image_url, is_published
+<==        Row: 1, 1, PS5游戏手柄, 200, 2026-01-11 00:00:00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/4f797f73-6b3b-4a8d-956b-d592d00a7086.jpg, 0
+<==        Row: 2, 1, Switch游戏机, 1500, 2026-01-11 00:00:00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/93a58a09-4d46-4acc-bf06-a9ea19f5b057.webp, 0
+<==        Row: 3, 1, 黑人牙膏, 400, 2026-01-11 00:00:00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/521ca6d7-a350-4751-a9a8-95cf55e9024a.jfif, 0
+<==        Row: 4, 1, 苹果17pro, 100, 2026-01-11 00:00:00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/3abb89f4-2831-45a8-bce1-d4a371e8eead.jfif, 0
+<==        Row: 5, 1, 乐事薯片, 3600, 2026-01-11 00:00:00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/9179a5f8-580c-4c75-a6ef-e0983c42c254.jfif, 0
+<==      Total: 5
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@74c9cf4e]
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3d677ff1] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@567559642 wrapping com.mysql.cj.jdbc.ConnectionImpl@6f874d59] will not be managed by Spring
+==>  Preparing: SELECT product_id,user_id,product_name,quantity,stock_in_date,image_url,is_published FROM inventory WHERE (user_id = ?) ORDER BY stock_in_date DESC
+==> Parameters: 1(Integer)
+<==    Columns: product_id, user_id, product_name, quantity, stock_in_date, image_url, is_published
+<==        Row: 1, 1, PS5游戏手柄, 200, 2026-01-11 00:00:00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/4f797f73-6b3b-4a8d-956b-d592d00a7086.jpg, 0
+<==        Row: 2, 1, Switch游戏机, 1500, 2026-01-11 00:00:00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/93a58a09-4d46-4acc-bf06-a9ea19f5b057.webp, 0
+<==        Row: 3, 1, 黑人牙膏, 400, 2026-01-11 00:00:00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/521ca6d7-a350-4751-a9a8-95cf55e9024a.jfif, 0
+<==        Row: 4, 1, 苹果17pro, 100, 2026-01-11 00:00:00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/3abb89f4-2831-45a8-bce1-d4a371e8eead.jfif, 0
+<==        Row: 5, 1, 乐事薯片, 3600, 2026-01-11 00:00:00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/9179a5f8-580c-4c75-a6ef-e0983c42c254.jfif, 0
+<==      Total: 5
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3d677ff1]
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@33134ca7] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@96553501 wrapping com.mysql.cj.jdbc.ConnectionImpl@6f874d59] will not be managed by Spring
+==>  Preparing: SELECT product_id,user_id,product_name,quantity,stock_in_date,image_url,is_published FROM inventory WHERE (user_id = ?) ORDER BY stock_in_date DESC
+==> Parameters: 1(Integer)
+<==    Columns: product_id, user_id, product_name, quantity, stock_in_date, image_url, is_published
+<==        Row: 1, 1, PS5游戏手柄, 200, 2026-01-11 00:00:00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/4f797f73-6b3b-4a8d-956b-d592d00a7086.jpg, 0
+<==        Row: 2, 1, Switch游戏机, 1500, 2026-01-11 00:00:00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/93a58a09-4d46-4acc-bf06-a9ea19f5b057.webp, 0
+<==        Row: 3, 1, 黑人牙膏, 400, 2026-01-11 00:00:00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/521ca6d7-a350-4751-a9a8-95cf55e9024a.jfif, 0
+<==        Row: 4, 1, 苹果17pro, 100, 2026-01-11 00:00:00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/3abb89f4-2831-45a8-bce1-d4a371e8eead.jfif, 0
+<==        Row: 5, 1, 乐事薯片, 3600, 2026-01-11 00:00:00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/9179a5f8-580c-4c75-a6ef-e0983c42c254.jfif, 0
+<==      Total: 5
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@33134ca7]
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7841ed67] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@1347221386 wrapping com.mysql.cj.jdbc.ConnectionImpl@6f874d59] will not be managed by Spring
+==>  Preparing: SELECT product_id,user_id,product_name,quantity,stock_in_date,image_url,is_published FROM inventory WHERE (user_id = ?) ORDER BY stock_in_date DESC
+==> Parameters: 1(Integer)
+<==    Columns: product_id, user_id, product_name, quantity, stock_in_date, image_url, is_published
+<==        Row: 1, 1, PS5游戏手柄, 200, 2026-01-11 00:00:00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/4f797f73-6b3b-4a8d-956b-d592d00a7086.jpg, 0
+<==        Row: 2, 1, Switch游戏机, 1500, 2026-01-11 00:00:00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/93a58a09-4d46-4acc-bf06-a9ea19f5b057.webp, 0
+<==        Row: 3, 1, 黑人牙膏, 400, 2026-01-11 00:00:00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/521ca6d7-a350-4751-a9a8-95cf55e9024a.jfif, 0
+<==        Row: 4, 1, 苹果17pro, 100, 2026-01-11 00:00:00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/3abb89f4-2831-45a8-bce1-d4a371e8eead.jfif, 0
+<==        Row: 5, 1, 乐事薯片, 3600, 2026-01-11 00:00:00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/9179a5f8-580c-4c75-a6ef-e0983c42c254.jfif, 0
+<==      Total: 5
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7841ed67]
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1b18f3d2] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@1830033406 wrapping com.mysql.cj.jdbc.ConnectionImpl@33f36b9b] will not be managed by Spring
+==>  Preparing: SELECT product_id,user_id,product_name,quantity,stock_in_date,image_url,is_published FROM inventory WHERE (user_id = ?) ORDER BY stock_in_date DESC
+==> Parameters: 1(Integer)
+<==    Columns: product_id, user_id, product_name, quantity, stock_in_date, image_url, is_published
+<==        Row: 1, 1, PS5游戏手柄, 200, 2026-01-11 00:00:00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/4f797f73-6b3b-4a8d-956b-d592d00a7086.jpg, 0
+<==        Row: 2, 1, Switch游戏机, 1500, 2026-01-11 00:00:00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/93a58a09-4d46-4acc-bf06-a9ea19f5b057.webp, 0
+<==        Row: 3, 1, 黑人牙膏, 400, 2026-01-11 00:00:00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/521ca6d7-a350-4751-a9a8-95cf55e9024a.jfif, 0
+<==        Row: 4, 1, 苹果17pro, 100, 2026-01-11 00:00:00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/3abb89f4-2831-45a8-bce1-d4a371e8eead.jfif, 0
+<==        Row: 5, 1, 乐事薯片, 3600, 2026-01-11 00:00:00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/9179a5f8-580c-4c75-a6ef-e0983c42c254.jfif, 0
+<==      Total: 5
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1b18f3d2]
+2026-01-11T08:11:29.685Z  INFO 68343 --- [ecommerce-logistics] [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-01-11T08:11:29.687Z  INFO 68343 --- [ecommerce-logistics] [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;34mINFO[m] [1;31mBUILD FAILURE[m
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;34mINFO[m] Total time:  36:19 min
+[[1;34mINFO[m] Finished at: 2026-01-11T08:11:29Z
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;31mERROR[m] Failed to execute goal [32morg.springframework.boot:spring-boot-maven-plugin:3.2.0:run[m [1m(default-cli)[m on project [36mecommerce-logistics[m: [1;31mProcess terminated with exit code: 143[m -> [1m[Help 1][m
+[[1;31mERROR[m] 
+[[1;31mERROR[m] To see the full stack trace of the errors, re-run Maven with the [1m-e[m switch.
+[[1;31mERROR[m] Re-run Maven using the [1m-X[m switch to enable full debug logging.
+[[1;31mERROR[m] 
+[[1;31mERROR[m] For more information about the errors and possible solutions, please read the following articles:
+[[1;31mERROR[m] [1m[Help 1][m http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException

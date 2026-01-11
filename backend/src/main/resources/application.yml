@@ -41,3 +41,12 @@ logging:
   level:
     com.logistics: debug
     org.springframework: info
+
+# Cloudflare R2配置
+cloudflare:
+  r2:
+    account-id: 0aa259eee867db981c43eadb5ae08bed
+    access-key-id: e1090f3d9205441a0250317e61972eec
+    secret-access-key: e98b669d2d91c45c4ff3c52d474068a20309798acfe250173d44a1895aa5ba28
+    bucket-name: ecommerce-logistics
+    public-url: https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev

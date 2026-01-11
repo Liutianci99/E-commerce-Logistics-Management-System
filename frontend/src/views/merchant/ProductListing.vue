@@ -16,29 +16,40 @@
                     </div>
                 </div>
                 <div class="product-actions">
-                    <div class="action-group">
-                        <label>上架数量</label>
-                        <input 
-                            type="number" 
-                            v-model.number="product.listingQuantity" 
-                            placeholder="数量"
-                            class="action-input"
-                            min="1"
-                            :max="product.stock"
-                        />
+                    <div class="action-group full-width">
+                        <label>商品介绍</label>
+                        <textarea 
+                            v-model="product.description" 
+                            placeholder="请输入商品介绍"
+                            class="action-textarea"
+                            rows="3"
+                        ></textarea>
                     </div>
-                    <div class="action-group">
-                        <label>定价</label>
-                        <div class="price-input-wrapper">
-                            <span class="currency-symbol">¥</span>
+                    <div class="action-row">
+                        <div class="action-group">
+                            <label>上架数量</label>
                             <input 
                                 type="number" 
-                                v-model.number="product.listingPrice" 
-                                placeholder="价格"
-                                class="action-input price-input"
-                                min="0"
-                                step="0.01"
+                                v-model.number="product.listingQuantity" 
+                                placeholder="数量"
+                                class="action-input"
+                                min="1"
+                                :max="product.stock"
                             />
+                        </div>
+                        <div class="action-group">
+                            <label>定价</label>
+                            <div class="price-input-wrapper">
+                                <span class="currency-symbol">¥</span>
+                                <input 
+                                    type="number" 
+                                    v-model.number="product.listingPrice" 
+                                    placeholder="价格"
+                                    class="action-input price-input"
+                                    min="0"
+                                    step="0.01"
+                                />
+                            </div>
                         </div>
                     </div>
                     <button @click="listProduct(product)" class="listing-btn">上架</button>
@@ -53,37 +64,58 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
+import request from '../../utils/request'
 
 const router = useRouter()
 
-// 模拟未上架的商品数据（从库存管理页获取）
-const offlineProducts = ref([
-    {
-        id: 4,
-        name: '罗技 MX Master 3S 鼠标',
-        description: '精准追踪，静音按键，多设备连接，人体工学设计',
-        stock: 3,
-        listingQuantity: 1,
-        listingPrice: 699,
-        status: 'offline',
-        image: 'https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=200&h=200&fit=crop'
-    },
-    {
-        id: 5,
-        name: '三星 Galaxy S24 Ultra',
-        description: '200MP相机，S Pen支持，AI功能，骁龙8 Gen 3处理器',
-        stock: 0,
-        listingQuantity: 1,
-        listingPrice: 9299,
-        status: 'offline',
-        image: 'https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?w=200&h=200&fit=crop'
+// 未上架的商品数据
+const offlineProducts = ref([])
+const loading = ref(false)
+
+// 获取未上架商品
+const fetchOfflineProducts = async () => {
+    try {
+        loading.value = true
+        
+        // 获取登录用户ID
+        const userInfo = JSON.parse(localStorage.getItem('userInfo') || '{}')
+        const userId = userInfo.id || 1
+        
+        const response = await request.get('/mall/offline-products', {
+            params: { userId }
+        })
+        
+        if (response.code === 200) {
+            // 转换数据格式
+            offlineProducts.value = response.data.map(item => ({
+                id: item.productId,
+                name: item.productName,
+                description: item.description || '',
+                stock: item.quantity,
+                listingQuantity: 1,
+                listingPrice: 0,
+                image: item.imageUrl || 'https://via.placeholder.com/200'
+            }))
+        } else {
+            alert('获取商品失败：' + response.message)
+        }
+    } catch (error) {
+        console.error('获取商品失败', error)
+        alert('获取商品失败：' + (error.response?.data?.message || error.message || '网络错误'))
+    } finally {
+        loading.value = false
     }
-])
+}
+
+// 页面加载时获取数据
+onMounted(() => {
+    fetchOfflineProducts()
+})
 
 // 上架商品
-const listProduct = (product) => {
+const listProduct = async (product) => {
     // 验证
     if (!product.listingQuantity || product.listingQuantity <= 0) {
         alert('请输入有效的上架数量')
@@ -98,12 +130,27 @@ const listProduct = (product) => {
         return
     }
     
-    alert(`商品上架成功！\n商品：${product.name}\n数量：${product.listingQuantity}件\n定价：¥${product.listingPrice}`)
-    // 这里可以调用API保存数据
-    // 从列表中移除已上架商品
-    const index = offlineProducts.value.findIndex(p => p.id === product.id)
-    if (index !== -1) {
-        offlineProducts.value.splice(index, 1)
+    try {
+        const response = await request.post('/mall/publish', {
+            productId: product.id,
+            description: product.description,
+            quantity: product.listingQuantity,
+            price: product.listingPrice
+        })
+        
+        if (response.code === 200) {
+            alert(`商品上架成功！\n商品：${product.name}\n数量：${product.listingQuantity}件\n定价：¥${product.listingPrice}`)
+            // 从列表中移除已上架商品
+            const index = offlineProducts.value.findIndex(p => p.id === product.id)
+            if (index !== -1) {
+                offlineProducts.value.splice(index, 1)
+            }
+        } else {
+            alert('上架失败：' + response.message)
+        }
+    } catch (error) {
+        console.error('上架失败', error)
+        alert('上架失败：' + (error.response?.data?.message || error.message || '网络错误'))
     }
 }
 </script>
@@ -189,9 +236,10 @@ h1 {
 
 .product-actions {
     display: flex;
+    flex-direction: column;
     gap: 12px;
-    align-items: flex-end;
     flex-shrink: 0;
+    min-width: 300px;
 }
 
 .action-group {
@@ -203,6 +251,32 @@ h1 {
 .action-group label {
     font-size: 12px;
     color: #6b7280;
+}
+
+.action-group.full-width {
+    width: 100%;
+}
+
+.action-row {
+    display: flex;
+    gap: 12px;
+}
+
+.action-textarea {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 14px;
+    color: #374151;
+    resize: vertical;
+    font-family: inherit;
+    transition: border-color 0.2s;
+}
+
+.action-textarea:focus {
+    outline: none;
+    border-color: #3b82f6;
 }
 
 .price-input-wrapper {

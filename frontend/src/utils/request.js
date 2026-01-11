@@ -3,7 +3,7 @@ import { ElMessage } from 'element-plus'
 
 const request = axios.create({
   baseURL: '/api',
-  timeout: 5000
+  timeout: 30000 // 增加到30秒，首次请求可能需要初始化数据库连接
 })
 
 // 请求拦截器
@@ -24,13 +24,11 @@ request.interceptors.request.use(
 request.interceptors.response.use(
   response => {
     const res = response.data
-    if (res.code !== 200) {
-      ElMessage.error(res.message || '请求失败')
-      return Promise.reject(new Error(res.message || '请求失败'))
-    }
-    return res.data
+    // 直接返回响应数据，不做额外处理
+    return res
   },
   error => {
+    console.error('请求错误:', error)
     ElMessage.error(error.message || '网络错误')
     return Promise.reject(error)
   }

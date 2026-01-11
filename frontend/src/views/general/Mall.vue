@@ -67,8 +67,9 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
+import request from '@/utils/request'
 
 const router = useRouter()
 
@@ -91,41 +92,35 @@ const activeSearchKeyword = ref('')
 const activeMinPrice = ref(null)
 const activeMaxPrice = ref(null)
 
-// 模拟商品数据
-const products = ref([
-    {
-        id: 1,
-        name: '苹果 iPhone 15 Pro',
-        description: '搭载A17 Pro芯片，钛金属设计，专业级摄影系统',
-        price: 7999,
-        quantity: 1,
-        image: 'https://picsum.photos/200?random=1'
-    },
-    {
-        id: 2,
-        name: '索尼 WH-1000XM5 耳机',
-        description: '业界领先降噪技术，30小时续航，舒适佩戴体验',
-        price: 2499,
-        quantity: 1,
-        image: 'https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=200&h=200&fit=crop'
-    },
-    {
-        id: 3,
-        name: '戴尔 XPS 15 笔记本',
-        description: '4K OLED显示屏，Intel i7处理器，16GB内存，512GB SSD',
-        price: 12999,
-        quantity: 1,
-        image: 'https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=200&h=200&fit=crop'
-    },
-    {
-        id: 4,
-        name: '罗技 MX Master 3S 鼠标',
-        description: '精准追踪，静音按键，多设备连接，人体工学设计',
-        price: 699,
-        quantity: 1,
-        image: 'https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=200&h=200&fit=crop'
+// 商品数据
+const products = ref([])
+
+// 从后端获取商城商品数据
+const fetchMallProducts = async () => {
+    try {
+        const response = await request.get('/mall/products')
+        if (response.code === 200) {
+            // 映射后端数据到前端格式，添加quantity字段用于购物
+            products.value = response.data.map(item => ({
+                id: item.productId,
+                name: item.productName,
+                description: item.description || '暂无描述',
+                price: item.price,
+                quantity: 1, // 默认购买数量
+                image: item.imageUrl,
+                availableQuantity: item.availableQuantity // 保存可用库存
+            }))
+        }
+    } catch (error) {
+        console.error('获取商城商品失败:', error)
+        alert('获取商城商品失败，请稍后重试')
     }
-])
+}
+
+// 页面加载时获取数据
+onMounted(() => {
+    fetchMallProducts()
+})
 
 // 过滤后的商品列表
 const filteredProducts = computed(() => {

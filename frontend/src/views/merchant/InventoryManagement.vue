@@ -65,8 +65,9 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
+import request from '../../utils/request'
 
 const router = useRouter()
 
@@ -82,80 +83,74 @@ const activeMinStock = ref(null)
 const activeMaxStock = ref(null)
 const activeStatusFilter = ref('all')
 
-// 模拟库存数据
-const inventory = ref([
-    {
-        id: 1,
-        name: '苹果 iPhone 15 Pro',
-        description: '搭载A17 Pro芯片，钛金属设计，专业级摄影系统',
-        price: 7999,
-        stock: 25,
-        status: 'online',
-        image: 'https://picsum.photos/200?random=1'
-    },
-    {
-        id: 2,
-        name: '索尼 WH-1000XM5 耳机',
-        description: '业界领先降噪技术，30小时续航，舒适佩戴体验',
-        price: 2499,
-        stock: 8,
-        status: 'online',
-        image: 'https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=200&h=200&fit=crop'
-    },
-    {
-        id: 3,
-        name: '戴尔 XPS 15 笔记本',
-        description: '4K OLED显示屏，Intel i7处理器，16GB内存，512GB SSD',
-        price: 12999,
-        stock: 42,
-        status: 'online',
-        image: 'https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=200&h=200&fit=crop'
-    },
-    {
-        id: 4,
-        name: '罗技 MX Master 3S 鼠标',
-        description: '精准追踪，静音按键，多设备连接，人体工学设计',
-        price: 699,
-        stock: 3,
-        status: 'offline',
-        image: 'https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=200&h=200&fit=crop'
-    },
-    {
-        id: 5,
-        name: '三星 Galaxy S24 Ultra',
-        description: '200MP相机，S Pen支持，AI功能，骁龙8 Gen 3处理器',
-        price: 9299,
-        stock: 0,
-        status: 'offline',
-        image: 'https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?w=200&h=200&fit=crop'
-    }
-])
+// 库存数据（从后端获取）
+const inventory = ref([])
+const loading = ref(false)
 
-// 过滤后的库存列表
+// 获取库存数据
+const fetchInventory = async () => {
+    try {
+        loading.value = true
+        
+        // 获取登录用户ID
+        const userInfo = JSON.parse(localStorage.getItem('userInfo') || '{}')
+        const userId = userInfo.id || 1
+        
+        console.log('获取库存数据，用户ID:', userId)
+        
+        // 构建查询参数
+        const params = {
+            userId: userId
+        }
+        
+        if (activeSearchKeyword.value) {
+            params.productName = activeSearchKeyword.value
+        }
+        if (activeMinStock.value !== null && activeMinStock.value !== '') {
+            params.minStock = activeMinStock.value
+        }
+        if (activeMaxStock.value !== null && activeMaxStock.value !== '') {
+            params.maxStock = activeMaxStock.value
+        }
+        if (activeStatusFilter.value !== 'all') {
+            params.isPublished = activeStatusFilter.value === 'online' ? 1 : 0
+        }
+        
+        console.log('请求参数:', params)
+        const response = await request.get('/inventory/list', { params })
+        console.log('API响应:', response)
+        
+        if (response.code === 200) {
+            // 转换数据格式以适配前端显示
+            inventory.value = response.data.map(item => ({
+                id: item.productId,
+                name: item.productName,
+                stock: item.quantity,
+                status: item.isPublished === 1 ? 'online' : 'offline',
+                image: item.imageUrl || 'https://via.placeholder.com/200'
+            }))
+            console.log('库存数据已更新:', inventory.value)
+        } else {
+            console.error('获取库存失败:', response.message)
+            alert('获取库存失败：' + response.message)
+        }
+    } catch (error) {
+        console.error('获取库存失败 - 详细错误:', error)
+        console.error('错误响应:', error.response)
+        alert('获取库存失败：' + (error.response?.data?.message || error.message || '网络错误'))
+    } finally {
+        loading.value = false
+    }
+}
+
+// 页面加载时获取数据
+onMounted(() => {
+    fetchInventory()
+})
+
+// 过滤后的库存列表（因为已经在后端过滤，这里直接返回）
 const filteredInventory = computed(() => {
-    let result = inventory.value
-
-    // 按名称搜索
-    if (activeSearchKeyword.value.trim()) {
-        result = result.filter(item => 
-            item.name.toLowerCase().includes(activeSearchKeyword.value.toLowerCase())
-        )
-    }
-
-    // 按库存筛选
-    if (activeMinStock.value !== null && activeMinStock.value !== '') {
-        result = result.filter(item => item.stock >= activeMinStock.value)
-    }
-    if (activeMaxStock.value !== null && activeMaxStock.value !== '') {
-        result = result.filter(item => item.stock <= activeMaxStock.value)
-    }
-
-    // 按状态筛选
-    if (activeStatusFilter.value !== 'all') {
-        result = result.filter(item => item.status === activeStatusFilter.value)
-    }
-
-    return result
+    return inventory.value
 })
 
 // 搜索处理
@@ -165,6 +160,9 @@ const handleSearch = () => {
     activeMinStock.value = minStock.value
     activeMaxStock.value = maxStock.value
     activeStatusFilter.value = statusFilter.value
+    
+    // 重新获取数据
+    fetchInventory()
 }
 
 // 清除筛选
@@ -178,6 +176,9 @@ const clearFilters = () => {
     activeMinStock.value = null
     activeMaxStock.value = null
     activeStatusFilter.value = 'all'
+    
+    // 重新获取数据
+    fetchInventory()
 }
 
 // 跳转到商品上架页面

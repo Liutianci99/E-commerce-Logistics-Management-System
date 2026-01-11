@@ -53,6 +53,7 @@
 <script setup>
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
+import request from '../../utils/request'
 
 const router = useRouter()
 
@@ -101,22 +102,45 @@ const handleSubmit = async () => {
         return
     }
     
-    // 准备FormData对象用于文件上传
-    const submitData = new FormData()
-    submitData.append('productName', formData.value.productName)
-    submitData.append('quantity', formData.value.quantity)
-    submitData.append('date', formData.value.date)
-    submitData.append('note', formData.value.note)
-    
-    if (formData.value.imageFile) {
-        submitData.append('image', formData.value.imageFile)
+    if (!formData.value.imageFile) {
+        alert('请上传商品图片')
+        return
     }
     
-    // 这里可以调用API保存数据
-    // 例如：await axios.post('/api/stock-in', submitData)
-    
-    alert(`入库成功！\n商品：${formData.value.productName}\n入库数量：${formData.value.quantity}件\n入库日期：${formData.value.date}`)
-    router.push('/merchant/inventory-management')
+    try {
+        // 准备FormData对象用于文件上传
+        const submitData = new FormData()
+        
+        // 获取登录用户ID（从localStorage或sessionStorage）
+        const userInfo = JSON.parse(localStorage.getItem('userInfo') || '{}')
+        const userId = userInfo.id || 1 // 如果没有用户信息，默认使用1
+        
+        submitData.append('userId', userId)
+        submitData.append('productName', formData.value.productName)
+        submitData.append('quantity', formData.value.quantity)
+        
+        // 将日期转换为 yyyy-MM-dd HH:mm:ss 格式
+        const stockInDate = formData.value.date + ' 00:00:00'
+        submitData.append('stockInDate', stockInDate)
+        submitData.append('image', formData.value.imageFile)
+        
+        // 调用后端API
+        const response = await request.post('/inventory/stock-in', submitData, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        })
+        
+        if (response.code === 200) {
+            alert(`入库成功！\n商品：${formData.value.productName}\n入库数量：${formData.value.quantity}件\n入库日期：${formData.value.date}`)
+            router.push('/merchant/inventory-management')
+        } else {
+            alert('入库失败：' + (response.message || '未知错误'))
+        }
+    } catch (error) {
+        console.error('入库失败', error)
+        alert('入库失败：' + (error.response?.data?.message || error.message || '网络错误'))
+    }
 }
 
 const handleCancel = () => {
