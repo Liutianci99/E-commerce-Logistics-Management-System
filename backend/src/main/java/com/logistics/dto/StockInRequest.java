@@ -17,6 +17,9 @@ public class StockInRequest {
     @NotNull(message = "用户ID不能为空")
     private Integer userId;
     
+    @NotNull(message = "仓库ID不能为空")
+    private Integer warehouseId;
+    
     @NotBlank(message = "商品名称不能为空")
     private String productName;
     

@@ -77,9 +77,9 @@ const currentUser = ref({
 // 当前选中的菜单项
 const activeMenu = ref('')
 
-// 页面加载时从localStorage读取用户信息
+// 页面加载时从sessionStorage读取用户信息
 onMounted(() => {
-    const userInfoStr = localStorage.getItem('userInfo')
+    const userInfoStr = sessionStorage.getItem('userInfo')
     if (!userInfoStr) {
         // 未登录，跳转到登录页
         router.push('/')
@@ -157,6 +157,12 @@ const menuConfig = [
         roles: ['consumer']
     },
     {
+        title: '地址管理',
+        path: '/consumer/address-management',
+        icon: Store,
+        roles: ['consumer']
+    },
+    {
         title: '物流查询',
         path: '/consumer/logistics-query',
         icon: Truck,
@@ -192,7 +198,7 @@ const visibleMenu = computed(() => {
 const getRoleLabel = (role) => {
     const roleLabels = {
         merchant: '商户',
-        driver: '司机',
+        driver: '配送员',
         consumer: '顾客',
         admin: '管理员'
     }
@@ -240,8 +246,9 @@ const setMenuByRole = (role) => {
 
 // 退出登录
 const logout = () => {
-    localStorage.removeItem('userInfo')
-    localStorage.removeItem('isLoggedIn')
+    sessionStorage.removeItem('userInfo')
+    sessionStorage.removeItem('token')
+    sessionStorage.removeItem('isLoggedIn')
     router.push('/')
 }
 

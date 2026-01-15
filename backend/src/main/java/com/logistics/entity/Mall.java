@@ -17,6 +17,10 @@ public class Mall {
     @TableId
     private Integer productId;
     
+    private Integer merchantId;
+    
+    private Integer warehouseId;
+    
     private String productName;
     
     private String description;

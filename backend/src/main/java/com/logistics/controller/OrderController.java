@@ -60,6 +60,22 @@ public class OrderController {
     }
     
     /**
+     * 查询配送员的待揽收订单列表
+     * 状态=1（已发货）的订单
+     */
+    @GetMapping("/pending-pickup")
+    public Result<List<Order>> getPendingPickupOrders(
+            @RequestParam(required = false) Integer warehouseId,
+            @RequestParam(required = false) String search) {
+        try {
+            List<Order> orders = orderService.getPendingPickupOrders(warehouseId, search);
+            return Result.success("查询成功", orders);
+        } catch (Exception e) {
+            return Result.error(e.getMessage());
+        }
+    }
+    
+    /**
      * 确认收货
      */
     @PutMapping("/{orderId}/confirm")
@@ -88,6 +104,20 @@ public class OrderController {
             
             orderService.shipOrder(orderId, merchantId);
             return Result.success("发货成功", null);
+        } catch (Exception e) {
+            return Result.error(e.getMessage());
+        }
+    }
+    
+    /**
+     * 配送员确认揽收
+     * 将订单状态从1（已发货）更新为2（已揽收）
+     */
+    @PutMapping("/{orderId}/pickup")
+    public Result<Void> confirmPickup(@PathVariable Integer orderId) {
+        try {
+            orderService.confirmPickup(orderId);
+            return Result.success("揽收成功", null);
         } catch (Exception e) {
             return Result.error(e.getMessage());
         }

@@ -1,6 +1,7 @@
 package com.logistics.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
@@ -34,6 +35,8 @@ public class Order {
     
     private String imageUrl;
     
+    private Integer warehouseId;
+    
     private Integer status;
     
     private LocalDateTime orderTime;
@@ -47,4 +50,8 @@ public class Order {
     private LocalDateTime receiveTime;
     
     private LocalDateTime reviewTime;
+    
+    // 非数据库字段，用于显示仓库名称
+    @TableField(exist = false)
+    private String warehouseName;
 }

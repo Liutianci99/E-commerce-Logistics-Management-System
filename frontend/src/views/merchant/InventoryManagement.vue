@@ -49,6 +49,10 @@
                 <div class="product-info">
                     <h3 class="product-name">{{ item.name }}</h3>
                 </div>
+                <div class="product-warehouse">
+                    <span class="warehouse-label">仓库</span>
+                    <span class="warehouse-value">{{ item.warehouse }}</span>
+                </div>
                 <div class="inventory-stock">
                     <span class="stock-label">库存</span>
                     <span class="stock-value" :class="getStockClass(item.stock)">{{ item.stock }} 件</span>
@@ -93,7 +97,7 @@ const fetchInventory = async () => {
         loading.value = true
         
         // 获取登录用户ID
-        const userInfo = JSON.parse(localStorage.getItem('userInfo') || '{}')
+        const userInfo = JSON.parse(sessionStorage.getItem('userInfo') || '{}')
         const userId = userInfo.id || 1
         
         console.log('获取库存数据，用户ID:', userId)
@@ -127,7 +131,8 @@ const fetchInventory = async () => {
                 name: item.productName,
                 stock: item.quantity,
                 status: item.isPublished === 1 ? 'online' : 'offline',
-                image: item.imageUrl || 'https://via.placeholder.com/200'
+                image: item.imageUrl || 'https://via.placeholder.com/200',
+                warehouse: item.warehouseName || '未分配仓库'
             }))
             console.log('库存数据已更新:', inventory.value)
         } else {
@@ -420,6 +425,27 @@ h1 {
     color: #6b7280;
     font-size: 14px;
     line-height: 1.5;
+}
+
+.product-warehouse {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 120px;
+    margin-right: 20px;
+}
+
+.warehouse-label {
+    font-size: 12px;
+    color: #9ca3af;
+    margin-bottom: 4px;
+}
+
+.warehouse-value {
+    font-size: 14px;
+    font-weight: 500;
+    color: #1f2937;
+    text-align: center;
 }
 
 .product-price {

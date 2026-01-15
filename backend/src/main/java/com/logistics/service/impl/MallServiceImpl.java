@@ -53,6 +53,8 @@ public class MallServiceImpl implements MallService {
         // 创建商城商品
         Mall mall = new Mall();
         mall.setProductId(inventory.getProductId());
+        mall.setMerchantId(inventory.getUserId()); // 商户ID来自库存的user_id
+        mall.setWarehouseId(inventory.getWarehouseId()); // 仓库ID
         mall.setProductName(inventory.getProductName());
         mall.setDescription(request.getDescription());
         mall.setAvailableQuantity(request.getQuantity());

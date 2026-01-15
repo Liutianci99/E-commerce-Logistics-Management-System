@@ -16,7 +16,7 @@
                     <option value="">请选择身份</option>
                     <option value="merchant">商家</option>
                     <option value="consumer">顾客</option> 
-                    <option value="driver">司机</option>
+                    <option value="driver">配送员</option>
                     <option value="admin">管理员</option>      
                 </select>       
             </div>
@@ -85,7 +85,7 @@ const handleLogin = async () => {
     const roleText = {
         merchant: '商家',
         consumer: '顾客',
-        driver: '司机',
+        driver: '配送员',
         admin: '管理员'
     }
 
@@ -119,11 +119,14 @@ const handleLogin = async () => {
           const userInfo = {
               id: data.data.id,
               username: data.data.username,
-              role: data.data.role
+              role: data.data.role,
+              token: data.data.token
           }
           console.log('保存用户信息:', userInfo)
-          localStorage.setItem('userInfo', JSON.stringify(userInfo))
-          localStorage.setItem('isLoggedIn', 'true')
+          // 使用 sessionStorage 而不是 localStorage，每个标签页独立会话
+          sessionStorage.setItem('userInfo', JSON.stringify(userInfo))
+          sessionStorage.setItem('token', data.data.token)
+          sessionStorage.setItem('isLoggedIn', 'true')
           console.log('准备跳转到 /demo')
           await router.push('/demo')
           console.log('跳转完成')

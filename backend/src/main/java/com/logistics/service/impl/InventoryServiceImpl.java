@@ -33,6 +33,7 @@ public class InventoryServiceImpl implements InventoryService {
         // 创建库存记录
         Inventory inventory = new Inventory();
         inventory.setUserId(request.getUserId());
+        inventory.setWarehouseId(request.getWarehouseId());
         inventory.setProductName(request.getProductName());
         inventory.setQuantity(request.getQuantity());
         inventory.setStockInDate(request.getStockInDate());
@@ -47,34 +48,13 @@ public class InventoryServiceImpl implements InventoryService {
     
     @Override
     public List<Inventory> queryInventory(InventoryQueryRequest request) {
-        QueryWrapper<Inventory> queryWrapper = new QueryWrapper<>();
-        
-        // 根据用户ID查询
-        if (request.getUserId() != null) {
-            queryWrapper.eq("user_id", request.getUserId());
-        }
-        
-        // 根据商品名称模糊查询
-        if (request.getProductName() != null && !request.getProductName().trim().isEmpty()) {
-            queryWrapper.like("product_name", request.getProductName());
-        }
-        
-        // 根据库存范围查询
-        if (request.getMinStock() != null) {
-            queryWrapper.ge("quantity", request.getMinStock());
-        }
-        if (request.getMaxStock() != null) {
-            queryWrapper.le("quantity", request.getMaxStock());
-        }
-        
-        // 根据上架状态查询
-        if (request.getIsPublished() != null) {
-            queryWrapper.eq("is_published", request.getIsPublished());
-        }
-        
-        // 按入库时间倒序排列
-        queryWrapper.orderByDesc("stock_in_date");
-        
-        return inventoryMapper.selectList(queryWrapper);
+        // 使用新的方法查询库存并关联仓库信息
+        return inventoryMapper.selectWithWarehouseByConditions(
+            request.getUserId(),
+            request.getProductName(),
+            request.getMinStock(),
+            request.getMaxStock(),
+            request.getIsPublished()
+        );
     }
 }

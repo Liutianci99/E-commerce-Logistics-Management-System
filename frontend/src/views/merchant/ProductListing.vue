@@ -80,7 +80,7 @@ const fetchOfflineProducts = async () => {
         loading.value = true
         
         // 获取登录用户ID
-        const userInfo = JSON.parse(localStorage.getItem('userInfo') || '{}')
+        const userInfo = JSON.parse(sessionStorage.getItem('userInfo') || '{}')
         const userId = userInfo.id || 1
         
         const response = await request.get('/mall/offline-products', {

@@ -7,6 +7,15 @@
             <div class="form-section">
                 <h2>入库信息</h2>
                 <div class="form-group">
+                    <label>选择仓库 <span class="required">*</span></label>
+                    <select v-model="formData.warehouseId" class="form-select">
+                        <option value="" disabled>请选择仓库</option>
+                        <option v-for="warehouse in warehouses" :key="warehouse.id" :value="warehouse.id">
+                            {{ warehouse.name }} - {{ warehouse.city }}
+                        </option>
+                    </select>
+                </div>
+                <div class="form-group">
                     <label>商品名称 <span class="required">*</span></label>
                     <input type="text" v-model="formData.productName" placeholder="请输入商品名称" class="form-input" />
                 </div>
@@ -51,13 +60,14 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import request from '../../utils/request'
 
 const router = useRouter()
 
 const formData = ref({
+    warehouseId: '',
     productName: '',
     quantity: null,
     date: new Date().toISOString().split('T')[0],
@@ -65,7 +75,27 @@ const formData = ref({
     imageFile: null
 })
 
+const warehouses = ref([])
 const imagePreview = ref('')
+
+// 获取仓库列表
+const fetchWarehouses = async () => {
+    try {
+        const response = await request.get('/warehouse/list')
+        if (response.success) {
+            warehouses.value = response.data
+        } else {
+            console.error('获取仓库列表失败:', response.message)
+        }
+    } catch (error) {
+        console.error('获取仓库列表失败:', error)
+    }
+}
+
+// 页面加载时获取仓库列表
+onMounted(() => {
+    fetchWarehouses()
+})
 
 // 处理图片上传
 const handleImageUpload = (event) => {
@@ -97,6 +127,11 @@ const handleImageUpload = (event) => {
 
 const handleSubmit = async () => {
     // 验证表单
+    if (!formData.value.warehouseId) {
+        alert('请选择仓库')
+        return
+    }
+    
     if (!formData.value.productName || !formData.value.quantity || !formData.value.date) {
         alert('请填写必填项')
         return
@@ -111,11 +146,12 @@ const handleSubmit = async () => {
         // 准备FormData对象用于文件上传
         const submitData = new FormData()
         
-        // 获取登录用户ID（从localStorage或sessionStorage）
-        const userInfo = JSON.parse(localStorage.getItem('userInfo') || '{}')
+        // 获取登录用户ID（从sessionStorage）
+        const userInfo = JSON.parse(sessionStorage.getItem('userInfo') || '{}')
         const userId = userInfo.id || 1 // 如果没有用户信息，默认使用1
         
         submitData.append('userId', userId)
+        submitData.append('warehouseId', formData.value.warehouseId)
         submitData.append('productName', formData.value.productName)
         submitData.append('quantity', formData.value.quantity)
         
@@ -207,6 +243,7 @@ label {
     color: #ef4444;
 }
 
+.form-input,
 .form-input,
 .form-select {
     width: 100%;

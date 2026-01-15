@@ -6,6 +6,7 @@ import com.logistics.dto.LoginResponse;
 import com.logistics.entity.User;
 import com.logistics.mapper.UserMapper;
 import com.logistics.service.UserService;
+import com.logistics.util.JwtUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Service;
 public class UserServiceImpl implements UserService {
 
     private final UserMapper userMapper;
+    private final JwtUtil jwtUtil;
 
     @Override
     public LoginResponse login(LoginRequest req) {
@@ -28,10 +30,15 @@ public class UserServiceImpl implements UserService {
         if (!user.getPassword().equals(req.getPassword())) {
             return new LoginResponse(false, "密码错误", null);
         }
+        
+        // 生成 Token
+        String token = jwtUtil.generateToken(user.getId(), user.getUsername(), user.getRole());
+        
         LoginResponse.UserInfo userInfo = new LoginResponse.UserInfo(
             user.getId(), 
             user.getUsername(), 
-            user.getRole()
+            user.getRole(),
+            token
         );
         return new LoginResponse(true, "登录成功", userInfo);
     }

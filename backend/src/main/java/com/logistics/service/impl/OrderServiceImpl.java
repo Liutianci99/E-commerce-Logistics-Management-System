@@ -182,4 +182,29 @@ public class OrderServiceImpl implements OrderService {
         order.setShipTime(LocalDateTime.now());
         orderMapper.updateById(order);
     }
+    
+    @Override
+    public List<Order> getPendingPickupOrders(Integer warehouseId, String search) {
+        return orderMapper.selectPendingPickupOrders(warehouseId, search);
+    }
+    
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public void confirmPickup(Integer orderId) {
+        // 1. 查询订单是否存在
+        Order order = orderMapper.selectById(orderId);
+        if (order == null) {
+            throw new RuntimeException("订单不存在");
+        }
+        
+        // 2. 验证订单状态（只有已发货状态才能揽收）
+        if (order.getStatus() != 1) {
+            throw new RuntimeException("订单状态不正确，无法揽收");
+        }
+        
+        // 3. 更新订单状态为已揽收(2)
+        order.setStatus(2);
+        order.setPickupTime(LocalDateTime.now());
+        orderMapper.updateById(order);
+    }
 }

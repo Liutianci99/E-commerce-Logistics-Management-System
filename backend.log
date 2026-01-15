@@ -35,290 +35,343 @@ Standard Commons Logging discovery in action with spring-jcl: please remove comm
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::                (v3.2.0)
 
-2026-01-11T12:10:04.052Z  INFO 61446 --- [ecommerce-logistics] [           main] com.logistics.LogisticsApplication       : Starting LogisticsApplication using Java 21.0.9 with PID 61446 (/workspaces/E-commerce-Logistics-Management-System/backend/target/classes started by vscode in /workspaces/E-commerce-Logistics-Management-System/backend)
-2026-01-11T12:10:04.054Z DEBUG 61446 --- [ecommerce-logistics] [           main] com.logistics.LogisticsApplication       : Running with Spring Boot v3.2.0, Spring v6.1.1
-2026-01-11T12:10:04.055Z  INFO 61446 --- [ecommerce-logistics] [           main] com.logistics.LogisticsApplication       : No active profile set, falling back to 1 default profile: "default"
-2026-01-11T12:10:04.942Z  INFO 61446 --- [ecommerce-logistics] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2026-01-11T12:10:04.950Z  INFO 61446 --- [ecommerce-logistics] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2026-01-11T12:10:04.950Z  INFO 61446 --- [ecommerce-logistics] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.16]
-2026-01-11T12:10:04.992Z  INFO 61446 --- [ecommerce-logistics] [           main] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring embedded WebApplicationContext
-2026-01-11T12:10:04.993Z  INFO 61446 --- [ecommerce-logistics] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 895 ms
+2026-01-15T09:15:07.955Z  INFO 108360 --- [ecommerce-logistics] [           main] com.logistics.LogisticsApplication       : Starting LogisticsApplication using Java 21.0.9 with PID 108360 (/workspaces/E-commerce-Logistics-Management-System/backend/target/classes started by vscode in /workspaces/E-commerce-Logistics-Management-System/backend)
+2026-01-15T09:15:07.956Z DEBUG 108360 --- [ecommerce-logistics] [           main] com.logistics.LogisticsApplication       : Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-01-15T09:15:07.957Z  INFO 108360 --- [ecommerce-logistics] [           main] com.logistics.LogisticsApplication       : No active profile set, falling back to 1 default profile: "default"
+2026-01-15T09:15:08.755Z  INFO 108360 --- [ecommerce-logistics] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-01-15T09:15:08.762Z  INFO 108360 --- [ecommerce-logistics] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-01-15T09:15:08.763Z  INFO 108360 --- [ecommerce-logistics] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.16]
+2026-01-15T09:15:08.797Z  INFO 108360 --- [ecommerce-logistics] [           main] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring embedded WebApplicationContext
+2026-01-15T09:15:08.798Z  INFO 108360 --- [ecommerce-logistics] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 803 ms
 Standard Commons Logging discovery in action with spring-jcl: please remove commons-logging.jar from classpath in order to avoid potential conflicts
 Logging initialized using 'class org.apache.ibatis.logging.stdout.StdOutImpl' adapter.
-Initialization Sequence datacenterId:0 workerId:11
+Initialization Sequence datacenterId:0 workerId:4
  _ _   |_  _ _|_. ___ _ |    _ 
 | | |\/|_)(_| | |_\  |_)||_|_\ 
      /               |         
                         3.5.5 
-2026-01-11T12:10:05.865Z  INFO 61446 --- [ecommerce-logistics] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/api'
-2026-01-11T12:10:05.873Z  INFO 61446 --- [ecommerce-logistics] [           main] com.logistics.LogisticsApplication       : Started LogisticsApplication in 2.147 seconds (process running for 2.418)
+2026-01-15T09:15:09.451Z  INFO 108360 --- [ecommerce-logistics] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/api'
+2026-01-15T09:15:09.461Z  INFO 108360 --- [ecommerce-logistics] [           main] com.logistics.LogisticsApplication       : Started LogisticsApplication in 1.808 seconds (process running for 2.06)
 === E-commerce Logistics Management System Started Successfully ===
-2026-01-11T12:10:15.001Z  INFO 61446 --- [ecommerce-logistics] [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2026-01-11T12:10:15.001Z  INFO 61446 --- [ecommerce-logistics] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2026-01-11T12:10:15.002Z  INFO 61446 --- [ecommerce-logistics] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-01-15T09:17:28.036Z  INFO 108360 --- [ecommerce-logistics] [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-01-15T09:17:28.036Z  INFO 108360 --- [ecommerce-logistics] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-01-15T09:17:28.037Z  INFO 108360 --- [ecommerce-logistics] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
 收到登录请求: username=刘天赐, role=merchant
 开始查询用户: username=刘天赐, role=merchant
 Creating a new SqlSession
-SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3ecd700] was not registered for synchronization because synchronization is not active
-2026-01-11T12:10:15.124Z  INFO 61446 --- [ecommerce-logistics] [nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2026-01-11T12:10:16.924Z  INFO 61446 --- [ecommerce-logistics] [nio-8080-exec-1] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@e0508eb
-2026-01-11T12:10:16.926Z  INFO 61446 --- [ecommerce-logistics] [nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-JDBC Connection [HikariProxyConnection@1123992577 wrapping com.mysql.cj.jdbc.ConnectionImpl@e0508eb] will not be managed by Spring
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@42d271db] was not registered for synchronization because synchronization is not active
+2026-01-15T09:17:39.007Z  INFO 108360 --- [ecommerce-logistics] [nio-8080-exec-3] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-01-15T09:17:40.675Z  INFO 108360 --- [ecommerce-logistics] [nio-8080-exec-3] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5de63c2f
+2026-01-15T09:17:40.677Z  INFO 108360 --- [ecommerce-logistics] [nio-8080-exec-3] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+JDBC Connection [HikariProxyConnection@625038697 wrapping com.mysql.cj.jdbc.ConnectionImpl@5de63c2f] will not be managed by Spring
 ==>  Preparing: SELECT id,username,password,role FROM users WHERE (username = ? AND role = ?)
 ==> Parameters: 刘天赐(String), merchant(String)
 <==    Columns: id, username, password, role
 <==        Row: 1, 刘天赐, 123, merchant
 <==      Total: 1
-Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3ecd700]
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@42d271db]
 查询结果: User(id=1, username=刘天赐, password=123, role=merchant)
 Creating a new SqlSession
-SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@38b936b7] was not registered for synchronization because synchronization is not active
-JDBC Connection [HikariProxyConnection@1325944118 wrapping com.mysql.cj.jdbc.ConnectionImpl@e0508eb] will not be managed by Spring
-==>  Preparing: SELECT product_id,product_name,description,available_quantity,price,is_published,publish_time,image_url FROM mall WHERE (is_published = ?) ORDER BY publish_time DESC
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@e327c6d] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@1759075815 wrapping com.mysql.cj.jdbc.ConnectionImpl@5de63c2f] will not be managed by Spring
+==>  Preparing: SELECT product_id,merchant_id,warehouse_id,product_name,description,available_quantity,price,is_published,publish_time,image_url FROM mall WHERE (is_published = ?) ORDER BY publish_time DESC
 ==> Parameters: 1(Integer)
-<==    Columns: product_id, product_name, description, available_quantity, price, is_published, publish_time, image_url
-<==        Row: 3, 黑人牙膏, <<BLOB>>, 300, 24.00, 1, 2026-01-11 08:20:41, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/521ca6d7-a350-4751-a9a8-95cf55e9024a.jfif
-<==        Row: 2, Switch游戏机, <<BLOB>>, 100, 2099.00, 1, 2026-01-11 08:13:27, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/93a58a09-4d46-4acc-bf06-a9ea19f5b057.webp
-<==        Row: 1, PS5游戏手柄, <<BLOB>>, 50, 399.00, 1, 2026-01-11 08:12:53, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/4f797f73-6b3b-4a8d-956b-d592d00a7086.jpg
+<==    Columns: product_id, merchant_id, warehouse_id, product_name, description, available_quantity, price, is_published, publish_time, image_url
+<==        Row: 3, 1, 3, 黑人牙膏, <<BLOB>>, 300, 24.00, 1, 2026-01-11 08:20:41, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/521ca6d7-a350-4751-a9a8-95cf55e9024a.jfif
+<==        Row: 2, 1, 2, Switch游戏机, <<BLOB>>, 100, 2099.00, 1, 2026-01-11 08:13:27, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/93a58a09-4d46-4acc-bf06-a9ea19f5b057.webp
+<==        Row: 1, 1, 8, PS5游戏手柄, <<BLOB>>, 50, 399.00, 1, 2026-01-11 08:12:53, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/4f797f73-6b3b-4a8d-956b-d592d00a7086.jpg
 <==      Total: 3
-Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@38b936b7]
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@e327c6d]
 Creating a new SqlSession
-SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@695cbccb] was not registered for synchronization because synchronization is not active
-JDBC Connection [HikariProxyConnection@1400871799 wrapping com.mysql.cj.jdbc.ConnectionImpl@e0508eb] will not be managed by Spring
-==>  Preparing: SELECT product_id,user_id,product_name,quantity,stock_in_date,image_url,is_published FROM inventory WHERE (user_id = ?) ORDER BY stock_in_date DESC
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@43a75cf1] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@605169888 wrapping com.mysql.cj.jdbc.ConnectionImpl@5de63c2f] will not be managed by Spring
+==>  Preparing: SELECT i.*, w.name as warehouseName FROM inventory i LEFT JOIN warehouse w ON i.warehouse_id = w.id WHERE i.user_id = ? ORDER BY i.stock_in_date DESC
 ==> Parameters: 1(Integer)
-<==    Columns: product_id, user_id, product_name, quantity, stock_in_date, image_url, is_published
-<==        Row: 1, 1, PS5游戏手柄, 200, 2026-01-11 00:00:00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/4f797f73-6b3b-4a8d-956b-d592d00a7086.jpg, 1
-<==        Row: 2, 1, Switch游戏机, 1500, 2026-01-11 00:00:00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/93a58a09-4d46-4acc-bf06-a9ea19f5b057.webp, 1
-<==        Row: 3, 1, 黑人牙膏, 400, 2026-01-11 00:00:00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/521ca6d7-a350-4751-a9a8-95cf55e9024a.jfif, 1
-<==        Row: 4, 1, 苹果17pro, 100, 2026-01-11 00:00:00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/3abb89f4-2831-45a8-bce1-d4a371e8eead.jfif, 0
-<==        Row: 5, 1, 乐事薯片, 3600, 2026-01-11 00:00:00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/9179a5f8-580c-4c75-a6ef-e0983c42c254.jfif, 0
-<==      Total: 5
-Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@695cbccb]
+<==    Columns: product_id, user_id, product_name, description, quantity, stock_in_date, image_url, is_published, warehouse_id, warehouseName
+<==        Row: 6, 1, 徕芬高速吹风机, <<BLOB>>, 1000, 2026-01-15 00:00:00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/b7d00d4a-ab2f-42fa-9a82-0906423f64dc.jfif, 0, 4, 西南枢纽仓
+<==        Row: 1, 1, PS5游戏手柄, <<BLOB>>, 200, 2026-01-11 00:00:00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/4f797f73-6b3b-4a8d-956b-d592d00a7086.jpg, 1, 6, 华东电商仓
+<==        Row: 2, 1, Switch游戏机, <<BLOB>>, 1500, 2026-01-11 00:00:00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/93a58a09-4d46-4acc-bf06-a9ea19f5b057.webp, 1, 6, 华东电商仓
+<==        Row: 3, 1, 黑人牙膏, <<BLOB>>, 400, 2026-01-11 00:00:00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/521ca6d7-a350-4751-a9a8-95cf55e9024a.jfif, 1, 6, 华东电商仓
+<==        Row: 4, 1, 苹果17pro, <<BLOB>>, 100, 2026-01-11 00:00:00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/3abb89f4-2831-45a8-bce1-d4a371e8eead.jfif, 0, 6, 华东电商仓
+<==        Row: 5, 1, 乐事薯片, <<BLOB>>, 3600, 2026-01-11 00:00:00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/9179a5f8-580c-4c75-a6ef-e0983c42c254.jfif, 0, 3, 华南智能仓
+<==      Total: 6
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@43a75cf1]
 Creating a new SqlSession
-SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@40a3a34] was not registered for synchronization because synchronization is not active
-JDBC Connection [HikariProxyConnection@506199412 wrapping com.mysql.cj.jdbc.ConnectionImpl@e0508eb] will not be managed by Spring
-==>  Preparing: SELECT order_id,product_id,customer_id,merchant_id,product_name,quantity,unit_price,total_amount,image_url,status,order_time,ship_time,pickup_time,delivery_time,receive_time,review_time FROM orders WHERE (merchant_id = ?) ORDER BY order_time DESC
-==> Parameters: 1(Integer)
-<==    Columns: order_id, product_id, customer_id, merchant_id, product_name, quantity, unit_price, total_amount, image_url, status, order_time, ship_time, pickup_time, delivery_time, receive_time, review_time
-<==        Row: 4, 3, 3, 1, 黑人牙膏, 10, 24.00, 240.00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/521ca6d7-a350-4751-a9a8-95cf55e9024a.jfif, 0, 2026-01-11 11:54:17, null, null, null, null, null
-<==        Row: 3, 3, 3, 1, 黑人牙膏, 10, 24.00, 240.00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/521ca6d7-a350-4751-a9a8-95cf55e9024a.jfif, 0, 2026-01-11 11:48:02, null, null, null, null, null
-<==        Row: 2, 1, 3, 1, PS5游戏手柄, 1, 399.00, 399.00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/4f797f73-6b3b-4a8d-956b-d592d00a7086.jpg, 5, 2026-01-11 11:46:41, null, null, null, 2026-01-11 11:52:11, null
-<==        Row: 1, 1, 3, 1, PS5游戏手柄, 1, 399.00, 399.00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/4f797f73-6b3b-4a8d-956b-d592d00a7086.jpg, 0, 2026-01-11 11:46:33, null, null, null, null, null
-<==      Total: 4
-Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@40a3a34]
-Creating a new SqlSession
-SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@66335c4] was not registered for synchronization because synchronization is not active
-JDBC Connection [HikariProxyConnection@145021816 wrapping com.mysql.cj.jdbc.ConnectionImpl@e0508eb] will not be managed by Spring
-==>  Preparing: SELECT order_id,product_id,customer_id,merchant_id,product_name,quantity,unit_price,total_amount,image_url,status,order_time,ship_time,pickup_time,delivery_time,receive_time,review_time FROM orders WHERE (merchant_id = ? AND status = ?) ORDER BY order_time DESC
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4aebdd80] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@993646718 wrapping com.mysql.cj.jdbc.ConnectionImpl@5de63c2f] will not be managed by Spring
+==>  Preparing: SELECT product_id,user_id,product_name,quantity,stock_in_date,image_url,is_published,warehouse_id FROM inventory WHERE (user_id = ? AND is_published = ?) ORDER BY stock_in_date DESC
 ==> Parameters: 1(Integer), 0(Integer)
-<==    Columns: order_id, product_id, customer_id, merchant_id, product_name, quantity, unit_price, total_amount, image_url, status, order_time, ship_time, pickup_time, delivery_time, receive_time, review_time
-<==        Row: 4, 3, 3, 1, 黑人牙膏, 10, 24.00, 240.00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/521ca6d7-a350-4751-a9a8-95cf55e9024a.jfif, 0, 2026-01-11 11:54:17, null, null, null, null, null
-<==        Row: 3, 3, 3, 1, 黑人牙膏, 10, 24.00, 240.00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/521ca6d7-a350-4751-a9a8-95cf55e9024a.jfif, 0, 2026-01-11 11:48:02, null, null, null, null, null
-<==        Row: 1, 1, 3, 1, PS5游戏手柄, 1, 399.00, 399.00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/4f797f73-6b3b-4a8d-956b-d592d00a7086.jpg, 0, 2026-01-11 11:46:33, null, null, null, null, null
+<==    Columns: product_id, user_id, product_name, quantity, stock_in_date, image_url, is_published, warehouse_id
+<==        Row: 6, 1, 徕芬高速吹风机, 1000, 2026-01-15 00:00:00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/b7d00d4a-ab2f-42fa-9a82-0906423f64dc.jfif, 0, 4
+<==        Row: 4, 1, 苹果17pro, 100, 2026-01-11 00:00:00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/3abb89f4-2831-45a8-bce1-d4a371e8eead.jfif, 0, 6
+<==        Row: 5, 1, 乐事薯片, 3600, 2026-01-11 00:00:00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/9179a5f8-580c-4c75-a6ef-e0983c42c254.jfif, 0, 3
 <==      Total: 3
-Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@66335c4]
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4aebdd80]
 Creating a new SqlSession
-SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6c1ec3e7] was not registered for synchronization because synchronization is not active
-JDBC Connection [HikariProxyConnection@1658400788 wrapping com.mysql.cj.jdbc.ConnectionImpl@e0508eb] will not be managed by Spring
-==>  Preparing: SELECT order_id,product_id,customer_id,merchant_id,product_name,quantity,unit_price,total_amount,image_url,status,order_time,ship_time,pickup_time,delivery_time,receive_time,review_time FROM orders WHERE (merchant_id = ? AND status = ?) ORDER BY order_time DESC
-==> Parameters: 1(Integer), 1(Integer)
-<==      Total: 0
-Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6c1ec3e7]
-Creating a new SqlSession
-SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6fc968d6] was not registered for synchronization because synchronization is not active
-JDBC Connection [HikariProxyConnection@1628347231 wrapping com.mysql.cj.jdbc.ConnectionImpl@e0508eb] will not be managed by Spring
-==>  Preparing: SELECT order_id,product_id,customer_id,merchant_id,product_name,quantity,unit_price,total_amount,image_url,status,order_time,ship_time,pickup_time,delivery_time,receive_time,review_time FROM orders WHERE (merchant_id = ? AND status = ?) ORDER BY order_time DESC
-==> Parameters: 1(Integer), 5(Integer)
-<==    Columns: order_id, product_id, customer_id, merchant_id, product_name, quantity, unit_price, total_amount, image_url, status, order_time, ship_time, pickup_time, delivery_time, receive_time, review_time
-<==        Row: 2, 1, 3, 1, PS5游戏手柄, 1, 399.00, 399.00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/4f797f73-6b3b-4a8d-956b-d592d00a7086.jpg, 5, 2026-01-11 11:46:41, null, null, null, 2026-01-11 11:52:11, null
+Registering transaction synchronization for SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@423a1bad]
+JDBC Connection [HikariProxyConnection@1650544459 wrapping com.mysql.cj.jdbc.ConnectionImpl@5de63c2f] will be managed by Spring
+==>  Preparing: SELECT product_id,user_id,product_name,quantity,stock_in_date,image_url,is_published,warehouse_id FROM inventory WHERE product_id=?
+==> Parameters: 6(Integer)
+<==    Columns: product_id, user_id, product_name, quantity, stock_in_date, image_url, is_published, warehouse_id
+<==        Row: 6, 1, 徕芬高速吹风机, 1000, 2026-01-15 00:00:00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/b7d00d4a-ab2f-42fa-9a82-0906423f64dc.jfif, 0, 4
 <==      Total: 1
-Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6fc968d6]
-Creating a new SqlSession
-SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@725b9b64] was not registered for synchronization because synchronization is not active
-JDBC Connection [HikariProxyConnection@2090625887 wrapping com.mysql.cj.jdbc.ConnectionImpl@e0508eb] will not be managed by Spring
-==>  Preparing: SELECT order_id,product_id,customer_id,merchant_id,product_name,quantity,unit_price,total_amount,image_url,status,order_time,ship_time,pickup_time,delivery_time,receive_time,review_time FROM orders WHERE (merchant_id = ? AND status = ?) ORDER BY order_time DESC
-==> Parameters: 1(Integer), 1(Integer)
-<==      Total: 0
-Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@725b9b64]
-Creating a new SqlSession
-SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@35407c29] was not registered for synchronization because synchronization is not active
-JDBC Connection [HikariProxyConnection@998737137 wrapping com.mysql.cj.jdbc.ConnectionImpl@e0508eb] will not be managed by Spring
-==>  Preparing: SELECT order_id,product_id,customer_id,merchant_id,product_name,quantity,unit_price,total_amount,image_url,status,order_time,ship_time,pickup_time,delivery_time,receive_time,review_time FROM orders WHERE (merchant_id = ? AND status = ?) ORDER BY order_time DESC
-==> Parameters: 1(Integer), 0(Integer)
-<==    Columns: order_id, product_id, customer_id, merchant_id, product_name, quantity, unit_price, total_amount, image_url, status, order_time, ship_time, pickup_time, delivery_time, receive_time, review_time
-<==        Row: 4, 3, 3, 1, 黑人牙膏, 10, 24.00, 240.00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/521ca6d7-a350-4751-a9a8-95cf55e9024a.jfif, 0, 2026-01-11 11:54:17, null, null, null, null, null
-<==        Row: 3, 3, 3, 1, 黑人牙膏, 10, 24.00, 240.00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/521ca6d7-a350-4751-a9a8-95cf55e9024a.jfif, 0, 2026-01-11 11:48:02, null, null, null, null, null
-<==        Row: 1, 1, 3, 1, PS5游戏手柄, 1, 399.00, 399.00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/4f797f73-6b3b-4a8d-956b-d592d00a7086.jpg, 0, 2026-01-11 11:46:33, null, null, null, null, null
-<==      Total: 3
-Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@35407c29]
-Creating a new SqlSession
-Registering transaction synchronization for SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@76135264]
-JDBC Connection [HikariProxyConnection@186356246 wrapping com.mysql.cj.jdbc.ConnectionImpl@e0508eb] will be managed by Spring
-==>  Preparing: SELECT order_id,product_id,customer_id,merchant_id,product_name,quantity,unit_price,total_amount,image_url,status,order_time,ship_time,pickup_time,delivery_time,receive_time,review_time FROM orders WHERE order_id=?
-==> Parameters: 4(Integer)
-<==    Columns: order_id, product_id, customer_id, merchant_id, product_name, quantity, unit_price, total_amount, image_url, status, order_time, ship_time, pickup_time, delivery_time, receive_time, review_time
-<==        Row: 4, 3, 3, 1, 黑人牙膏, 10, 24.00, 240.00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/521ca6d7-a350-4751-a9a8-95cf55e9024a.jfif, 0, 2026-01-11 11:54:17, null, null, null, null, null
-<==      Total: 1
-Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@76135264]
-Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@76135264] from current transaction
-==>  Preparing: UPDATE orders SET product_id=?, customer_id=?, merchant_id=?, product_name=?, quantity=?, unit_price=?, total_amount=?, image_url=?, status=?, order_time=?, ship_time=? WHERE order_id=?
-==> Parameters: 3(Integer), 3(Integer), 1(Integer), 黑人牙膏(String), 10(Integer), 24.00(BigDecimal), 240.00(BigDecimal), https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/521ca6d7-a350-4751-a9a8-95cf55e9024a.jfif(String), 1(Integer), 2026-01-11T11:54:17(LocalDateTime), 2026-01-11T12:10:37.001553497(LocalDateTime), 4(Integer)
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@423a1bad]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@423a1bad] from current transaction
+==>  Preparing: INSERT INTO mall ( product_id, merchant_id, warehouse_id, product_name, description, available_quantity, price, is_published, publish_time, image_url ) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )
+==> Parameters: 6(Integer), 1(Integer), 4(Integer), 徕芬高速吹风机(String), 告别毛躁、干枯、久吹不干！徕芬高速吹风机搭载 11万转/分钟 高速无刷电机，风速高达 19m/s，3分钟速干长发，减少高温损伤，真正实现“快干不伤发”！(String), 500(Integer), 979(BigDecimal), 1(Integer), 2026-01-15T09:17:57.578326028(LocalDateTime), https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/b7d00d4a-ab2f-42fa-9a82-0906423f64dc.jfif(String)
 <==    Updates: 1
-Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@76135264]
-Transaction synchronization committing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@76135264]
-Transaction synchronization deregistering SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@76135264]
-Transaction synchronization closing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@76135264]
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@423a1bad]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@423a1bad] from current transaction
+==>  Preparing: UPDATE inventory SET user_id=?, product_name=?, quantity=?, stock_in_date=?, image_url=?, is_published=?, warehouse_id=? WHERE product_id=?
+==> Parameters: 1(Integer), 徕芬高速吹风机(String), 1000(Integer), 2026-01-15T00:00(LocalDateTime), https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/b7d00d4a-ab2f-42fa-9a82-0906423f64dc.jfif(String), 1(Integer), 4(Integer), 6(Integer)
+<==    Updates: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@423a1bad]
+Transaction synchronization committing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@423a1bad]
+Transaction synchronization deregistering SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@423a1bad]
+Transaction synchronization closing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@423a1bad]
 Creating a new SqlSession
-SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4dd31979] was not registered for synchronization because synchronization is not active
-JDBC Connection [HikariProxyConnection@1833358314 wrapping com.mysql.cj.jdbc.ConnectionImpl@e0508eb] will not be managed by Spring
-==>  Preparing: SELECT order_id,product_id,customer_id,merchant_id,product_name,quantity,unit_price,total_amount,image_url,status,order_time,ship_time,pickup_time,delivery_time,receive_time,review_time FROM orders WHERE (merchant_id = ? AND status = ?) ORDER BY order_time DESC
-==> Parameters: 1(Integer), 0(Integer)
-<==    Columns: order_id, product_id, customer_id, merchant_id, product_name, quantity, unit_price, total_amount, image_url, status, order_time, ship_time, pickup_time, delivery_time, receive_time, review_time
-<==        Row: 3, 3, 3, 1, 黑人牙膏, 10, 24.00, 240.00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/521ca6d7-a350-4751-a9a8-95cf55e9024a.jfif, 0, 2026-01-11 11:48:02, null, null, null, null, null
-<==        Row: 1, 1, 3, 1, PS5游戏手柄, 1, 399.00, 399.00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/4f797f73-6b3b-4a8d-956b-d592d00a7086.jpg, 0, 2026-01-11 11:46:33, null, null, null, null, null
-<==      Total: 2
-Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4dd31979]
-Creating a new SqlSession
-SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1489face] was not registered for synchronization because synchronization is not active
-JDBC Connection [HikariProxyConnection@725673040 wrapping com.mysql.cj.jdbc.ConnectionImpl@e0508eb] will not be managed by Spring
-==>  Preparing: SELECT order_id,product_id,customer_id,merchant_id,product_name,quantity,unit_price,total_amount,image_url,status,order_time,ship_time,pickup_time,delivery_time,receive_time,review_time FROM orders WHERE (merchant_id = ? AND status = ?) ORDER BY order_time DESC
-==> Parameters: 1(Integer), 1(Integer)
-<==    Columns: order_id, product_id, customer_id, merchant_id, product_name, quantity, unit_price, total_amount, image_url, status, order_time, ship_time, pickup_time, delivery_time, receive_time, review_time
-<==        Row: 4, 3, 3, 1, 黑人牙膏, 10, 24.00, 240.00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/521ca6d7-a350-4751-a9a8-95cf55e9024a.jfif, 1, 2026-01-11 11:54:17, 2026-01-11 12:10:37, null, null, null, null
-<==      Total: 1
-Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1489face]
-Creating a new SqlSession
-SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2b6fca2f] was not registered for synchronization because synchronization is not active
-JDBC Connection [HikariProxyConnection@1935492720 wrapping com.mysql.cj.jdbc.ConnectionImpl@e0508eb] will not be managed by Spring
-==>  Preparing: SELECT order_id,product_id,customer_id,merchant_id,product_name,quantity,unit_price,total_amount,image_url,status,order_time,ship_time,pickup_time,delivery_time,receive_time,review_time FROM orders WHERE (merchant_id = ? AND status = ?) ORDER BY order_time DESC
-==> Parameters: 1(Integer), 5(Integer)
-<==    Columns: order_id, product_id, customer_id, merchant_id, product_name, quantity, unit_price, total_amount, image_url, status, order_time, ship_time, pickup_time, delivery_time, receive_time, review_time
-<==        Row: 2, 1, 3, 1, PS5游戏手柄, 1, 399.00, 399.00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/4f797f73-6b3b-4a8d-956b-d592d00a7086.jpg, 5, 2026-01-11 11:46:41, null, null, null, 2026-01-11 11:52:11, null
-<==      Total: 1
-Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2b6fca2f]
-Creating a new SqlSession
-SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7f27793] was not registered for synchronization because synchronization is not active
-JDBC Connection [HikariProxyConnection@853425917 wrapping com.mysql.cj.jdbc.ConnectionImpl@e0508eb] will not be managed by Spring
-==>  Preparing: SELECT order_id,product_id,customer_id,merchant_id,product_name,quantity,unit_price,total_amount,image_url,status,order_time,ship_time,pickup_time,delivery_time,receive_time,review_time FROM orders WHERE (merchant_id = ? AND status = ?) ORDER BY order_time DESC
-==> Parameters: 1(Integer), 1(Integer)
-<==    Columns: order_id, product_id, customer_id, merchant_id, product_name, quantity, unit_price, total_amount, image_url, status, order_time, ship_time, pickup_time, delivery_time, receive_time, review_time
-<==        Row: 4, 3, 3, 1, 黑人牙膏, 10, 24.00, 240.00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/521ca6d7-a350-4751-a9a8-95cf55e9024a.jfif, 1, 2026-01-11 11:54:17, 2026-01-11 12:10:37, null, null, null, null
-<==      Total: 1
-Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7f27793]
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@637a242] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@1191686781 wrapping com.mysql.cj.jdbc.ConnectionImpl@5de63c2f] will not be managed by Spring
+==>  Preparing: SELECT product_id,merchant_id,warehouse_id,product_name,description,available_quantity,price,is_published,publish_time,image_url FROM mall WHERE (is_published = ?) ORDER BY publish_time DESC
+==> Parameters: 1(Integer)
+<==    Columns: product_id, merchant_id, warehouse_id, product_name, description, available_quantity, price, is_published, publish_time, image_url
+<==        Row: 6, 1, 4, 徕芬高速吹风机, <<BLOB>>, 500, 979.00, 1, 2026-01-15 09:17:58, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/b7d00d4a-ab2f-42fa-9a82-0906423f64dc.jfif
+<==        Row: 3, 1, 3, 黑人牙膏, <<BLOB>>, 300, 24.00, 1, 2026-01-11 08:20:41, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/521ca6d7-a350-4751-a9a8-95cf55e9024a.jfif
+<==        Row: 2, 1, 2, Switch游戏机, <<BLOB>>, 100, 2099.00, 1, 2026-01-11 08:13:27, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/93a58a09-4d46-4acc-bf06-a9ea19f5b057.webp
+<==        Row: 1, 1, 8, PS5游戏手柄, <<BLOB>>, 50, 399.00, 1, 2026-01-11 08:12:53, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/4f797f73-6b3b-4a8d-956b-d592d00a7086.jpg
+<==      Total: 4
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@637a242]
 收到登录请求: username=刘天赐, role=consumer
 开始查询用户: username=刘天赐, role=consumer
 Creating a new SqlSession
-SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4999d143] was not registered for synchronization because synchronization is not active
-JDBC Connection [HikariProxyConnection@1456144545 wrapping com.mysql.cj.jdbc.ConnectionImpl@e0508eb] will not be managed by Spring
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@44d34400] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@1242866410 wrapping com.mysql.cj.jdbc.ConnectionImpl@5de63c2f] will not be managed by Spring
 ==>  Preparing: SELECT id,username,password,role FROM users WHERE (username = ? AND role = ?)
 ==> Parameters: 刘天赐(String), consumer(String)
 <==    Columns: id, username, password, role
 <==        Row: 3, 刘天赐, 123, consumer
 <==      Total: 1
-Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4999d143]
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@44d34400]
 查询结果: User(id=3, username=刘天赐, password=123, role=consumer)
 Creating a new SqlSession
-SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@23e43a2f] was not registered for synchronization because synchronization is not active
-JDBC Connection [HikariProxyConnection@964678735 wrapping com.mysql.cj.jdbc.ConnectionImpl@e0508eb] will not be managed by Spring
-==>  Preparing: SELECT product_id,product_name,description,available_quantity,price,is_published,publish_time,image_url FROM mall WHERE (is_published = ?) ORDER BY publish_time DESC
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@64ab5101] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@1651947867 wrapping com.mysql.cj.jdbc.ConnectionImpl@5de63c2f] will not be managed by Spring
+==>  Preparing: SELECT product_id,merchant_id,warehouse_id,product_name,description,available_quantity,price,is_published,publish_time,image_url FROM mall WHERE (is_published = ?) ORDER BY publish_time DESC
 ==> Parameters: 1(Integer)
-<==    Columns: product_id, product_name, description, available_quantity, price, is_published, publish_time, image_url
-<==        Row: 3, 黑人牙膏, <<BLOB>>, 300, 24.00, 1, 2026-01-11 08:20:41, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/521ca6d7-a350-4751-a9a8-95cf55e9024a.jfif
-<==        Row: 2, Switch游戏机, <<BLOB>>, 100, 2099.00, 1, 2026-01-11 08:13:27, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/93a58a09-4d46-4acc-bf06-a9ea19f5b057.webp
-<==        Row: 1, PS5游戏手柄, <<BLOB>>, 50, 399.00, 1, 2026-01-11 08:12:53, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/4f797f73-6b3b-4a8d-956b-d592d00a7086.jpg
-<==      Total: 3
-Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@23e43a2f]
-Creating a new SqlSession
-SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@20339164] was not registered for synchronization because synchronization is not active
-JDBC Connection [HikariProxyConnection@77124204 wrapping com.mysql.cj.jdbc.ConnectionImpl@e0508eb] will not be managed by Spring
-==>  Preparing: SELECT order_id,product_id,customer_id,merchant_id,product_name,quantity,unit_price,total_amount,image_url,status,order_time,ship_time,pickup_time,delivery_time,receive_time,review_time FROM orders WHERE (customer_id = ?) ORDER BY order_time DESC
-==> Parameters: 3(Integer)
-<==    Columns: order_id, product_id, customer_id, merchant_id, product_name, quantity, unit_price, total_amount, image_url, status, order_time, ship_time, pickup_time, delivery_time, receive_time, review_time
-<==        Row: 4, 3, 3, 1, 黑人牙膏, 10, 24.00, 240.00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/521ca6d7-a350-4751-a9a8-95cf55e9024a.jfif, 1, 2026-01-11 11:54:17, 2026-01-11 12:10:37, null, null, null, null
-<==        Row: 3, 3, 3, 1, 黑人牙膏, 10, 24.00, 240.00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/521ca6d7-a350-4751-a9a8-95cf55e9024a.jfif, 0, 2026-01-11 11:48:02, null, null, null, null, null
-<==        Row: 2, 1, 3, 1, PS5游戏手柄, 1, 399.00, 399.00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/4f797f73-6b3b-4a8d-956b-d592d00a7086.jpg, 5, 2026-01-11 11:46:41, null, null, null, 2026-01-11 11:52:11, null
-<==        Row: 1, 1, 3, 1, PS5游戏手柄, 1, 399.00, 399.00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/4f797f73-6b3b-4a8d-956b-d592d00a7086.jpg, 0, 2026-01-11 11:46:33, null, null, null, null, null
+<==    Columns: product_id, merchant_id, warehouse_id, product_name, description, available_quantity, price, is_published, publish_time, image_url
+<==        Row: 6, 1, 4, 徕芬高速吹风机, <<BLOB>>, 500, 979.00, 1, 2026-01-15 09:17:58, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/b7d00d4a-ab2f-42fa-9a82-0906423f64dc.jfif
+<==        Row: 3, 1, 3, 黑人牙膏, <<BLOB>>, 300, 24.00, 1, 2026-01-11 08:20:41, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/521ca6d7-a350-4751-a9a8-95cf55e9024a.jfif
+<==        Row: 2, 1, 2, Switch游戏机, <<BLOB>>, 100, 2099.00, 1, 2026-01-11 08:13:27, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/93a58a09-4d46-4acc-bf06-a9ea19f5b057.webp
+<==        Row: 1, 1, 8, PS5游戏手柄, <<BLOB>>, 50, 399.00, 1, 2026-01-11 08:12:53, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/4f797f73-6b3b-4a8d-956b-d592d00a7086.jpg
 <==      Total: 4
-Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@20339164]
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@64ab5101]
 Creating a new SqlSession
-SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3da16164] was not registered for synchronization because synchronization is not active
-JDBC Connection [HikariProxyConnection@328158479 wrapping com.mysql.cj.jdbc.ConnectionImpl@e0508eb] will not be managed by Spring
-==>  Preparing: SELECT order_id,product_id,customer_id,merchant_id,product_name,quantity,unit_price,total_amount,image_url,status,order_time,ship_time,pickup_time,delivery_time,receive_time,review_time FROM orders WHERE (customer_id = ? AND status = ?) ORDER BY order_time DESC
-==> Parameters: 3(Integer), 0(Integer)
-<==    Columns: order_id, product_id, customer_id, merchant_id, product_name, quantity, unit_price, total_amount, image_url, status, order_time, ship_time, pickup_time, delivery_time, receive_time, review_time
-<==        Row: 3, 3, 3, 1, 黑人牙膏, 10, 24.00, 240.00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/521ca6d7-a350-4751-a9a8-95cf55e9024a.jfif, 0, 2026-01-11 11:48:02, null, null, null, null, null
-<==        Row: 1, 1, 3, 1, PS5游戏手柄, 1, 399.00, 399.00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/4f797f73-6b3b-4a8d-956b-d592d00a7086.jpg, 0, 2026-01-11 11:46:33, null, null, null, null, null
-<==      Total: 2
-Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3da16164]
-Creating a new SqlSession
-SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7aba8eca] was not registered for synchronization because synchronization is not active
-JDBC Connection [HikariProxyConnection@1278018688 wrapping com.mysql.cj.jdbc.ConnectionImpl@e0508eb] will not be managed by Spring
-==>  Preparing: SELECT order_id,product_id,customer_id,merchant_id,product_name,quantity,unit_price,total_amount,image_url,status,order_time,ship_time,pickup_time,delivery_time,receive_time,review_time FROM orders WHERE (customer_id = ? AND status = ?) ORDER BY order_time DESC
-==> Parameters: 3(Integer), 2(Integer)
-<==      Total: 0
-Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7aba8eca]
-Creating a new SqlSession
-SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7c0ddc11] was not registered for synchronization because synchronization is not active
-JDBC Connection [HikariProxyConnection@300602390 wrapping com.mysql.cj.jdbc.ConnectionImpl@e0508eb] will not be managed by Spring
-==>  Preparing: SELECT order_id,product_id,customer_id,merchant_id,product_name,quantity,unit_price,total_amount,image_url,status,order_time,ship_time,pickup_time,delivery_time,receive_time,review_time FROM orders WHERE (customer_id = ? AND status = ?) ORDER BY order_time DESC
-==> Parameters: 3(Integer), 0(Integer)
-<==    Columns: order_id, product_id, customer_id, merchant_id, product_name, quantity, unit_price, total_amount, image_url, status, order_time, ship_time, pickup_time, delivery_time, receive_time, review_time
-<==        Row: 3, 3, 3, 1, 黑人牙膏, 10, 24.00, 240.00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/521ca6d7-a350-4751-a9a8-95cf55e9024a.jfif, 0, 2026-01-11 11:48:02, null, null, null, null, null
-<==        Row: 1, 1, 3, 1, PS5游戏手柄, 1, 399.00, 399.00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/4f797f73-6b3b-4a8d-956b-d592d00a7086.jpg, 0, 2026-01-11 11:46:33, null, null, null, null, null
-<==      Total: 2
-Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7c0ddc11]
-Creating a new SqlSession
-SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@187381ae] was not registered for synchronization because synchronization is not active
-JDBC Connection [HikariProxyConnection@1304316680 wrapping com.mysql.cj.jdbc.ConnectionImpl@e0508eb] will not be managed by Spring
-==>  Preparing: SELECT order_id,product_id,customer_id,merchant_id,product_name,quantity,unit_price,total_amount,image_url,status,order_time,ship_time,pickup_time,delivery_time,receive_time,review_time FROM orders WHERE (customer_id = ? AND status = ?) ORDER BY order_time DESC
-==> Parameters: 3(Integer), 2(Integer)
-<==      Total: 0
-Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@187381ae]
-Creating a new SqlSession
-SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@602450bb] was not registered for synchronization because synchronization is not active
-JDBC Connection [HikariProxyConnection@1000376827 wrapping com.mysql.cj.jdbc.ConnectionImpl@e0508eb] will not be managed by Spring
-==>  Preparing: SELECT order_id,product_id,customer_id,merchant_id,product_name,quantity,unit_price,total_amount,image_url,status,order_time,ship_time,pickup_time,delivery_time,receive_time,review_time FROM orders WHERE (customer_id = ? AND status = ?) ORDER BY order_time DESC
-==> Parameters: 3(Integer), 5(Integer)
-<==    Columns: order_id, product_id, customer_id, merchant_id, product_name, quantity, unit_price, total_amount, image_url, status, order_time, ship_time, pickup_time, delivery_time, receive_time, review_time
-<==        Row: 2, 1, 3, 1, PS5游戏手柄, 1, 399.00, 399.00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/4f797f73-6b3b-4a8d-956b-d592d00a7086.jpg, 5, 2026-01-11 11:46:41, null, null, null, 2026-01-11 11:52:11, null
+Registering transaction synchronization for SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2565adb8]
+JDBC Connection [HikariProxyConnection@1397980741 wrapping com.mysql.cj.jdbc.ConnectionImpl@5de63c2f] will be managed by Spring
+==>  Preparing: SELECT product_id,merchant_id,warehouse_id,product_name,description,available_quantity,price,is_published,publish_time,image_url FROM mall WHERE product_id=?
+==> Parameters: 6(Integer)
+<==    Columns: product_id, merchant_id, warehouse_id, product_name, description, available_quantity, price, is_published, publish_time, image_url
+<==        Row: 6, 1, 4, 徕芬高速吹风机, <<BLOB>>, 500, 979.00, 1, 2026-01-15 09:17:58, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/b7d00d4a-ab2f-42fa-9a82-0906423f64dc.jfif
 <==      Total: 1
-Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@602450bb]
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2565adb8]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2565adb8] from current transaction
+==>  Preparing: SELECT product_id,user_id,product_name,quantity,stock_in_date,image_url,is_published,warehouse_id FROM inventory WHERE (product_id = ?)
+==> Parameters: 6(Integer)
+<==    Columns: product_id, user_id, product_name, quantity, stock_in_date, image_url, is_published, warehouse_id
+<==        Row: 6, 1, 徕芬高速吹风机, 1000, 2026-01-15 00:00:00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/b7d00d4a-ab2f-42fa-9a82-0906423f64dc.jfif, 1, 4
+<==      Total: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2565adb8]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2565adb8] from current transaction
+==>  Preparing: INSERT INTO orders ( product_id, customer_id, merchant_id, product_name, quantity, unit_price, total_amount, image_url, status, order_time ) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )
+==> Parameters: 6(Integer), 3(Integer), 1(Integer), 徕芬高速吹风机(String), 1(Integer), 979.00(BigDecimal), 979.00(BigDecimal), https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/b7d00d4a-ab2f-42fa-9a82-0906423f64dc.jfif(String), 0(Integer), 2026-01-15T09:18:27.023196348(LocalDateTime)
+<==    Updates: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2565adb8]
+Transaction synchronization committing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2565adb8]
+Transaction synchronization deregistering SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2565adb8]
+Transaction synchronization closing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2565adb8]
 Creating a new SqlSession
-SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4c853b] was not registered for synchronization because synchronization is not active
-JDBC Connection [HikariProxyConnection@1428625839 wrapping com.mysql.cj.jdbc.ConnectionImpl@e0508eb] will not be managed by Spring
-==>  Preparing: SELECT order_id,product_id,customer_id,merchant_id,product_name,quantity,unit_price,total_amount,image_url,status,order_time,ship_time,pickup_time,delivery_time,receive_time,review_time FROM orders WHERE (customer_id = ?) ORDER BY order_time DESC
-==> Parameters: 3(Integer)
-<==    Columns: order_id, product_id, customer_id, merchant_id, product_name, quantity, unit_price, total_amount, image_url, status, order_time, ship_time, pickup_time, delivery_time, receive_time, review_time
-<==        Row: 4, 3, 3, 1, 黑人牙膏, 10, 24.00, 240.00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/521ca6d7-a350-4751-a9a8-95cf55e9024a.jfif, 1, 2026-01-11 11:54:17, 2026-01-11 12:10:37, null, null, null, null
-<==        Row: 3, 3, 3, 1, 黑人牙膏, 10, 24.00, 240.00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/521ca6d7-a350-4751-a9a8-95cf55e9024a.jfif, 0, 2026-01-11 11:48:02, null, null, null, null, null
-<==        Row: 2, 1, 3, 1, PS5游戏手柄, 1, 399.00, 399.00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/4f797f73-6b3b-4a8d-956b-d592d00a7086.jpg, 5, 2026-01-11 11:46:41, null, null, null, 2026-01-11 11:52:11, null
-<==        Row: 1, 1, 3, 1, PS5游戏手柄, 1, 399.00, 399.00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/4f797f73-6b3b-4a8d-956b-d592d00a7086.jpg, 0, 2026-01-11 11:46:33, null, null, null, null, null
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@18dadb72] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@914859746 wrapping com.mysql.cj.jdbc.ConnectionImpl@5de63c2f] will not be managed by Spring
+==>  Preparing: SELECT product_id,merchant_id,warehouse_id,product_name,description,available_quantity,price,is_published,publish_time,image_url FROM mall WHERE (is_published = ?) ORDER BY publish_time DESC
+==> Parameters: 1(Integer)
+<==    Columns: product_id, merchant_id, warehouse_id, product_name, description, available_quantity, price, is_published, publish_time, image_url
+<==        Row: 6, 1, 4, 徕芬高速吹风机, <<BLOB>>, 500, 979.00, 1, 2026-01-15 09:17:58, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/b7d00d4a-ab2f-42fa-9a82-0906423f64dc.jfif
+<==        Row: 3, 1, 3, 黑人牙膏, <<BLOB>>, 300, 24.00, 1, 2026-01-11 08:20:41, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/521ca6d7-a350-4751-a9a8-95cf55e9024a.jfif
+<==        Row: 2, 1, 2, Switch游戏机, <<BLOB>>, 100, 2099.00, 1, 2026-01-11 08:13:27, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/93a58a09-4d46-4acc-bf06-a9ea19f5b057.webp
+<==        Row: 1, 1, 8, PS5游戏手柄, <<BLOB>>, 50, 399.00, 1, 2026-01-11 08:12:53, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/4f797f73-6b3b-4a8d-956b-d592d00a7086.jpg
 <==      Total: 4
-Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4c853b]
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@18dadb72]
 Creating a new SqlSession
-SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6e2dc197] was not registered for synchronization because synchronization is not active
-JDBC Connection [HikariProxyConnection@759636857 wrapping com.mysql.cj.jdbc.ConnectionImpl@e0508eb] will not be managed by Spring
-==>  Preparing: SELECT order_id,product_id,customer_id,merchant_id,product_name,quantity,unit_price,total_amount,image_url,status,order_time,ship_time,pickup_time,delivery_time,receive_time,review_time FROM orders WHERE (customer_id = ? AND status = ?) ORDER BY order_time DESC
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3ad68c0a] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@1615108763 wrapping com.mysql.cj.jdbc.ConnectionImpl@5de63c2f] will not be managed by Spring
+==>  Preparing: SELECT order_id,product_id,customer_id,merchant_id,product_name,quantity,unit_price,total_amount,image_url,warehouse_id,status,order_time,ship_time,pickup_time,delivery_time,receive_time,review_time FROM orders WHERE (customer_id = ?) ORDER BY order_time DESC
+==> Parameters: 3(Integer)
+<==    Columns: order_id, product_id, customer_id, merchant_id, product_name, quantity, unit_price, total_amount, image_url, warehouse_id, status, order_time, ship_time, pickup_time, delivery_time, receive_time, review_time
+<==        Row: 5, 6, 3, 1, 徕芬高速吹风机, 1, 979.00, 979.00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/b7d00d4a-ab2f-42fa-9a82-0906423f64dc.jfif, 1, 0, 2026-01-15 09:18:27, null, null, null, null, null
+<==        Row: 4, 3, 3, 1, 黑人牙膏, 10, 24.00, 240.00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/521ca6d7-a350-4751-a9a8-95cf55e9024a.jfif, 3, 1, 2026-01-11 11:54:17, 2026-01-11 12:10:37, null, null, null, null
+<==        Row: 3, 3, 3, 1, 黑人牙膏, 10, 24.00, 240.00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/521ca6d7-a350-4751-a9a8-95cf55e9024a.jfif, 3, 0, 2026-01-11 11:48:02, null, null, null, null, null
+<==        Row: 2, 1, 3, 1, PS5游戏手柄, 1, 399.00, 399.00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/4f797f73-6b3b-4a8d-956b-d592d00a7086.jpg, 9, 5, 2026-01-11 11:46:41, null, null, null, 2026-01-11 11:52:11, null
+<==        Row: 1, 1, 3, 1, PS5游戏手柄, 1, 399.00, 399.00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/4f797f73-6b3b-4a8d-956b-d592d00a7086.jpg, 2, 0, 2026-01-11 11:46:33, null, null, null, null, null
+<==      Total: 5
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3ad68c0a]
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6b5815ec] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@1380671282 wrapping com.mysql.cj.jdbc.ConnectionImpl@5de63c2f] will not be managed by Spring
+==>  Preparing: SELECT order_id,product_id,customer_id,merchant_id,product_name,quantity,unit_price,total_amount,image_url,warehouse_id,status,order_time,ship_time,pickup_time,delivery_time,receive_time,review_time FROM orders WHERE (merchant_id = ?) ORDER BY order_time DESC
+==> Parameters: 1(Integer)
+<==    Columns: order_id, product_id, customer_id, merchant_id, product_name, quantity, unit_price, total_amount, image_url, warehouse_id, status, order_time, ship_time, pickup_time, delivery_time, receive_time, review_time
+<==        Row: 5, 6, 3, 1, 徕芬高速吹风机, 1, 979.00, 979.00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/b7d00d4a-ab2f-42fa-9a82-0906423f64dc.jfif, 1, 0, 2026-01-15 09:18:27, null, null, null, null, null
+<==        Row: 4, 3, 3, 1, 黑人牙膏, 10, 24.00, 240.00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/521ca6d7-a350-4751-a9a8-95cf55e9024a.jfif, 3, 1, 2026-01-11 11:54:17, 2026-01-11 12:10:37, null, null, null, null
+<==        Row: 3, 3, 3, 1, 黑人牙膏, 10, 24.00, 240.00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/521ca6d7-a350-4751-a9a8-95cf55e9024a.jfif, 3, 0, 2026-01-11 11:48:02, null, null, null, null, null
+<==        Row: 2, 1, 3, 1, PS5游戏手柄, 1, 399.00, 399.00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/4f797f73-6b3b-4a8d-956b-d592d00a7086.jpg, 9, 5, 2026-01-11 11:46:41, null, null, null, 2026-01-11 11:52:11, null
+<==        Row: 1, 1, 3, 1, PS5游戏手柄, 1, 399.00, 399.00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/4f797f73-6b3b-4a8d-956b-d592d00a7086.jpg, 2, 0, 2026-01-11 11:46:33, null, null, null, null, null
+<==      Total: 5
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6b5815ec]
+Creating a new SqlSession
+Registering transaction synchronization for SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@66d0ab3]
+JDBC Connection [HikariProxyConnection@81911670 wrapping com.mysql.cj.jdbc.ConnectionImpl@5de63c2f] will be managed by Spring
+==>  Preparing: SELECT order_id,product_id,customer_id,merchant_id,product_name,quantity,unit_price,total_amount,image_url,warehouse_id,status,order_time,ship_time,pickup_time,delivery_time,receive_time,review_time FROM orders WHERE order_id=?
+==> Parameters: 5(Integer)
+<==    Columns: order_id, product_id, customer_id, merchant_id, product_name, quantity, unit_price, total_amount, image_url, warehouse_id, status, order_time, ship_time, pickup_time, delivery_time, receive_time, review_time
+<==        Row: 5, 6, 3, 1, 徕芬高速吹风机, 1, 979.00, 979.00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/b7d00d4a-ab2f-42fa-9a82-0906423f64dc.jfif, 1, 0, 2026-01-15 09:18:27, null, null, null, null, null
+<==      Total: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@66d0ab3]
+Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@66d0ab3] from current transaction
+==>  Preparing: UPDATE orders SET product_id=?, customer_id=?, merchant_id=?, product_name=?, quantity=?, unit_price=?, total_amount=?, image_url=?, warehouse_id=?, status=?, order_time=?, ship_time=? WHERE order_id=?
+==> Parameters: 6(Integer), 3(Integer), 1(Integer), 徕芬高速吹风机(String), 1(Integer), 979.00(BigDecimal), 979.00(BigDecimal), https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/b7d00d4a-ab2f-42fa-9a82-0906423f64dc.jfif(String), 1(Integer), 1(Integer), 2026-01-15T09:18:27(LocalDateTime), 2026-01-15T09:18:39.578476021(LocalDateTime), 5(Integer)
+<==    Updates: 1
+Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@66d0ab3]
+Transaction synchronization committing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@66d0ab3]
+Transaction synchronization deregistering SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@66d0ab3]
+Transaction synchronization closing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@66d0ab3]
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@36b5636d] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@625509679 wrapping com.mysql.cj.jdbc.ConnectionImpl@5de63c2f] will not be managed by Spring
+==>  Preparing: SELECT order_id,product_id,customer_id,merchant_id,product_name,quantity,unit_price,total_amount,image_url,warehouse_id,status,order_time,ship_time,pickup_time,delivery_time,receive_time,review_time FROM orders WHERE (merchant_id = ?) ORDER BY order_time DESC
+==> Parameters: 1(Integer)
+<==    Columns: order_id, product_id, customer_id, merchant_id, product_name, quantity, unit_price, total_amount, image_url, warehouse_id, status, order_time, ship_time, pickup_time, delivery_time, receive_time, review_time
+<==        Row: 5, 6, 3, 1, 徕芬高速吹风机, 1, 979.00, 979.00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/b7d00d4a-ab2f-42fa-9a82-0906423f64dc.jfif, 1, 1, 2026-01-15 09:18:27, 2026-01-15 09:18:40, null, null, null, null
+<==        Row: 4, 3, 3, 1, 黑人牙膏, 10, 24.00, 240.00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/521ca6d7-a350-4751-a9a8-95cf55e9024a.jfif, 3, 1, 2026-01-11 11:54:17, 2026-01-11 12:10:37, null, null, null, null
+<==        Row: 3, 3, 3, 1, 黑人牙膏, 10, 24.00, 240.00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/521ca6d7-a350-4751-a9a8-95cf55e9024a.jfif, 3, 0, 2026-01-11 11:48:02, null, null, null, null, null
+<==        Row: 2, 1, 3, 1, PS5游戏手柄, 1, 399.00, 399.00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/4f797f73-6b3b-4a8d-956b-d592d00a7086.jpg, 9, 5, 2026-01-11 11:46:41, null, null, null, 2026-01-11 11:52:11, null
+<==        Row: 1, 1, 3, 1, PS5游戏手柄, 1, 399.00, 399.00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/4f797f73-6b3b-4a8d-956b-d592d00a7086.jpg, 2, 0, 2026-01-11 11:46:33, null, null, null, null, null
+<==      Total: 5
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@36b5636d]
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@605e3c2d] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@86960886 wrapping com.mysql.cj.jdbc.ConnectionImpl@5de63c2f] will not be managed by Spring
+==>  Preparing: SELECT order_id,product_id,customer_id,merchant_id,product_name,quantity,unit_price,total_amount,image_url,warehouse_id,status,order_time,ship_time,pickup_time,delivery_time,receive_time,review_time FROM orders WHERE (merchant_id = ? AND status = ?) ORDER BY order_time DESC
+==> Parameters: 1(Integer), 1(Integer)
+<==    Columns: order_id, product_id, customer_id, merchant_id, product_name, quantity, unit_price, total_amount, image_url, warehouse_id, status, order_time, ship_time, pickup_time, delivery_time, receive_time, review_time
+<==        Row: 5, 6, 3, 1, 徕芬高速吹风机, 1, 979.00, 979.00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/b7d00d4a-ab2f-42fa-9a82-0906423f64dc.jfif, 1, 1, 2026-01-15 09:18:27, 2026-01-15 09:18:40, null, null, null, null
+<==        Row: 4, 3, 3, 1, 黑人牙膏, 10, 24.00, 240.00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/521ca6d7-a350-4751-a9a8-95cf55e9024a.jfif, 3, 1, 2026-01-11 11:54:17, 2026-01-11 12:10:37, null, null, null, null
+<==      Total: 2
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@605e3c2d]
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1c261107] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@1752421855 wrapping com.mysql.cj.jdbc.ConnectionImpl@5de63c2f] will not be managed by Spring
+==>  Preparing: SELECT order_id,product_id,customer_id,merchant_id,product_name,quantity,unit_price,total_amount,image_url,warehouse_id,status,order_time,ship_time,pickup_time,delivery_time,receive_time,review_time FROM orders WHERE (customer_id = ? AND status = ?) ORDER BY order_time DESC
+==> Parameters: 3(Integer), 0(Integer)
+<==    Columns: order_id, product_id, customer_id, merchant_id, product_name, quantity, unit_price, total_amount, image_url, warehouse_id, status, order_time, ship_time, pickup_time, delivery_time, receive_time, review_time
+<==        Row: 3, 3, 3, 1, 黑人牙膏, 10, 24.00, 240.00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/521ca6d7-a350-4751-a9a8-95cf55e9024a.jfif, 3, 0, 2026-01-11 11:48:02, null, null, null, null, null
+<==        Row: 1, 1, 3, 1, PS5游戏手柄, 1, 399.00, 399.00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/4f797f73-6b3b-4a8d-956b-d592d00a7086.jpg, 2, 0, 2026-01-11 11:46:33, null, null, null, null, null
+<==      Total: 2
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1c261107]
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@46beb53d] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@402861032 wrapping com.mysql.cj.jdbc.ConnectionImpl@5de63c2f] will not be managed by Spring
+==>  Preparing: SELECT order_id,product_id,customer_id,merchant_id,product_name,quantity,unit_price,total_amount,image_url,warehouse_id,status,order_time,ship_time,pickup_time,delivery_time,receive_time,review_time FROM orders WHERE (customer_id = ? AND status = ?) ORDER BY order_time DESC
 ==> Parameters: 3(Integer), 2(Integer)
 <==      Total: 0
-Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6e2dc197]
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@46beb53d]
 Creating a new SqlSession
-SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2e22f142] was not registered for synchronization because synchronization is not active
-JDBC Connection [HikariProxyConnection@699805196 wrapping com.mysql.cj.jdbc.ConnectionImpl@e0508eb] will not be managed by Spring
-==>  Preparing: SELECT product_id,product_name,description,available_quantity,price,is_published,publish_time,image_url FROM mall WHERE (is_published = ?) ORDER BY publish_time DESC
-==> Parameters: 1(Integer)
-<==    Columns: product_id, product_name, description, available_quantity, price, is_published, publish_time, image_url
-<==        Row: 3, 黑人牙膏, <<BLOB>>, 300, 24.00, 1, 2026-01-11 08:20:41, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/521ca6d7-a350-4751-a9a8-95cf55e9024a.jfif
-<==        Row: 2, Switch游戏机, <<BLOB>>, 100, 2099.00, 1, 2026-01-11 08:13:27, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/93a58a09-4d46-4acc-bf06-a9ea19f5b057.webp
-<==        Row: 1, PS5游戏手柄, <<BLOB>>, 50, 399.00, 1, 2026-01-11 08:12:53, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/4f797f73-6b3b-4a8d-956b-d592d00a7086.jpg
-<==      Total: 3
-Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2e22f142]
-2026-01-11T12:12:00.896Z  INFO 61446 --- [ecommerce-logistics] [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2026-01-11T12:12:00.901Z  INFO 61446 --- [ecommerce-logistics] [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
-[[1;34mINFO[m] [1;32mBUILD SUCCESS[m
-[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
-[[1;34mINFO[m] Total time:  01:58 min
-[[1;34mINFO[m] Finished at: 2026-01-11T12:12:00Z
-[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@15670cea] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@987651177 wrapping com.mysql.cj.jdbc.ConnectionImpl@5de63c2f] will not be managed by Spring
+==>  Preparing: SELECT order_id,product_id,customer_id,merchant_id,product_name,quantity,unit_price,total_amount,image_url,warehouse_id,status,order_time,ship_time,pickup_time,delivery_time,receive_time,review_time FROM orders WHERE (customer_id = ? AND status = ?) ORDER BY order_time DESC
+==> Parameters: 3(Integer), 0(Integer)
+<==    Columns: order_id, product_id, customer_id, merchant_id, product_name, quantity, unit_price, total_amount, image_url, warehouse_id, status, order_time, ship_time, pickup_time, delivery_time, receive_time, review_time
+<==        Row: 3, 3, 3, 1, 黑人牙膏, 10, 24.00, 240.00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/521ca6d7-a350-4751-a9a8-95cf55e9024a.jfif, 3, 0, 2026-01-11 11:48:02, null, null, null, null, null
+<==        Row: 1, 1, 3, 1, PS5游戏手柄, 1, 399.00, 399.00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/4f797f73-6b3b-4a8d-956b-d592d00a7086.jpg, 2, 0, 2026-01-11 11:46:33, null, null, null, null, null
+<==      Total: 2
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@15670cea]
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@22b13505] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@1001735162 wrapping com.mysql.cj.jdbc.ConnectionImpl@5de63c2f] will not be managed by Spring
+==>  Preparing: SELECT order_id,product_id,customer_id,merchant_id,product_name,quantity,unit_price,total_amount,image_url,warehouse_id,status,order_time,ship_time,pickup_time,delivery_time,receive_time,review_time FROM orders WHERE (customer_id = ?) ORDER BY order_time DESC
+==> Parameters: 3(Integer)
+<==    Columns: order_id, product_id, customer_id, merchant_id, product_name, quantity, unit_price, total_amount, image_url, warehouse_id, status, order_time, ship_time, pickup_time, delivery_time, receive_time, review_time
+<==        Row: 5, 6, 3, 1, 徕芬高速吹风机, 1, 979.00, 979.00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/b7d00d4a-ab2f-42fa-9a82-0906423f64dc.jfif, 1, 1, 2026-01-15 09:18:27, 2026-01-15 09:18:40, null, null, null, null
+<==        Row: 4, 3, 3, 1, 黑人牙膏, 10, 24.00, 240.00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/521ca6d7-a350-4751-a9a8-95cf55e9024a.jfif, 3, 1, 2026-01-11 11:54:17, 2026-01-11 12:10:37, null, null, null, null
+<==        Row: 3, 3, 3, 1, 黑人牙膏, 10, 24.00, 240.00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/521ca6d7-a350-4751-a9a8-95cf55e9024a.jfif, 3, 0, 2026-01-11 11:48:02, null, null, null, null, null
+<==        Row: 2, 1, 3, 1, PS5游戏手柄, 1, 399.00, 399.00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/4f797f73-6b3b-4a8d-956b-d592d00a7086.jpg, 9, 5, 2026-01-11 11:46:41, null, null, null, 2026-01-11 11:52:11, null
+<==        Row: 1, 1, 3, 1, PS5游戏手柄, 1, 399.00, 399.00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/4f797f73-6b3b-4a8d-956b-d592d00a7086.jpg, 2, 0, 2026-01-11 11:46:33, null, null, null, null, null
+<==      Total: 5
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@22b13505]
+收到登录请求: username=刘天赐, role=driver
+开始查询用户: username=刘天赐, role=driver
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5c8dab] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@199728116 wrapping com.mysql.cj.jdbc.ConnectionImpl@5de63c2f] will not be managed by Spring
+==>  Preparing: SELECT id,username,password,role FROM users WHERE (username = ? AND role = ?)
+==> Parameters: 刘天赐(String), driver(String)
+<==    Columns: id, username, password, role
+<==        Row: 2, 刘天赐, 123, driver
+<==      Total: 1
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5c8dab]
+查询结果: User(id=2, username=刘天赐, password=123, role=driver)
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@21580733] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@953551387 wrapping com.mysql.cj.jdbc.ConnectionImpl@5de63c2f] will not be managed by Spring
+==>  Preparing: SELECT id,name,city,address,longitude,latitude FROM warehouse
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@48ce69d6] was not registered for synchronization because synchronization is not active
+==> Parameters: 
+JDBC Connection [HikariProxyConnection@580584746 wrapping com.mysql.cj.jdbc.ConnectionImpl@9b51b12] will not be managed by Spring
+==>  Preparing: SELECT o.*, w.name AS warehouseName FROM orders o LEFT JOIN warehouse w ON o.warehouse_id = w.id WHERE o.status = 1 ORDER BY o.ship_time DESC
+==> Parameters: 
+<==    Columns: id, name, city, address, longitude, latitude
+<==        Row: 1, 华北一号仓, 北京, 北京市大兴区亦庄开发区, 116.527834, 39.793421
+<==        Row: 2, 华东中心仓, 上海, 上海市嘉定区江桥镇物流园, 121.329876, 31.302547
+<==        Row: 3, 华南智能仓, 广州, 广州市白云区太和镇物流基地, 113.298765, 23.256432
+<==        Row: 4, 西南枢纽仓, 成都, 成都市双流区航空港物流园, 104.023456, 30.567891
+<==        Row: 5, 华中分拨仓, 武汉, 武汉市东西湖区保税物流园, 114.134567, 30.678912
+<==        Row: 6, 华东电商仓, 杭州, 杭州市余杭区仁和街道菜鸟仓, 120.187654, 30.432109
+<==        Row: 7, 华南冷链仓, 深圳, 深圳市龙岗区平湖物流基地, 114.123456, 22.678901
+<==        Row: 8, 西北区域仓, 西安, 西安市未央区草滩物流园, 108.923456, 34.345678
+<==        Row: 9, 东北转运仓, 沈阳, 沈阳市于洪区沙岭物流园, 123.345678, 41.789012
+<==        Row: 10, 华东前置仓, 苏州, 苏州市相城区澄阳路电商园, 120.654321, 31.398765
+<==      Total: 10
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@21580733]
+<==    Columns: order_id, product_id, customer_id, merchant_id, product_name, quantity, unit_price, total_amount, image_url, status, order_time, ship_time, pickup_time, delivery_time, receive_time, review_time, warehouse_id, warehouseName
+<==        Row: 5, 6, 3, 1, 徕芬高速吹风机, 1, 979.00, 979.00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/b7d00d4a-ab2f-42fa-9a82-0906423f64dc.jfif, 1, 2026-01-15 09:18:27, 2026-01-15 09:18:40, null, null, null, null, 1, 华北一号仓
+<==        Row: 4, 3, 3, 1, 黑人牙膏, 10, 24.00, 240.00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/521ca6d7-a350-4751-a9a8-95cf55e9024a.jfif, 1, 2026-01-11 11:54:17, 2026-01-11 12:10:37, null, null, null, null, 3, 华南智能仓
+<==      Total: 2
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@48ce69d6]
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@363bb649] was not registered for synchronization because synchronization is not active
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@73ab1099] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@1416401713 wrapping com.mysql.cj.jdbc.ConnectionImpl@5de63c2f] will not be managed by Spring
+==>  Preparing: SELECT id,name,city,address,longitude,latitude FROM warehouse
+==> Parameters: 
+JDBC Connection [HikariProxyConnection@678133797 wrapping com.mysql.cj.jdbc.ConnectionImpl@9b51b12] will not be managed by Spring
+==>  Preparing: SELECT o.*, w.name AS warehouseName FROM orders o LEFT JOIN warehouse w ON o.warehouse_id = w.id WHERE o.status = 1 ORDER BY o.ship_time DESC
+==> Parameters: 
+<==    Columns: id, name, city, address, longitude, latitude
+<==        Row: 1, 华北一号仓, 北京, 北京市大兴区亦庄开发区, 116.527834, 39.793421
+<==        Row: 2, 华东中心仓, 上海, 上海市嘉定区江桥镇物流园, 121.329876, 31.302547
+<==        Row: 3, 华南智能仓, 广州, 广州市白云区太和镇物流基地, 113.298765, 23.256432
+<==        Row: 4, 西南枢纽仓, 成都, 成都市双流区航空港物流园, 104.023456, 30.567891
+<==        Row: 5, 华中分拨仓, 武汉, 武汉市东西湖区保税物流园, 114.134567, 30.678912
+<==        Row: 6, 华东电商仓, 杭州, 杭州市余杭区仁和街道菜鸟仓, 120.187654, 30.432109
+<==        Row: 7, 华南冷链仓, 深圳, 深圳市龙岗区平湖物流基地, 114.123456, 22.678901
+<==        Row: 8, 西北区域仓, 西安, 西安市未央区草滩物流园, 108.923456, 34.345678
+<==        Row: 9, 东北转运仓, 沈阳, 沈阳市于洪区沙岭物流园, 123.345678, 41.789012
+<==        Row: 10, 华东前置仓, 苏州, 苏州市相城区澄阳路电商园, 120.654321, 31.398765
+<==      Total: 10
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@363bb649]
+<==    Columns: order_id, product_id, customer_id, merchant_id, product_name, quantity, unit_price, total_amount, image_url, status, order_time, ship_time, pickup_time, delivery_time, receive_time, review_time, warehouse_id, warehouseName
+<==        Row: 5, 6, 3, 1, 徕芬高速吹风机, 1, 979.00, 979.00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/b7d00d4a-ab2f-42fa-9a82-0906423f64dc.jfif, 1, 2026-01-15 09:18:27, 2026-01-15 09:18:40, null, null, null, null, 1, 华北一号仓
+<==        Row: 4, 3, 3, 1, 黑人牙膏, 10, 24.00, 240.00, https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev/goods_image/521ca6d7-a350-4751-a9a8-95cf55e9024a.jfif, 1, 2026-01-11 11:54:17, 2026-01-11 12:10:37, null, null, null, null, 3, 华南智能仓
+<==      Total: 2
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@73ab1099]

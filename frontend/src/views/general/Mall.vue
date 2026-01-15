@@ -75,7 +75,7 @@ const router = useRouter()
 
 // 获取用户角色
 const userRole = computed(() => {
-    const userInfo = localStorage.getItem('userInfo')
+    const userInfo = sessionStorage.getItem('userInfo')
     if (userInfo) {
         return JSON.parse(userInfo).role
     }
@@ -186,7 +186,7 @@ const validateQuantity = (product) => {
 const placeOrder = async (product) => {
     try {
         // 获取当前用户信息
-        const userInfo = localStorage.getItem('userInfo')
+        const userInfo = sessionStorage.getItem('userInfo')
         if (!userInfo) {
             alert('请先登录')
             router.push('/login')

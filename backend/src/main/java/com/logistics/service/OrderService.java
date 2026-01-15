@@ -49,4 +49,18 @@ public interface OrderService {
      * @param merchantId 商户ID
      */
     void shipOrder(Integer orderId, Integer merchantId);
+    
+    /**
+     * 配送员确认揽收
+     * @param orderId 订单ID
+     */
+    void confirmPickup(Integer orderId);
+    
+    /**
+     * 获取配送员的待揽收订单列表
+     * @param warehouseId 仓库ID（可选）
+     * @param search 搜索关键词（可选）
+     * @return 订单列表
+     */
+    List<Order> getPendingPickupOrders(Integer warehouseId, String search);
 }

@@ -28,4 +28,9 @@ public class Inventory {
     private String imageUrl;
     
     private Integer isPublished; // 0-未上架, 1-已上架
+    
+    private Integer warehouseId; // 所属仓库ID
+    
+    @com.baomidou.mybatisplus.annotation.TableField(exist = false)
+    private String warehouseName; // 仓库名称（非数据库字段）
 }

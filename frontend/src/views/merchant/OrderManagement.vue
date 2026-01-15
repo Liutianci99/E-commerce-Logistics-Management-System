@@ -94,7 +94,7 @@ const orders = ref([])
 const getOrders = async () => {
     try {
         // 获取当前用户信息
-        const userInfo = localStorage.getItem('userInfo')
+        const userInfo = sessionStorage.getItem('userInfo')
         if (!userInfo) {
             alert('请先登录')
             return
@@ -145,7 +145,7 @@ const shipOrder = async (orderId) => {
     
     try {
         // 获取当前用户信息
-        const userInfo = localStorage.getItem('userInfo')
+        const userInfo = sessionStorage.getItem('userInfo')
         if (!userInfo) {
             alert('请先登录')
             return

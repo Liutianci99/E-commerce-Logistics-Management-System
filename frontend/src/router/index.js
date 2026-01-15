@@ -19,6 +19,7 @@ import MerchantLogisticsQuery from '../views/merchant/LogisticsQuery.vue'
 import Mall from '../views/general/Mall.vue'
 import MyOrders from '../views/consumer/MyOrders.vue'
 import ConsumerLogisticsQuery from '../views/consumer/LogisticsQuery.vue'
+import AddressManagement from '../views/consumer/AddressManagement.vue'
 
 // Driver
 import PendingPickup from '../views/delivery/PendingPickup.vue'
@@ -89,6 +90,10 @@ const router = createRouter({
         {
           path: '/consumer/logistics-query',
           component: ConsumerLogisticsQuery
+        },
+        {
+          path: '/consumer/address-management',
+          component: AddressManagement
         },
         // Driver routes
         {
