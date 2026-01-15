@@ -1,22 +1,12 @@
 <template>
     <div class="page-container">
-        <!-- 搜索筛选栏 -->
+        <!-- 筛选栏 -->
         <div class="filter-bar">
-            <div class="search-box">
-                <input 
-                    type="text" 
-                    v-model="searchKeyword" 
-                    placeholder="搜索商品名称..."
-                    class="search-input"
-                    @keyup.enter="handleSearch"
-                />
-                <button @click="handleSearch" class="search-btn">搜索</button>
-            </div>
-            
             <div class="warehouse-filter">
                 <label>仓库筛选：</label>
                 <select v-model="selectedWarehouse" @change="handleWarehouseChange" class="warehouse-select">
                     <option value="">全部仓库</option>
+                    <option v-if="currentUserWarehouseId" :value="currentUserWarehouseId">所属仓库</option>
                     <option v-for="warehouse in warehouses" :key="warehouse.id" :value="warehouse.id">
                         {{ warehouse.name }} - {{ warehouse.city }}
                     </option>
@@ -64,11 +54,21 @@ import { ref, onMounted } from 'vue'
 import request from '@/utils/request'
 
 // 状态数据
-const searchKeyword = ref('')
-const activeSearchKeyword = ref('')
 const selectedWarehouse = ref('')
 const warehouses = ref([])
 const orders = ref([])
+const currentUserWarehouseId = ref(null)
+
+// 获取当前用户的仓库ID
+const getCurrentUserWarehouse = () => {
+    const userInfoStr = sessionStorage.getItem('userInfo')
+    if (userInfoStr) {
+        const userInfo = JSON.parse(userInfoStr)
+        if (userInfo.role === 'driver' && userInfo.warehouseId) {
+            currentUserWarehouseId.value = userInfo.warehouseId
+        }
+    }
+}
 
 // 获取仓库列表
 const fetchWarehouses = async () => {
@@ -92,9 +92,6 @@ const getOrders = async () => {
         if (selectedWarehouse.value) {
             params.warehouseId = selectedWarehouse.value
         }
-        if (activeSearchKeyword.value) {
-            params.search = activeSearchKeyword.value
-        }
         
         const res = await request.get('/orders/pending-pickup', { params })
         if (res.success) {
@@ -110,12 +107,6 @@ const getOrders = async () => {
 
 // 仓库筛选变化
 const handleWarehouseChange = () => {
-    getOrders()
-}
-
-// 搜索
-const handleSearch = () => {
-    activeSearchKeyword.value = searchKeyword.value
     getOrders()
 }
 
@@ -148,6 +139,7 @@ const formatTime = (time) => {
 
 // 页面加载时获取数据
 onMounted(() => {
+    getCurrentUserWarehouse()
     fetchWarehouses()
     getOrders()
 })
@@ -158,7 +150,7 @@ onMounted(() => {
     width: 100%;
 }
 
-/* 搜索筛选栏样式 */
+/* 筛选栏样式 */
 .filter-bar {
     background: #ffffff;
     border: 1px solid #e5e7eb;
@@ -169,45 +161,6 @@ onMounted(() => {
     display: flex;
     gap: 20px;
     align-items: center;
-}
-
-.search-box {
-    display: flex;
-    gap: 12px;
-    flex: 1;
-}
-
-.search-input {
-    flex: 1;
-    max-width: 400px;
-    padding: 10px 16px;
-    border: 1px solid #d1d5db;
-    border-radius: 6px;
-    font-size: 14px;
-    color: #374151;
-    transition: border-color 0.2s;
-}
-
-.search-input:focus {
-    outline: none;
-    border-color: #3b82f6;
-}
-
-.search-btn {
-    padding: 10px 24px;
-    background: #ffffff;
-    color: #374151;
-    border: 1px solid #d1d5db;
-    border-radius: 6px;
-    font-size: 14px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.2s;
-}
-
-.search-btn:hover {
-    background: #f9fafb;
-    border-color: #9ca3af;
 }
 
 .warehouse-filter {

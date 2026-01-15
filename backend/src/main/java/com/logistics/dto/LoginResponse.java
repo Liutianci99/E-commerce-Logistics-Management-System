@@ -17,5 +17,7 @@ public class LoginResponse {
         private String username;
         private String role;
         private String token;
+        private Integer warehouseId;
+        private String warehouseName;
     }
 }

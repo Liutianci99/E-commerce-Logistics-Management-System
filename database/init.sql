@@ -107,4 +107,17 @@ INSERT INTO `warehouse` (`name`, `city`, `address`, `longitude`, `latitude`) VAL
 ('东北转运仓', '沈阳', '沈阳市于洪区沙岭物流园', 123.345678, 41.789012),
 ('华东前置仓', '苏州', '苏州市相城区澄阳路电商园', 120.654321, 31.398765);
 
+-- 创建配送员表
+CREATE TABLE IF NOT EXISTS `delivery_personnel` (
+  `id` INT PRIMARY KEY AUTO_INCREMENT COMMENT '配送员ID',
+  `user_id` INT NOT NULL COMMENT '用户ID',
+  `warehouse_id` INT NOT NULL COMMENT '所属仓库ID',
+  FOREIGN KEY (`user_id`) REFERENCES `users`(`id`),
+  FOREIGN KEY (`warehouse_id`) REFERENCES `warehouse`(`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='配送员表';
+
+-- 插入配送员数据（将现有的driver角色用户关联到仓库）
+INSERT INTO `delivery_personnel` (`user_id`, `warehouse_id`) 
+SELECT u.id, 1 FROM `users` u WHERE u.role = 'driver';
+
 

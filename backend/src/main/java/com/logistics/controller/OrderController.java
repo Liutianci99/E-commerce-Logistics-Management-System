@@ -124,6 +124,35 @@ public class OrderController {
     }
     
     /**
+     * 查询配送员的待送货订单列表
+     * 状态=2（已揽收）的订单
+     */
+    @GetMapping("/pending-delivery")
+    public Result<List<Order>> getPendingDeliveryOrders(
+            @RequestParam(required = false) Integer warehouseId) {
+        try {
+            List<Order> orders = orderService.getPendingDeliveryOrders(warehouseId);
+            return Result.success("查询成功", orders);
+        } catch (Exception e) {
+            return Result.error(e.getMessage());
+        }
+    }
+    
+    /**
+     * 创建送货批次
+     * 将选中的订单（最多5个）状态更新为运输中(3)
+     */
+    @PostMapping("/delivery-batch")
+    public Result<Void> createDeliveryBatch(@RequestBody List<Integer> orderIds) {
+        try {
+            orderService.createDeliveryBatch(orderIds);
+            return Result.success("创建送货批次成功", null);
+        } catch (Exception e) {
+            return Result.error(e.getMessage());
+        }
+    }
+    
+    /**
      * 创建订单（下单）
      * TODO: 需要实现用户认证机制，目前临时使用请求参数传递用户ID
      */

@@ -207,4 +207,39 @@ public class OrderServiceImpl implements OrderService {
         order.setPickupTime(LocalDateTime.now());
         orderMapper.updateById(order);
     }
+    
+    @Override
+    public List<Order> getPendingDeliveryOrders(Integer warehouseId) {
+        return orderMapper.selectPendingDeliveryOrders(warehouseId);
+    }
+    
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public void createDeliveryBatch(List<Integer> orderIds) {
+        if (orderIds == null || orderIds.isEmpty()) {
+            throw new RuntimeException("订单列表不能为空");
+        }
+        
+        if (orderIds.size() > 5) {
+            throw new RuntimeException("每个批次最多只能选择5个订单");
+        }
+        
+        // 批量更新订单状态
+        for (Integer orderId : orderIds) {
+            Order order = orderMapper.selectById(orderId);
+            if (order == null) {
+                throw new RuntimeException("订单不存在: " + orderId);
+            }
+            
+            // 验证订单状态（只有已揽收状态才能开始配送）
+            if (order.getStatus() != 2) {
+                throw new RuntimeException("订单状态不正确，无法配送: " + orderId);
+            }
+            
+            // 更新订单状态为运输中(3)
+            order.setStatus(3);
+            order.setDeliveryTime(LocalDateTime.now());
+            orderMapper.updateById(order);
+        }
+    }
 }

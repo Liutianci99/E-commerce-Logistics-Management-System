@@ -32,4 +32,19 @@ public interface OrderMapper extends BaseMapper<Order> {
             "</script>")
     List<Order> selectPendingPickupOrders(@Param("warehouseId") Integer warehouseId, 
                                           @Param("search") String search);
+    
+    /**
+     * 查询待送货订单列表（状态=2），支持仓库筛选
+     */
+    @Select("<script>" +
+            "SELECT o.*, w.name AS warehouseName " +
+            "FROM orders o " +
+            "LEFT JOIN warehouse w ON o.warehouse_id = w.id " +
+            "WHERE o.status = 2 " +
+            "<if test='warehouseId != null'>" +
+            "  AND o.warehouse_id = #{warehouseId} " +
+            "</if>" +
+            "ORDER BY o.pickup_time DESC" +
+            "</script>")
+    List<Order> selectPendingDeliveryOrders(@Param("warehouseId") Integer warehouseId);
 }

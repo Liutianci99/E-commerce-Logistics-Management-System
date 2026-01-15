@@ -44,6 +44,9 @@
                 <div class="header-right">
                     <div class="user-info">
                         <span>用户：{{ getUserName() }}（{{ getRoleLabel(currentUser.role) }}）</span>
+                        <span v-if="currentUser.role === 'driver' && currentUser.warehouseName" class="warehouse-info">
+                            &nbsp;&nbsp;所属仓库：{{ currentUser.warehouseName }}
+                        </span>
                     </div>
                     <button class="logout-btn" @click="logout">退出登录</button>
                 </div>
@@ -71,7 +74,9 @@ const isCollapsed = ref(false)
 const currentUser = ref({
     id: '',
     username: '',
-    role: 'merchant' // 'merchant' | 'driver' | 'consumer' | 'admin'
+    role: 'merchant', // 'merchant' | 'driver' | 'consumer' | 'admin'
+    warehouseId: null,
+    warehouseName: ''
 })
 
 // 当前选中的菜单项
@@ -483,6 +488,13 @@ const toggleSidebar = () => {
 .user-info {
     font-size: 14px;
     color: #6b7280;
+    display: flex;
+    align-items: center;
+}
+
+.warehouse-info {
+    color: #6b7280;
+    font-weight: normal;
 }
 
 .logout-btn {

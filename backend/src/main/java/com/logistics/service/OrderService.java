@@ -63,4 +63,17 @@ public interface OrderService {
      * @return 订单列表
      */
     List<Order> getPendingPickupOrders(Integer warehouseId, String search);
+    
+    /**
+     * 获取配送员的待送货订单列表（已揽收状态）
+     * @param warehouseId 仓库ID（可选）
+     * @return 订单列表
+     */
+    List<Order> getPendingDeliveryOrders(Integer warehouseId);
+    
+    /**
+     * 创建送货批次（将选中的订单状态更新为运输中）
+     * @param orderIds 订单ID列表
+     */
+    void createDeliveryBatch(List<Integer> orderIds);
 }

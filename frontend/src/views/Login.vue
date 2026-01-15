@@ -120,7 +120,9 @@ const handleLogin = async () => {
               id: data.data.id,
               username: data.data.username,
               role: data.data.role,
-              token: data.data.token
+              token: data.data.token,
+              warehouseId: data.data.warehouseId,
+              warehouseName: data.data.warehouseName
           }
           console.log('保存用户信息:', userInfo)
           // 使用 sessionStorage 而不是 localStorage，每个标签页独立会话
