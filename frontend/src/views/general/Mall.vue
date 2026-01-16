@@ -195,12 +195,29 @@ const placeOrder = async (product) => {
         
         const user = JSON.parse(userInfo)
         
+        // 获取用户默认地址
+        let addressId = null
+        try {
+            const addressResponse = await request.get(`/address/list?userId=${user.id}`)
+            if (addressResponse.code === 200 && addressResponse.data && addressResponse.data.length > 0) {
+                // 查找默认地址
+                const defaultAddress = addressResponse.data.find(addr => addr.isDefault === 1)
+                if (defaultAddress) {
+                    addressId = defaultAddress.id
+                }
+            }
+        } catch (error) {
+            console.warn('获取地址信息失败:', error)
+            // 地址获取失败时继续，后端会自动查询默认地址
+        }
+        
         // 调用后端API
         const response = await request.post('/orders/create', {
             customerId: user.id,
             productId: product.id,
             quantity: product.quantity,
-            price: product.price
+            price: product.price,
+            addressId: addressId
         })
         
         if (response.code === 200) {

@@ -184,4 +184,31 @@ public class OrderController {
             return Result.error(e.getMessage());
         }
     }
+    
+    /**
+     * 获取运输中的订单列表（用于显示送货批次）
+     */
+    @GetMapping("/delivery-batches")
+    public Result<List<Order>> getDeliveryBatches(
+            @RequestParam(required = false) Integer warehouseId) {
+        try {
+            List<Order> orders = orderService.getDeliveryBatchOrders(warehouseId);
+            return Result.success("查询成功", orders);
+        } catch (Exception e) {
+            return Result.error(e.getMessage());
+        }
+    }
+    
+    /**
+     * 完成送货（将订单状态更新为已到达）
+     */
+    @PostMapping("/delivery-complete")
+    public Result<Void> completeDelivery(@RequestBody List<Integer> orderIds) {
+        try {
+            orderService.completeDelivery(orderIds);
+            return Result.success("完成送货成功", null);
+        } catch (Exception e) {
+            return Result.error(e.getMessage());
+        }
+    }
 }

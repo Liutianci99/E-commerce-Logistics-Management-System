@@ -76,4 +76,17 @@ public interface OrderService {
      * @param orderIds 订单ID列表
      */
     void createDeliveryBatch(List<Integer> orderIds);
+    
+    /**
+     * 获取运输中的订单列表（用于显示送货批次）
+     * @param warehouseId 仓库ID（可选）
+     * @return 订单列表
+     */
+    List<Order> getDeliveryBatchOrders(Integer warehouseId);
+    
+    /**
+     * 完成送货（将订单状态更新为已到达）
+     * @param orderIds 订单ID列表
+     */
+    void completeDelivery(List<Integer> orderIds);
 }

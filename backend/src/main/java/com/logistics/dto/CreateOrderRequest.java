@@ -17,4 +17,6 @@ public class CreateOrderRequest {
     private Integer quantity;
     
     private BigDecimal price;
+    
+    private Integer addressId;
 }

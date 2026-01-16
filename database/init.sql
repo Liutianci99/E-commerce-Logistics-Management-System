@@ -51,6 +51,7 @@ CREATE TABLE `orders` (
   `product_id` INT NOT NULL COMMENT '商品ID',
   `customer_id` INT NOT NULL COMMENT '顾客ID',
   `merchant_id` INT NOT NULL COMMENT '商户ID',
+  `address_id` INT COMMENT '收货地址ID',
   `product_name` VARCHAR(100) NOT NULL COMMENT '商品名称',
   `quantity` INT NOT NULL COMMENT '商品数量',
   `unit_price` DECIMAL(10, 2) NOT NULL COMMENT '商品单价',
@@ -65,7 +66,8 @@ CREATE TABLE `orders` (
   `review_time` DATETIME COMMENT '评价时间',
   FOREIGN KEY (`product_id`) REFERENCES `mall`(`product_id`),
   FOREIGN KEY (`customer_id`) REFERENCES `users`(`id`),
-  FOREIGN KEY (`merchant_id`) REFERENCES `users`(`id`)
+  FOREIGN KEY (`merchant_id`) REFERENCES `users`(`id`),
+  FOREIGN KEY (`address_id`) REFERENCES `address`(`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='订单表';
 
 -- 创建地址表
@@ -119,5 +121,6 @@ CREATE TABLE IF NOT EXISTS `delivery_personnel` (
 -- 插入配送员数据（将现有的driver角色用户关联到仓库）
 INSERT INTO `delivery_personnel` (`user_id`, `warehouse_id`) 
 SELECT u.id, 1 FROM `users` u WHERE u.role = 'driver';
+
 
 

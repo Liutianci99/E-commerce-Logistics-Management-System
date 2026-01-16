@@ -187,6 +187,12 @@ const menuConfig = [
         roles: ['driver']
     },
     {
+        title: '运输批次',
+        path: '/driver/delivery-batch',
+        icon: Truck,
+        roles: ['driver']
+    },
+    {
         title: '历史任务',
         path: '/driver/history-tasks',
         icon: Settings,

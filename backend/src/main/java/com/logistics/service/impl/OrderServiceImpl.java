@@ -2,9 +2,11 @@ package com.logistics.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.logistics.dto.CreateOrderRequest;
+import com.logistics.entity.Address;
 import com.logistics.entity.Inventory;
 import com.logistics.entity.Mall;
 import com.logistics.entity.Order;
+import com.logistics.mapper.AddressMapper;
 import com.logistics.mapper.InventoryMapper;
 import com.logistics.mapper.MallMapper;
 import com.logistics.mapper.OrderMapper;
@@ -31,6 +33,9 @@ public class OrderServiceImpl implements OrderService {
     
     @Autowired
     private InventoryMapper inventoryMapper;
+    
+    @Autowired
+    private AddressMapper addressMapper;
     
     @Override
     @Transactional(rollbackFor = Exception.class)
@@ -65,14 +70,28 @@ public class OrderServiceImpl implements OrderService {
         }
         Integer merchantId = inventory.getUserId();
         
-        // 6. 计算总金额
+        // 6. 获取收货地址ID（如果前端没传，则查询用户默认地址）
+        Integer addressId = request.getAddressId();
+        if (addressId == null) {
+            // 查询用户的默认地址
+            QueryWrapper<Address> addressQuery = new QueryWrapper<>();
+            addressQuery.eq("user_id", customerId);
+            addressQuery.eq("is_default", 1);
+            Address defaultAddress = addressMapper.selectOne(addressQuery);
+            if (defaultAddress != null) {
+                addressId = defaultAddress.getId().intValue();
+            }
+        }
+        
+        // 7. 计算总金额
         BigDecimal totalAmount = mall.getPrice().multiply(new BigDecimal(request.getQuantity()));
         
-        // 7. 创建订单
+        // 8. 创建订单
         Order order = new Order();
         order.setProductId(request.getProductId());
         order.setCustomerId(customerId);
         order.setMerchantId(merchantId);
+        order.setAddressId(addressId);
         order.setProductName(mall.getProductName());
         order.setQuantity(request.getQuantity());
         order.setUnitPrice(mall.getPrice());
@@ -81,7 +100,7 @@ public class OrderServiceImpl implements OrderService {
         order.setStatus(0); // 待发货
         order.setOrderTime(LocalDateTime.now());
         
-        // 8. 保存订单
+        // 9. 保存订单
         orderMapper.insert(order);
         
         return order;
@@ -239,6 +258,46 @@ public class OrderServiceImpl implements OrderService {
             // 更新订单状态为运输中(3)
             order.setStatus(3);
             order.setDeliveryTime(LocalDateTime.now());
+            orderMapper.updateById(order);
+        }
+    }
+    
+    @Override
+    public List<Order> getDeliveryBatchOrders(Integer warehouseId) {
+        List<Order> orders = orderMapper.selectDeliveryBatchOrders(warehouseId);
+        
+        // 为每个订单加载Address信息
+        for (Order order : orders) {
+            if (order.getAddressId() != null) {
+                Address address = addressMapper.selectById(order.getAddressId());
+                order.setAddress(address);
+            }
+        }
+        
+        return orders;
+    }
+    
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public void completeDelivery(List<Integer> orderIds) {
+        if (orderIds == null || orderIds.isEmpty()) {
+            throw new RuntimeException("订单列表不能为空");
+        }
+        
+        // 批量更新订单状态
+        for (Integer orderId : orderIds) {
+            Order order = orderMapper.selectById(orderId);
+            if (order == null) {
+                throw new RuntimeException("订单不存在: " + orderId);
+            }
+            
+            // 验证订单状态（只有运输中的订单才能完成送货）
+            if (order.getStatus() != 3) {
+                throw new RuntimeException("订单状态不正确，无法完成送货: " + orderId);
+            }
+            
+            // 更新订单状态为已到达(4)
+            order.setStatus(4);
             orderMapper.updateById(order);
         }
     }

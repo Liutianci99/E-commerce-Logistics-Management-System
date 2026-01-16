@@ -24,6 +24,7 @@ import AddressManagement from '../views/consumer/AddressManagement.vue'
 // Driver
 import PendingPickup from '../views/delivery/PendingPickup.vue'
 import PendingDelivery from '../views/delivery/PendingDelivery.vue'
+import DeliveryBatch from '../views/delivery/DeliveryBatch.vue'
 import HistoryTasks from '../views/delivery/HistoryTasks.vue'
 
 const router = createRouter({
@@ -103,6 +104,10 @@ const router = createRouter({
         {
           path: '/driver/pending-delivery',
           component: PendingDelivery
+        },
+        {
+          path: '/driver/delivery-batch',
+          component: DeliveryBatch
         },
         {
           path: '/driver/history-tasks',

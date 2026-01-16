@@ -25,6 +25,8 @@ public class Order {
     
     private Integer merchantId;
     
+    private Integer addressId;
+    
     private String productName;
     
     private Integer quantity;
@@ -54,4 +56,12 @@ public class Order {
     // 非数据库字段，用于显示仓库名称
     @TableField(exist = false)
     private String warehouseName;
+    
+    // 非数据库字段，用于显示顾客名称
+    @TableField(exist = false)
+    private String customerName;
+    
+    // 非数据库字段，用于显示收货地址
+    @TableField(exist = false)
+    private Address address;
 }
