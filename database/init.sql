@@ -122,5 +122,29 @@ CREATE TABLE IF NOT EXISTS `delivery_personnel` (
 INSERT INTO `delivery_personnel` (`user_id`, `warehouse_id`) 
 SELECT u.id, 1 FROM `users` u WHERE u.role = 'driver';
 
+-- 创建运输批次主表
+CREATE TABLE IF NOT EXISTS `delivery_batches` (
+  `id` INT PRIMARY KEY AUTO_INCREMENT COMMENT '运输批次ID',
+  `driver_id` INT NOT NULL COMMENT '配送员ID',
+  `warehouse_id` INT NOT NULL COMMENT '起始仓库ID',
+  `status` TINYINT NOT NULL DEFAULT 0 COMMENT '0=待出发, 1=配送中, 2=已完成',
+  `created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `started_at` DATETIME COMMENT '实际出发时间',
+  `completed_at` DATETIME COMMENT '完成时间',
+  `route_polyline` TEXT COMMENT '高德返回的编码路线字符串（用于前端绘图）',
+  `total_duration` INT COMMENT '预计总耗时（秒）',
+  `total_distance` INT COMMENT '总距离（米）',
+  FOREIGN KEY (`driver_id`) REFERENCES `delivery_personnel`(`id`) ON DELETE RESTRICT,
+  FOREIGN KEY (`warehouse_id`) REFERENCES `warehouse`(`id`) ON DELETE RESTRICT
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='运输批次主表';
 
-
+-- 创建运输批次订单关联表
+CREATE TABLE IF NOT EXISTS `delivery_batch_orders` (
+  `batch_id` INT NOT NULL,
+  `order_id` INT NOT NULL,
+  `stop_sequence` TINYINT NOT NULL COMMENT '高德返回的最优停靠顺序（1,2,3...）',
+  PRIMARY KEY (`batch_id`, `order_id`),
+  UNIQUE KEY `uk_batch_stop_seq` (`batch_id`, `stop_sequence`),
+  FOREIGN KEY (`batch_id`) REFERENCES `delivery_batches`(`id`) ON DELETE CASCADE,
+  FOREIGN KEY (`order_id`) REFERENCES `orders`(`order_id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='运输批次包含的订单及停靠顺序';

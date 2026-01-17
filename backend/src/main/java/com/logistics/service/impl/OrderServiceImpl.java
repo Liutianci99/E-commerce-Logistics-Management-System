@@ -1,23 +1,38 @@
 package com.logistics.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.logistics.dto.AmapRouteResponse;
 import com.logistics.dto.CreateOrderRequest;
 import com.logistics.entity.Address;
+import com.logistics.entity.DeliveryBatch;
+import com.logistics.entity.DeliveryBatchOrder;
+import com.logistics.entity.DeliveryPersonnel;
 import com.logistics.entity.Inventory;
 import com.logistics.entity.Mall;
 import com.logistics.entity.Order;
+import com.logistics.entity.Warehouse;
 import com.logistics.mapper.AddressMapper;
+import com.logistics.mapper.DeliveryBatchMapper;
+import com.logistics.mapper.DeliveryBatchOrderMapper;
+import com.logistics.mapper.DeliveryPersonnelMapper;
 import com.logistics.mapper.InventoryMapper;
 import com.logistics.mapper.MallMapper;
 import com.logistics.mapper.OrderMapper;
+import com.logistics.mapper.WarehouseMapper;
 import com.logistics.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.client.RestTemplate;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * 订单服务实现类
@@ -36,6 +51,27 @@ public class OrderServiceImpl implements OrderService {
     
     @Autowired
     private AddressMapper addressMapper;
+    
+    @Autowired
+    private DeliveryPersonnelMapper deliveryPersonnelMapper;
+    
+    @Autowired
+    private WarehouseMapper warehouseMapper;
+    
+    @Autowired
+    private DeliveryBatchMapper deliveryBatchMapper;
+    
+    @Autowired
+    private DeliveryBatchOrderMapper deliveryBatchOrderMapper;
+    
+    @Autowired
+    private RestTemplate restTemplate;
+    
+    @Value("${amap.key}")
+    private String amapKey;
+    
+    @Value("${amap.direction-api-url}")
+    private String amapDirectionApiUrl;
     
     @Override
     @Transactional(rollbackFor = Exception.class)
@@ -203,8 +239,15 @@ public class OrderServiceImpl implements OrderService {
     }
     
     @Override
-    public List<Order> getPendingPickupOrders(Integer warehouseId, String search) {
-        return orderMapper.selectPendingPickupOrders(warehouseId, search);
+    public List<Order> getPendingPickupOrders(Long deliveryPersonnelId, String search) {
+        // 根据配送员ID获取所属仓库
+        DeliveryPersonnel personnel = deliveryPersonnelMapper.selectOne(
+            new LambdaQueryWrapper<DeliveryPersonnel>().eq(DeliveryPersonnel::getUserId, deliveryPersonnelId)
+        );
+        if (personnel == null || personnel.getWarehouseId() == null) {
+            throw new RuntimeException("配送员或仓库信息不存在");
+        }
+        return orderMapper.selectPendingPickupOrders(personnel.getWarehouseId(), search);
     }
     
     @Override
@@ -228,38 +271,182 @@ public class OrderServiceImpl implements OrderService {
     }
     
     @Override
-    public List<Order> getPendingDeliveryOrders(Integer warehouseId) {
-        return orderMapper.selectPendingDeliveryOrders(warehouseId);
+    public List<Order> getPendingDeliveryOrders(Long deliveryPersonnelId) {
+        // 根据配送员ID获取所属仓库
+        DeliveryPersonnel personnel = deliveryPersonnelMapper.selectOne(
+            new LambdaQueryWrapper<DeliveryPersonnel>().eq(DeliveryPersonnel::getUserId, deliveryPersonnelId)
+        );
+        if (personnel == null || personnel.getWarehouseId() == null) {
+            throw new RuntimeException("配送员或仓库信息不存在");
+        }
+        return orderMapper.selectPendingDeliveryOrders(personnel.getWarehouseId());
     }
     
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public void createDeliveryBatch(List<Integer> orderIds) {
+    public com.logistics.dto.CreateBatchResponse createDeliveryBatch(Long deliveryPersonnelId, List<Integer> orderIds) {
+        if (deliveryPersonnelId == null) {
+            throw new RuntimeException("配送员ID不能为空");
+        }
         if (orderIds == null || orderIds.isEmpty()) {
             throw new RuntimeException("订单列表不能为空");
         }
-        
         if (orderIds.size() > 5) {
             throw new RuntimeException("每个批次最多只能选择5个订单");
         }
-        
-        // 批量更新订单状态
+
+        // 配送员与仓库
+        DeliveryPersonnel personnel = deliveryPersonnelMapper.selectOne(
+            new LambdaQueryWrapper<DeliveryPersonnel>().eq(DeliveryPersonnel::getUserId, deliveryPersonnelId)
+        );
+        if (personnel == null || personnel.getWarehouseId() == null) {
+            throw new RuntimeException("配送员或仓库信息不存在");
+        }
+        Warehouse warehouse = warehouseMapper.selectById(personnel.getWarehouseId());
+        if (warehouse == null || warehouse.getLongitude() == null || warehouse.getLatitude() == null) {
+            throw new RuntimeException("仓库坐标信息不完整");
+        }
+
+        // 订单与地址：只使用顾客默认地址
+        List<Order> orders = new ArrayList<>();
+        List<Address> addresses = new ArrayList<>();
         for (Integer orderId : orderIds) {
             Order order = orderMapper.selectById(orderId);
             if (order == null) {
                 throw new RuntimeException("订单不存在: " + orderId);
             }
-            
-            // 验证订单状态（只有已揽收状态才能开始配送）
             if (order.getStatus() != 2) {
-                throw new RuntimeException("订单状态不正确，无法配送: " + orderId);
+                throw new RuntimeException("订单状态不正确，只能配送已揽收的订单: " + orderId);
             }
-            
-            // 更新订单状态为运输中(3)
-            order.setStatus(3);
-            order.setDeliveryTime(LocalDateTime.now());
-            orderMapper.updateById(order);
+
+            // 顾客默认地址
+            Address addr = addressMapper.selectOne(
+                new LambdaQueryWrapper<Address>()
+                    .eq(Address::getUserId, order.getCustomerId().longValue())
+                    .eq(Address::getIsDefault, 1)
+            );
+            if (addr == null) {
+                throw new RuntimeException("顾客未设置默认收货地址: " + orderId);
+            }
+            if (addr.getLongitude() == null || addr.getLatitude() == null) {
+                throw new RuntimeException("默认收货地址缺少坐标信息: " + orderId);
+            }
+
+            orders.add(order);
+            addresses.add(addr);
         }
+
+        // 构建高德API请求参数
+        String origin = warehouse.getLongitude().toPlainString() + "," + warehouse.getLatitude().toPlainString();
+        String destination;
+        String waypoints = null;
+        if (addresses.size() == 1) {
+            Address dest = addresses.get(0);
+            destination = dest.getLongitude().toPlainString() + "," + dest.getLatitude().toPlainString();
+        } else {
+            Address dest = addresses.get(addresses.size() - 1);
+            destination = dest.getLongitude().toPlainString() + "," + dest.getLatitude().toPlainString();
+            waypoints = addresses.subList(0, addresses.size() - 1).stream()
+                .map(a -> a.getLongitude().toPlainString() + "," + a.getLatitude().toPlainString())
+                .collect(Collectors.joining(";"));
+        }
+
+        String apiUrl = String.format("%s?key=%s&origin=%s&destination=%s&strategy=0",
+            amapDirectionApiUrl, amapKey, origin, destination);
+        if (waypoints != null && !waypoints.isEmpty()) {
+            apiUrl += "&waypoints=" + waypoints;
+        }
+
+        // 先用 String 接收原始响应，便于调试
+        String rawResponse;
+        try {
+            rawResponse = restTemplate.getForObject(apiUrl, String.class);
+            System.out.println("高德API原始响应: " + rawResponse);
+        } catch (Exception e) {
+            System.err.println("高德API调用失败: " + e.getMessage());
+            e.printStackTrace();
+            throw new RuntimeException("调用高德路径规划API失败: " + e.getMessage());
+        }
+
+        // 将 JSON 字符串反序列化为 DTO
+        AmapRouteResponse routeResp;
+        try {
+            ObjectMapper mapper = new ObjectMapper();
+            routeResp = mapper.readValue(rawResponse, AmapRouteResponse.class);
+        } catch (Exception e) {
+            System.err.println("高德API响应解析失败: " + e.getMessage());
+            System.err.println("原始响应: " + rawResponse);
+            e.printStackTrace();
+            throw new RuntimeException("解析高德API响应失败: " + e.getMessage());
+        }
+        
+        if (routeResp == null || !"1".equals(routeResp.getStatus()) || routeResp.getRoute() == null ||
+            routeResp.getRoute().getPaths() == null || routeResp.getRoute().getPaths().isEmpty()) {
+            String errMsg = routeResp != null ? "状态: " + routeResp.getStatus() + ", 信息: " + routeResp.getInfo() : "响应为null";
+            throw new RuntimeException("高德API返回错误: " + errMsg);
+        }
+
+        AmapRouteResponse.Path path = routeResp.getRoute().getPaths().get(0);
+        Integer totalDistance = path.getDistance() != null ? Integer.parseInt(path.getDistance()) : null;
+        Integer totalDuration = path.getDuration() != null ? Integer.parseInt(path.getDuration()) : null;
+        String routePolyline = path.getSteps() != null ? path.getSteps().stream()
+            .map(AmapRouteResponse.Step::getPolyline)
+            .filter(p -> p != null && !p.isEmpty())
+            .collect(Collectors.joining(";")) : "";
+
+        // 保存批次
+        DeliveryBatch batch = new DeliveryBatch();
+        batch.setDriverId(personnel.getId());
+        batch.setWarehouseId(warehouse.getId());
+        batch.setStatus(0);
+        batch.setCreatedAt(LocalDateTime.now());
+        batch.setRoutePolyline(routePolyline);
+        batch.setTotalDistance(totalDistance);
+        batch.setTotalDuration(totalDuration);
+        deliveryBatchMapper.insert(batch);
+
+        // 计算停靠顺序
+        List<Integer> stopOrder = new ArrayList<>();
+        if (path.getWaypointOrder() != null && !path.getWaypointOrder().isEmpty()) {
+            for (String idx : path.getWaypointOrder().split(",")) {
+                stopOrder.add(Integer.parseInt(idx.trim()));
+            }
+            stopOrder.add(addresses.size() - 1);
+        } else {
+            for (int i = 0; i < addresses.size(); i++) stopOrder.add(i);
+        }
+
+        // 保存批次-订单关联
+        for (int seq = 0; seq < stopOrder.size(); seq++) {
+            int addrIdx = stopOrder.get(seq);
+            Order o = orders.get(addrIdx);
+            DeliveryBatchOrder bo = new DeliveryBatchOrder();
+            bo.setBatchId(batch.getId());
+            bo.setOrderId(o.getOrderId());
+            bo.setStopSequence(seq + 1);
+            deliveryBatchOrderMapper.insert(bo);
+        }
+
+        // 更新订单状态为运输中
+        for (Order o : orders) {
+            o.setStatus(3);
+            o.setDeliveryTime(LocalDateTime.now());
+            orderMapper.updateById(o);
+        }
+
+        // 构建响应
+        com.logistics.dto.CreateBatchResponse resp = new com.logistics.dto.CreateBatchResponse();
+        resp.setBatchId(batch.getId());
+        resp.setTotalDistance(totalDistance);
+        resp.setTotalDuration(totalDuration);
+        resp.setOrderCount(orders.size());
+        // 将停靠顺序映射为订单ID序列
+        java.util.List<Integer> stopOrderByOrderId = new java.util.ArrayList<>();
+        for (int idx : stopOrder) {
+            stopOrderByOrderId.add(orders.get(idx).getOrderId());
+        }
+        resp.setStopOrder(stopOrderByOrderId);
+        return resp;
     }
     
     @Override

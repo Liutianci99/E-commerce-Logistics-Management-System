@@ -62,13 +62,17 @@ public class OrderController {
     /**
      * 查询配送员的待揽收订单列表
      * 状态=1（已发货）的订单
+     * 只返回配送员所属仓库的订单
      */
     @GetMapping("/pending-pickup")
     public Result<List<Order>> getPendingPickupOrders(
-            @RequestParam(required = false) Integer warehouseId,
+            @RequestParam(required = false) Long deliveryPersonnelId,
             @RequestParam(required = false) String search) {
         try {
-            List<Order> orders = orderService.getPendingPickupOrders(warehouseId, search);
+            if (deliveryPersonnelId == null) {
+                return Result.error("配送员ID不能为空");
+            }
+            List<Order> orders = orderService.getPendingPickupOrders(deliveryPersonnelId, search);
             return Result.success("查询成功", orders);
         } catch (Exception e) {
             return Result.error(e.getMessage());
@@ -126,12 +130,16 @@ public class OrderController {
     /**
      * 查询配送员的待送货订单列表
      * 状态=2（已揽收）的订单
+     * 只返回配送员所属仓库的订单
      */
     @GetMapping("/pending-delivery")
     public Result<List<Order>> getPendingDeliveryOrders(
-            @RequestParam(required = false) Integer warehouseId) {
+            @RequestParam(required = false) Long deliveryPersonnelId) {
         try {
-            List<Order> orders = orderService.getPendingDeliveryOrders(warehouseId);
+            if (deliveryPersonnelId == null) {
+                return Result.error("配送员ID不能为空");
+            }
+            List<Order> orders = orderService.getPendingDeliveryOrders(deliveryPersonnelId);
             return Result.success("查询成功", orders);
         } catch (Exception e) {
             return Result.error(e.getMessage());
@@ -139,14 +147,19 @@ public class OrderController {
     }
     
     /**
-     * 创建送货批次
-     * 将选中的订单（最多5个）状态更新为运输中(3)
+    * 创建送货批次（调用高德API规划路径）
+    * 将选中的订单（最多5个）状态更新为运输中(3)，并保存批次和路径信息
      */
     @PostMapping("/delivery-batch")
-    public Result<Void> createDeliveryBatch(@RequestBody List<Integer> orderIds) {
+    public Result<com.logistics.dto.CreateBatchResponse> createDeliveryBatch(
+            @RequestParam Long deliveryPersonnelId,
+            @RequestBody List<Integer> orderIds) {
         try {
-            orderService.createDeliveryBatch(orderIds);
-            return Result.success("创建送货批次成功", null);
+            if (deliveryPersonnelId == null) {
+                return Result.error("配送员ID不能为空");
+            }
+            var resp = orderService.createDeliveryBatch(deliveryPersonnelId, orderIds);
+            return Result.success("创建送货批次成功", resp);
         } catch (Exception e) {
             return Result.error(e.getMessage());
         }

@@ -286,8 +286,8 @@ onMounted(() => {
 
 /* 批次标题栏 */
 .batch-header {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
+    background: #fff;
+    color: #222;
     padding: 16px 20px;
     cursor: pointer;
     display: flex;
@@ -297,8 +297,8 @@ onMounted(() => {
 }
 
 .batch-header:hover {
-    background: linear-gradient(135deg, #5568d3 0%, #6a3f95 100%);
-    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+    background: #f5f6fa;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
 }
 
 .header-left {
@@ -348,7 +348,7 @@ onMounted(() => {
 /* 批次内容 */
 .batch-content {
     padding: 20px;
-    background: #fafafa;
+    background: #fff;
 }
 
 .orders-container {

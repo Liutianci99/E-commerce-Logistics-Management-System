@@ -1,19 +1,5 @@
 <template>
     <div class="page-container">
-        <!-- 筛选栏 -->
-        <div class="filter-bar">
-            <div class="warehouse-filter">
-                <label>仓库筛选：</label>
-                <select v-model="selectedWarehouse" @change="handleWarehouseChange" class="warehouse-select">
-                    <option value="">全部仓库</option>
-                    <option v-if="currentUserWarehouseId" :value="currentUserWarehouseId">所属仓库</option>
-                    <option v-for="warehouse in warehouses" :key="warehouse.id" :value="warehouse.id">
-                        {{ warehouse.name }} - {{ warehouse.city }}
-                    </option>
-                </select>
-            </div>
-        </div>
-
         <!-- 订单列表 -->
         <div class="order-list">
             <div v-if="orders.length === 0" class="empty-state">
@@ -54,43 +40,30 @@ import { ref, onMounted } from 'vue'
 import request from '@/utils/request'
 
 // 状态数据
-const selectedWarehouse = ref('')
-const warehouses = ref([])
 const orders = ref([])
-const currentUserWarehouseId = ref(null)
+const currentUserId = ref(null)
 
-// 获取当前用户的仓库ID
-const getCurrentUserWarehouse = () => {
+// 获取当前用户ID
+const getCurrentUserId = () => {
     const userInfoStr = sessionStorage.getItem('userInfo')
     if (userInfoStr) {
         const userInfo = JSON.parse(userInfoStr)
-        if (userInfo.role === 'driver' && userInfo.warehouseId) {
-            currentUserWarehouseId.value = userInfo.warehouseId
+        if (userInfo.role === 'driver' && userInfo.id) {
+            currentUserId.value = userInfo.id
         }
     }
 }
 
-// 获取仓库列表
-const fetchWarehouses = async () => {
-    try {
-        const response = await request.get('/warehouse/list')
-        if (response.success) {
-            warehouses.value = response.data
-        } else {
-            console.error('获取仓库列表失败:', response.message)
-        }
-    } catch (error) {
-        console.error('获取仓库列表失败:', error)
-    }
-}
-
-// 获取待揽收订单列表
+// 获取待揽收订单列表（根据配送员ID自动获取所属仓库的订单）
 const getOrders = async () => {
     try {
-        const params = {}
+        if (!currentUserId.value) {
+            alert('未获取到配送员信息，请重新登录')
+            return
+        }
         
-        if (selectedWarehouse.value) {
-            params.warehouseId = selectedWarehouse.value
+        const params = {
+            deliveryPersonnelId: currentUserId.value
         }
         
         const res = await request.get('/orders/pending-pickup', { params })
@@ -103,11 +76,6 @@ const getOrders = async () => {
         console.error('获取订单列表失败:', error)
         alert('获取订单列表失败')
     }
-}
-
-// 仓库筛选变化
-const handleWarehouseChange = () => {
-    getOrders()
 }
 
 // 确认揽收
@@ -139,8 +107,7 @@ const formatTime = (time) => {
 
 // 页面加载时获取数据
 onMounted(() => {
-    getCurrentUserWarehouse()
-    fetchWarehouses()
+    getCurrentUserId()
     getOrders()
 })
 </script>
@@ -148,47 +115,6 @@ onMounted(() => {
 <style scoped>
 .page-container {
     width: 100%;
-}
-
-/* 筛选栏样式 */
-.filter-bar {
-    background: #ffffff;
-    border: 1px solid #e5e7eb;
-    border-radius: 8px;
-    padding: 20px;
-    margin-bottom: 20px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    display: flex;
-    gap: 20px;
-    align-items: center;
-}
-
-.warehouse-filter {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.warehouse-filter label {
-    font-size: 14px;
-    color: #6b7280;
-    white-space: nowrap;
-}
-
-.warehouse-select {
-    padding: 10px 12px;
-    border: 1px solid #d1d5db;
-    border-radius: 6px;
-    font-size: 14px;
-    color: #374151;
-    background: #ffffff;
-    cursor: pointer;
-    min-width: 200px;
-}
-
-.warehouse-select:focus {
-    outline: none;
-    border-color: #3b82f6;
 }
 
 /* 订单列表样式 */

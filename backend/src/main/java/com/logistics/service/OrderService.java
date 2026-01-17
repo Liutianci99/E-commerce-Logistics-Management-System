@@ -57,25 +57,26 @@ public interface OrderService {
     void confirmPickup(Integer orderId);
     
     /**
-     * 获取配送员的待揽收订单列表
-     * @param warehouseId 仓库ID（可选）
+     * 获取配送员的待揽收订单列表（根据配送员所属仓库筛选）
+     * @param deliveryPersonnelId 配送员ID
      * @param search 搜索关键词（可选）
      * @return 订单列表
      */
-    List<Order> getPendingPickupOrders(Integer warehouseId, String search);
+    List<Order> getPendingPickupOrders(Long deliveryPersonnelId, String search);
     
     /**
-     * 获取配送员的待送货订单列表（已揽收状态）
-     * @param warehouseId 仓库ID（可选）
+     * 获取配送员的待送货订单列表（已揽收状态，根据配送员所属仓库筛选）
+     * @param deliveryPersonnelId 配送员ID
      * @return 订单列表
      */
-    List<Order> getPendingDeliveryOrders(Integer warehouseId);
+    List<Order> getPendingDeliveryOrders(Long deliveryPersonnelId);
     
     /**
-     * 创建送货批次（将选中的订单状态更新为运输中）
+    * 创建送货批次（调用高德API规划路径，将选中的订单状态更新为运输中）
+    * @param deliveryPersonnelId 配送员ID
      * @param orderIds 订单ID列表
      */
-    void createDeliveryBatch(List<Integer> orderIds);
+    com.logistics.dto.CreateBatchResponse createDeliveryBatch(Long deliveryPersonnelId, List<Integer> orderIds);
     
     /**
      * 获取运输中的订单列表（用于显示送货批次）

@@ -3,7 +3,8 @@ import { ElMessage } from 'element-plus'
 
 const request = axios.create({
   baseURL: '/api',
-  timeout: 30000 // 增加到30秒，首次请求可能需要初始化数据库连接
+  // 后端创建批次可能涉及外部路线规划，适当放宽前端超时时间
+  timeout: 120000
 })
 
 // 请求拦截器
@@ -29,7 +30,12 @@ request.interceptors.response.use(
   },
   error => {
     console.error('请求错误:', error)
-    ElMessage.error(error.message || '网络错误')
+    // 针对超时进行更明确的提示
+    if (error.code === 'ECONNABORTED') {
+      ElMessage.error('请求超时，请稍后重试')
+    } else {
+      ElMessage.error(error.message || '网络错误')
+    }
     return Promise.reject(error)
   }
 )

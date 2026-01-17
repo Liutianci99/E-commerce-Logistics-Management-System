@@ -50,3 +50,8 @@ cloudflare:
     secret-access-key: e98b669d2d91c45c4ff3c52d474068a20309798acfe250173d44a1895aa5ba28
     bucket-name: ecommerce-logistics
     public-url: https://pub-21cebd4de3484e8b91a8e06a5f6b9c78.r2.dev
+
+# 高德地图API配置
+amap:
+  key: c7f8df1b71e61ef604ed7fbe06e5c261
+  direction-api-url: https://restapi.amap.com/v3/direction/driving
