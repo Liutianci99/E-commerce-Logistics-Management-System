@@ -1,17 +1,7 @@
 <template>
     <div class="page-container">
-        <!-- 筛选栏 -->
+        <!-- 仅显示运输中的批次数量 -->
         <div class="filter-bar">
-            <div class="warehouse-filter">
-                <label>仓库筛选：</label>
-                <select v-model="selectedWarehouse" @change="handleWarehouseChange" class="warehouse-select">
-                    <option value="">全部仓库</option>
-                    <option v-if="currentUserWarehouseId" :value="currentUserWarehouseId">所属仓库</option>
-                    <option v-for="warehouse in warehouses" :key="warehouse.id" :value="warehouse.id">
-                        {{ warehouse.name }} - {{ warehouse.city }}
-                    </option>
-                </select>
-            </div>
             <div class="batch-count">
                 <span>运输中的批次：{{ batches.length }}</span>
             </div>
@@ -27,7 +17,11 @@
                 <!-- 批次标题栏 -->
                 <div class="batch-header" @click="toggleBatch(index)">
                     <div class="header-left">
-                        <span class="toggle-arrow" :class="{ expanded: expandedBatches[index] }">→</span>
+                                                <span class="toggle-arrow" :class="{ expanded: expandedBatches[index] }">
+                                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M7 10l5 5 5-5" stroke="#222" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                    </svg>
+                                                </span>
                         <span class="batch-label">运输批次 {{ index + 1 }}</span>
                         <span class="batch-time">创建时间：{{ formatTime(batch.deliveryTime) }}</span>
                     </div>
@@ -72,10 +66,10 @@
                         <!-- 批次操作栏 -->
                         <div class="batch-actions">
                             <button class="complete-btn" @click="completeBatch(batch.orders)">
-                                完成送货
+                                开始运输
                             </button>
                             <button class="cancel-btn" @click="toggleBatch(index)">
-                                收起
+                                查看详情
                             </button>
                         </div>
                     </div>
@@ -203,11 +197,15 @@ const handleWarehouseChange = () => {
     fetchDeliveryBatches()
 }
 
-// 格式化时间
+// 格式化时间（只显示到日）
 const formatTime = (time) => {
     if (!time) return '未知'
     const date = new Date(time)
-    return date.toLocaleString('zh-CN')
+    // yyyy-MM-dd 格式
+    const year = date.getFullYear()
+    const month = String(date.getMonth() + 1).padStart(2, '0')
+    const day = String(date.getDate()).padStart(2, '0')
+    return `${year}-${month}-${day}`
 }
 
 // 页面加载
@@ -309,13 +307,11 @@ onMounted(() => {
 
 .toggle-arrow {
     display: inline-block;
-    font-size: 20px;
     transition: transform 0.3s ease;
-    font-weight: bold;
+    vertical-align: middle;
 }
-
 .toggle-arrow.expanded {
-    transform: rotate(90deg);
+    transform: rotate(180deg);
 }
 
 .batch-label {
@@ -453,9 +449,9 @@ onMounted(() => {
 .complete-btn {
     flex: 1;
     padding: 12px 16px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    border: none;
+    background-color: #ffffff;
+    color: #374151;
+    border: 1px solid #e5e7eb;
     border-radius: 6px;
     font-size: 14px;
     font-weight: 600;
@@ -464,16 +460,16 @@ onMounted(() => {
 }
 
 .complete-btn:hover {
-    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
-    transform: translateY(-2px);
+    background-color: #f9fafb;
+    border-color: #d1d5db;
 }
 
 .cancel-btn {
     flex: 1;
     padding: 12px 16px;
-    background: #f3f4f6;
-    color: #333;
-    border: 1px solid #d1d5db;
+    background-color: #ffffff;
+    color: #374151;
+    border: 1px solid #e5e7eb;
     border-radius: 6px;
     font-size: 14px;
     font-weight: 600;
@@ -482,7 +478,8 @@ onMounted(() => {
 }
 
 .cancel-btn:hover {
-    background: #e5e7eb;
+    background-color: #f9fafb;
+    border-color: #d1d5db;
 }
 
 /* 展开/折叠动画 */
